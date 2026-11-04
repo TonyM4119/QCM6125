@@ -1,0 +1,213 @@
+{
+  "file": "framework.jar",
+  "sha256": "5440cfa4f3045bac0de2e06575ecd98dbd9c4704deabf4a1b13b91d0ce7b4116",
+  "dex_crc_checks": [
+    {
+      "entry": "classes.dex",
+      "zip_crc_ok": true
+    },
+    {
+      "entry": "classes2.dex",
+      "zip_crc_ok": true
+    },
+    {
+      "entry": "classes3.dex",
+      "zip_crc_ok": true
+    },
+    {
+      "entry": "classes4.dex",
+      "zip_crc_ok": true
+    }
+  ],
+  "interfaces": [
+    {
+      "class": "Landroid/microntek/ICarManageCallback$Stub;",
+      "transactions": [
+        {
+          "method": "onStatusChanged",
+          "code": 1
+        }
+      ]
+    },
+    {
+      "class": "Landroid/microntek/ICarService$Stub;",
+      "transactions": [
+        {
+          "method": "putBooleanState",
+          "code": 1
+        },
+        {
+          "method": "putByteState",
+          "code": 2
+        },
+        {
+          "method": "putIntState",
+          "code": 3
+        },
+        {
+          "method": "putStringState",
+          "code": 4
+        },
+        {
+          "method": "putByteArraryState",
+          "code": 5
+        },
+        {
+          "method": "putIntArraryState",
+          "code": 6
+        },
+        {
+          "method": "putStringArraryState",
+          "code": 7
+        },
+        {
+          "method": "getBooleanState",
+          "code": 8
+        },
+        {
+          "method": "getByteState",
+          "code": 9
+        },
+        {
+          "method": "getIntState",
+          "code": 10
+        },
+        {
+          "method": "getStringState",
+          "code": 11
+        },
+        {
+          "method": "getByteArrayState",
+          "code": 12
+        },
+        {
+          "method": "getIntArrayState",
+          "code": 13
+        },
+        {
+          "method": "getStringArrayState",
+          "code": 14
+        },
+        {
+          "method": "registerCallback",
+          "code": 15
+        },
+        {
+          "method": "unregisterCallback",
+          "code": 16
+        },
+        {
+          "method": "setParameters",
+          "code": 17
+        },
+        {
+          "method": "getParameters",
+          "code": 18
+        },
+        {
+          "method": "putDataChanage",
+          "code": 19
+        },
+        {
+          "method": "dispatchMessage",
+          "code": 20
+        },
+        {
+          "method": "setEqIdx",
+          "code": 21
+        },
+        {
+          "method": "getEqIdx",
+          "code": 22
+        },
+        {
+          "method": "setLud",
+          "code": 23
+        },
+        {
+          "method": "getLud",
+          "code": 24
+        },
+        {
+          "method": "setVideoOverSpeed",
+          "code": 25
+        },
+        {
+          "method": "getVideoEnable",
+          "code": 26
+        }
+      ]
+    },
+    {
+      "class": "Landroid/microntek/mfi/IMfiCallback$Stub;",
+      "transactions": [
+        {
+          "method": "onReceive",
+          "code": 1
+        }
+      ]
+    },
+    {
+      "class": "Landroid/microntek/mfi/IMfiListener$Stub;",
+      "transactions": [
+        {
+          "method": "onConnected",
+          "code": 1
+        },
+        {
+          "method": "onDisconnected",
+          "code": 2
+        }
+      ]
+    },
+    {
+      "class": "Landroid/microntek/mfi/IMfiService$Stub;",
+      "transactions": [
+        {
+          "method": "start",
+          "code": 1
+        },
+        {
+          "method": "stop",
+          "code": 2
+        },
+        {
+          "method": "focusGain",
+          "code": 3
+        },
+        {
+          "method": "focusLoss",
+          "code": 4
+        },
+        {
+          "method": "isConnected",
+          "code": 5
+        },
+        {
+          "method": "send",
+          "code": 6
+        },
+        {
+          "method": "register",
+          "code": 7
+        },
+        {
+          "method": "unregister",
+          "code": 8
+        },
+        {
+          "method": "registerListener",
+          "code": 9
+        },
+        {
+          "method": "unregisterListener",
+          "code": 10
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Constants only; onTransact/Proxy parcel layout and one-way flags still require verification.",
+    "Hidden-API metadata omitted only in an analysis copy; originals not modified."
+  ]
+}

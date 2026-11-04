@@ -16,7 +16,7 @@ A framework-only upgrade can retain an older vendor partition in some Treble con
 ## Recommended offline milestones
 
 1. **Interface inventory:** preserve complete HCT API signatures and identify app consumers. This repository establishes the core map and tools to extend it.
-2. **Protocol recovery:** disassemble the factory CarService native bridge, identify file operations/ioctl structures and trace the Java command construction and callback dispatch. Record uncertainty instead of inventing packet formats.
+2. **Protocol recovery:** the first native parameter ABI and a host-tested transport implementation are now documented in [the transport milestone](native-transport.md). Continue with event decoding, Java command construction, audio arbitration and callback dispatch. Record uncertainty instead of inventing packet formats.
 3. **Platform integration map:** identify call sites and semantics for SystemServer startup, key dispatch, sleep/wake, process management, task/window and permission hooks. Enumerate custom resources and settings expected by the APKs.
 4. **Target selection and static compatibility:** verify the latest available public AOSP source release and its vendor compatibility requirements. The accessible platform_build mirror previously advertised Android 16 tags, which alone does not establish the latest worldwide release as of November 2026. Pin a source revision before proposing a build.
 5. **Implement a small compatible service layer:** preserve the observed app-facing API and Binder transaction contract, rebuild against the selected platform, and isolate hardware-native code where practical. Reuse original vendor blobs only where their ABI contracts remain supported.

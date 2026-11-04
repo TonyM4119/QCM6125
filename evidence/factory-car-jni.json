@@ -1,0 +1,254 @@
+{
+  "file": "libandroid_servers.so",
+  "sha256": "815a2fab3a26d6dbbf79d10240add486a78b285f9f8c37250870dc965b1a077e",
+  "registration_symbols": [
+    {
+      "symbol": "_ZN7android44register_android_server_microntek_CarServiceEP7_JNIEnv",
+      "address": 757780,
+      "size": 1204
+    }
+  ],
+  "entries": [
+    {
+      "method": "native_setParameters",
+      "signature": "(Ljava/lang/String;)I",
+      "jni_table_entry_address": 861552,
+      "function_address": 758984,
+      "selected_call_sites": [
+        {
+          "callee": "__open_2",
+          "call_address": 759028,
+          "preceding_instructions": [
+            {
+              "address": 759012,
+              "instruction": "adrp x0, #0x3b000"
+            },
+            {
+              "address": 759016,
+              "instruction": "add x0, x0, #0x2d6"
+            },
+            {
+              "address": 759020,
+              "instruction": "mov w1, #2"
+            },
+            {
+              "address": 759024,
+              "instruction": "mov x19, x2"
+            }
+          ]
+        },
+        {
+          "callee": "strlen",
+          "call_address": 759068,
+          "preceding_instructions": [
+            {
+              "address": 759052,
+              "instruction": "ldr x8, [x8, #0x548]"
+            },
+            {
+              "address": 759056,
+              "instruction": "mov x2, xzr"
+            },
+            {
+              "address": 759060,
+              "instruction": "blr x8"
+            },
+            {
+              "address": 759064,
+              "instruction": "mov x22, x0"
+            }
+          ]
+        },
+        {
+          "callee": "ioctl",
+          "call_address": 759084,
+          "preceding_instructions": [
+            {
+              "address": 759068,
+              "instruction": "bl #0xc0b80"
+            },
+            {
+              "address": 759072,
+              "instruction": "mov x1, x0"
+            },
+            {
+              "address": 759076,
+              "instruction": "mov w0, w21"
+            },
+            {
+              "address": 759080,
+              "instruction": "mov x2, x22"
+            }
+          ]
+        },
+        {
+          "callee": "close",
+          "call_address": 759096,
+          "preceding_instructions": [
+            {
+              "address": 759080,
+              "instruction": "mov x2, x22"
+            },
+            {
+              "address": 759084,
+              "instruction": "bl #0xc19a0"
+            },
+            {
+              "address": 759088,
+              "instruction": "mov w23, w0"
+            },
+            {
+              "address": 759092,
+              "instruction": "mov w0, w21"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "method": "native_getParameters",
+      "signature": "(Ljava/lang/String;)Ljava/lang/String;",
+      "jni_table_entry_address": 861576,
+      "function_address": 759184,
+      "selected_call_sites": [
+        {
+          "callee": "__open_2",
+          "call_address": 759228,
+          "preceding_instructions": [
+            {
+              "address": 759212,
+              "instruction": "adrp x0, #0x3b000"
+            },
+            {
+              "address": 759216,
+              "instruction": "add x0, x0, #0x2d6"
+            },
+            {
+              "address": 759220,
+              "instruction": "mov w1, #2"
+            },
+            {
+              "address": 759224,
+              "instruction": "mov x20, x2"
+            }
+          ]
+        },
+        {
+          "callee": "strlen",
+          "call_address": 759268,
+          "preceding_instructions": [
+            {
+              "address": 759252,
+              "instruction": "ldr x8, [x8, #0x548]"
+            },
+            {
+              "address": 759256,
+              "instruction": "mov x2, xzr"
+            },
+            {
+              "address": 759260,
+              "instruction": "blr x8"
+            },
+            {
+              "address": 759264,
+              "instruction": "mov x22, x0"
+            }
+          ]
+        },
+        {
+          "callee": "strlen",
+          "call_address": 759280,
+          "preceding_instructions": [
+            {
+              "address": 759264,
+              "instruction": "mov x22, x0"
+            },
+            {
+              "address": 759268,
+              "instruction": "bl #0xc0b80"
+            },
+            {
+              "address": 759272,
+              "instruction": "mov x23, x0"
+            },
+            {
+              "address": 759276,
+              "instruction": "mov x0, x22"
+            }
+          ]
+        },
+        {
+          "callee": "__memcpy_chk",
+          "call_address": 759308,
+          "preceding_instructions": [
+            {
+              "address": 759292,
+              "instruction": "mov x2, x0"
+            },
+            {
+              "address": 759296,
+              "instruction": "mov w3, #0xc00"
+            },
+            {
+              "address": 759300,
+              "instruction": "mov x1, x22"
+            },
+            {
+              "address": 759304,
+              "instruction": "mov x0, x24"
+            }
+          ]
+        },
+        {
+          "callee": "ioctl",
+          "call_address": 759324,
+          "preceding_instructions": [
+            {
+              "address": 759308,
+              "instruction": "bl #0xc15a0"
+            },
+            {
+              "address": 759312,
+              "instruction": "orr w1, w23, #0x10000"
+            },
+            {
+              "address": 759316,
+              "instruction": "mov w0, w21"
+            },
+            {
+              "address": 759320,
+              "instruction": "mov x2, x24"
+            }
+          ]
+        },
+        {
+          "callee": "close",
+          "call_address": 759332,
+          "preceding_instructions": [
+            {
+              "address": 759316,
+              "instruction": "mov w0, w21"
+            },
+            {
+              "address": 759320,
+              "instruction": "mov x2, x24"
+            },
+            {
+              "address": 759324,
+              "instruction": "bl #0xc19a0"
+            },
+            {
+              "address": 759328,
+              "instruction": "mov w0, w21"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Static evidence only; no firmware code executed.",
+    "PLT annotations assume conventional AArch64 ELF PLT layout.",
+    "Unrelocated or packed JNI pointer tables may require other tooling."
+  ]
+}

@@ -10,7 +10,9 @@ The key result: car functionality depends on HCT modifications inside the Java f
 - [Porting approaches and next offline milestones](docs/porting-approaches.md)
 - [Inspected packages and integrity](docs/firmware-baseline.md)
 - [Reproducing the analysis](docs/reproduce.md)
+- [Recovered native transport and implementation milestone](docs/native-transport.md)
+- [Experimental C++ transport and fake-device host tests](native/README.md)
 
 This repository contains original inspection scripts and derived findings. Firmware archives, proprietary APKs/libraries, decompiled implementations, device identifiers, keys, and raw property dumps are excluded. Public certificate fingerprints in the evidence identify signing relationships; they are not private signing keys.
 
-All work so far was static and local. No device connection, unlocking, wiping or flashing was performed. No new Android build was produced, and no Android 14+ hardware compatibility has been established.
+All work so far was static analysis and local development. An experimental native transport component passes fake-device host tests; it is not an Android-integrated service. No device connection, unlocking, wiping or flashing was performed. No new Android build was produced, and no Android 14+ hardware compatibility has been established.

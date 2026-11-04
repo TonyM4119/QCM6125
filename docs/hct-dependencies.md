@@ -66,7 +66,7 @@ Both supplied packages request SELinux permissive mode in their boot cmdlines. A
 
 ## What the Android 13 reference tells us
 
-The selected core interfaces CarManager, ICarService, ICarManageCallback and IMfiService contain 69 defined method signatures in each framework. All 66 signatures remaining after excluding the three compiler-generated CarManager accessors are shared. This is encouraging evidence for a stable app-facing interface. It does **not** prove Binder transaction-number equivalence, implementation identity or hardware behaviour on another build.
+The selected core interfaces CarManager, ICarService, ICarManageCallback and IMfiService contain 69 defined method signatures in each framework. All 66 signatures remaining after excluding the three compiler-generated CarManager accessors are shared. Follow-up extraction also found matching transaction constants across five HCT Stub classes (40 constants). This is encouraging evidence for a stable app-facing interface. It does **not** prove Parcel-layout equivalence, implementation identity or hardware behaviour on another build. See [the transport follow-up](native-transport.md) for details.
 
 The CarService and MfiService families remain present in the Android 13 reference. Some service implementation methods differ. The native libandroid_servers and CVBS JNI binaries differ in size and SHA-256 between releases. We cannot infer whether HCT or Malaysk made those changes, but these files are not byte-for-byte copies of the Android 12 versions.
 

@@ -1,0 +1,4 @@
+# Optional static ELF reconstruction tool; basic DEX inventory uses stdlib only.
+capstone==5.0.9
+pyelftools==0.33
+androguard==4.1.4
