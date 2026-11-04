@@ -24,3 +24,16 @@ The checks cover request lengths/flags, command and response bytes, ioctl return
 The transport intentionally clears query buffers, bounds accepted lengths, reports syscall failures and rejects embedded NUL bytes. Those choices differ from the observed factory implementation and need compatibility review. This is not byte-for-byte emulation. It accepts already encoded bytes; a future Java/JNI adapter must account for JNI modified UTF-8 rather than silently assuming ordinary UTF-8 is equivalent.
 
 Use one shared transport instance for synchronization. Multiple instances/processes do not share its mutex. Events/callbacks and serial reads are not implemented. Kernel/driver sources and exact command semantics remain outside this component.
+
+## Offline audio policy model
+
+`car_parameter_policy.*` plans the audio/native actions and narrow state changes observed in the working Malaysk service, without executing any action. See [service-layer findings](../docs/service-layer.md) for its boundaries and the future adapter requirements.
+
+```sh
+c++ -std=c++17 -Wall -Wextra -Werror -pedantic \
+  native/car_parameter_policy.cpp native/car_parameter_policy_test.cpp \
+  -o work/tests/car_parameter_policy_test
+./work/tests/car_parameter_policy_test
+```
+
+These host scenarios exercise audio arbitration rules only. They do not test a real audio HAL, driver, Android service or head unit. The policy requires external service synchronization and is not connected to the Linux transport yet.

@@ -1,0 +1,422 @@
+{
+  "file": "framework.jar",
+  "sha256": "f20c5144ef378bc0ec57cd9a787c1a18ad2135a9816cba08285d7f1ec9c95d6a",
+  "dex_crc_checks": [
+    {
+      "entry": "classes4.dex",
+      "zip_crc_ok": true
+    },
+    {
+      "entry": "classes2.dex",
+      "zip_crc_ok": true
+    },
+    {
+      "entry": "classes3.dex",
+      "zip_crc_ok": true
+    },
+    {
+      "entry": "classes.dex",
+      "zip_crc_ok": false
+    }
+  ],
+  "methods": [
+    {
+      "proxy_class": "Landroid/microntek/ICarManageCallback$Stub$Proxy;",
+      "method": "onStatusChanged",
+      "signature": "(Ljava/lang/String; Landroid/os/Bundle;)V",
+      "code": 1,
+      "flags": 1,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString",
+        "writeTypedObject"
+      ],
+      "reply_parcel_operations": []
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "dispatchMessage",
+      "signature": "(Ljava/lang/String; Landroid/os/Bundle;)V",
+      "code": 20,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString",
+        "writeTypedObject"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "getBooleanState",
+      "signature": "(Ljava/lang/String;)Z",
+      "code": 8,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString"
+      ],
+      "reply_parcel_operations": [
+        "readException",
+        "readBoolean"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "getByteArrayState",
+      "signature": "(Ljava/lang/String;)[B",
+      "code": 12,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString"
+      ],
+      "reply_parcel_operations": [
+        "readException",
+        "createByteArray"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "getByteState",
+      "signature": "(Ljava/lang/String;)B",
+      "code": 9,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString"
+      ],
+      "reply_parcel_operations": [
+        "readException",
+        "readByte"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "getEqIdx",
+      "signature": "()I",
+      "code": 22,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken"
+      ],
+      "reply_parcel_operations": [
+        "readException",
+        "readInt"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "getIntArrayState",
+      "signature": "(Ljava/lang/String;)[I",
+      "code": 13,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString"
+      ],
+      "reply_parcel_operations": [
+        "readException",
+        "createIntArray"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "getIntState",
+      "signature": "(Ljava/lang/String;)I",
+      "code": 10,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString"
+      ],
+      "reply_parcel_operations": [
+        "readException",
+        "readInt"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "getLud",
+      "signature": "()I",
+      "code": 24,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken"
+      ],
+      "reply_parcel_operations": [
+        "readException",
+        "readInt"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "getParameters",
+      "signature": "(Ljava/lang/String;)Ljava/lang/String;",
+      "code": 18,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString"
+      ],
+      "reply_parcel_operations": [
+        "readException",
+        "readString"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "getStringArrayState",
+      "signature": "(Ljava/lang/String;)[Ljava/lang/String;",
+      "code": 14,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString"
+      ],
+      "reply_parcel_operations": [
+        "readException",
+        "createStringArray"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "getStringState",
+      "signature": "(Ljava/lang/String;)Ljava/lang/String;",
+      "code": 11,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString"
+      ],
+      "reply_parcel_operations": [
+        "readException",
+        "readString"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "getVideoEnable",
+      "signature": "()Z",
+      "code": 26,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken"
+      ],
+      "reply_parcel_operations": [
+        "readException",
+        "readBoolean"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "putBooleanState",
+      "signature": "(Ljava/lang/String; Z)V",
+      "code": 1,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString",
+        "writeBoolean"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "putByteArraryState",
+      "signature": "(Ljava/lang/String; [B)V",
+      "code": 5,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString",
+        "writeByteArray"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "putByteState",
+      "signature": "(Ljava/lang/String; B)V",
+      "code": 2,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString",
+        "writeByte"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "putDataChanage",
+      "signature": "(Ljava/lang/String; Ljava/lang/String;)V",
+      "code": 19,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString",
+        "writeString"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "putIntArraryState",
+      "signature": "(Ljava/lang/String; [I)V",
+      "code": 6,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString",
+        "writeIntArray"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "putIntState",
+      "signature": "(Ljava/lang/String; I)V",
+      "code": 3,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString",
+        "writeInt"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "putStringArraryState",
+      "signature": "(Ljava/lang/String; [Ljava/lang/String;)V",
+      "code": 7,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString",
+        "writeStringArray"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "putStringState",
+      "signature": "(Ljava/lang/String; Ljava/lang/String;)V",
+      "code": 4,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString",
+        "writeString"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "registerCallback",
+      "signature": "(Landroid/microntek/ICarManageCallback;)V",
+      "code": 15,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeStrongInterface"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "setEqIdx",
+      "signature": "(I)V",
+      "code": 21,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeInt"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "setLud",
+      "signature": "(Z)V",
+      "code": 23,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeBoolean"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "setParameters",
+      "signature": "(Ljava/lang/String;)I",
+      "code": 17,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeString"
+      ],
+      "reply_parcel_operations": [
+        "readException",
+        "readInt"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "setVideoOverSpeed",
+      "signature": "(Z)V",
+      "code": 25,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeBoolean"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    },
+    {
+      "proxy_class": "Landroid/microntek/ICarService$Stub$Proxy;",
+      "method": "unregisterCallback",
+      "signature": "(Landroid/microntek/ICarManageCallback;)V",
+      "code": 16,
+      "flags": 0,
+      "request_parcel_operations": [
+        "writeInterfaceToken",
+        "writeStrongInterface"
+      ],
+      "reply_parcel_operations": [
+        "readException"
+      ]
+    }
+  ],
+  "limits": [
+    "Static proxy evidence only; Bundle layouts, server enforcement and runtime behaviour need separate review."
+  ]
+}

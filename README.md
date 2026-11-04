@@ -15,6 +15,7 @@ The key result: car functionality depends on HCT modifications inside the Java f
 - [Reproducing the analysis](docs/reproduce.md)
 - [Recovered native transport and implementation milestone](docs/native-transport.md)
 - [Native ABI cross-check against the working Malaysk reference](docs/working-reference-crosscheck.md)
+- [Service messages, callbacks, event stream and audio policy](docs/service-layer.md)
 - [Experimental C++ transport and fake-device host tests](native/README.md)
 
 This repository contains original inspection scripts and derived findings. Firmware archives, proprietary APKs/libraries, decompiled implementations, device identifiers, keys, and raw property dumps are excluded. Public certificate fingerprints in the evidence identify signing relationships; they are not private signing keys.

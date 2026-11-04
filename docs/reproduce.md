@@ -22,3 +22,13 @@ APK manifests and certificate relationships were independently inspected with An
 Selected Java instruction paths were inspected with Androguard after omitting the hidden-API metadata map entry in an **in-memory analysis copy** and recomputing that copy's DEX checksums. This worked around Androguard rejecting a hidden-API domain flag. The original files and partition images were not changed. Full decompiled or disassembled implementations are not included in this repository.
 
 The tools expect ordinary unpacked APK/JAR files containing classes*.dex; they do not reconstruct missing DEX from optimized-only OAT/VDEX files, validate the update signing trust chain, or prove boot compatibility. Bounds/malformed-input hardening is limited; use a resource-limited environment for untrusted files.
+
+The optional service Proxy check uses the dependencies in requirements-analysis.txt:
+
+```sh
+python3 scripts/recover_proxy_wire.py \
+  work/malaysk/system/framework/framework.jar \
+  work/malaysk/proxy-wire.json
+```
+
+Its output is restricted to the two selected HCT Proxy classes, method signatures, constant transaction arguments and Parcel method names. It preserves original CRC results and uses the same in-memory hidden-API workaround. It does not infer server permissions, callback Bundle schemas or message equivalence on a different Android release.
