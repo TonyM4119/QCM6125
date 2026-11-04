@@ -1,5 +1,7 @@
 # HCT dependency findings
 
+**Compatibility correction:** the owner confirmed that the November 2022 XTRONS archive did not work on this exact unit. It is not an approved porting base. Analysis derived from it remains evidence about that package only; the experimental native transport has not yet been validated against a known-working driver/native implementation. The failure symptoms and cause are unknown.
+
 Inspected November 4, 2026. Evidence comes from the supplied November 2022 factory candidate and March 2024 Malaysk reference. Observations establish what these packages contain, not runtime behaviour on an untested build.
 
 ## Main control path

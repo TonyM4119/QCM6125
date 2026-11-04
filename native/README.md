@@ -1,5 +1,7 @@
 # Experimental MTC transport
 
+**Compatibility correction:** the owner confirmed that the November 2022 XTRONS archive did not work on this exact unit. It is not an approved porting base. Analysis derived from it remains evidence about that package only; the experimental native transport has not yet been validated against a known-working driver/native implementation. The failure symptoms and cause are unknown.
+
 This is an original, minimal C++17 implementation of the native parameter transport observed in the November 2022 factory ARM64 library. It is not a ROM, Android service, JNI replacement, or complete CarService implementation. It has only been tested on the host using an injected fake device.
 
 The Linux backend opens `/dev/mtc-car` only when explicitly called. No device-facing command-line program, flashing operation or automatic probe is included. Construction alone performs no I/O. Host tests use FakeDevice, not LinuxDeviceCalls.

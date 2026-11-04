@@ -1,5 +1,7 @@
 # Inspected firmware
 
+**Compatibility correction:** the owner confirmed that the November 2022 XTRONS archive did not work on this exact unit. It is not an approved porting base. Analysis derived from it remains evidence about that package only; the experimental native transport has not yet been validated against a known-working driver/native implementation. The failure symptoms and cause are unknown.
+
 | Item | Factory candidate | Malaysk Lite reference |
 | --- | --- | --- |
 | Filename identity | XTRONS IQ/IQP 6+128 Android 12, OTA 20221115 | Malay Mod Lite 1.0 QCM6125 MCU MTCH Android 13 |

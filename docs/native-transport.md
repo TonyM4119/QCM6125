@@ -1,5 +1,7 @@
 # Factory native transport reconstruction
 
+**Compatibility correction:** the owner confirmed that the November 2022 XTRONS archive did not work on this exact unit. It is not an approved porting base. Analysis derived from it remains evidence about that package only; the experimental native transport has not yet been validated against a known-working driver/native implementation. The failure symptoms and cause are unknown.
+
 Recovered offline from ARM64 factory `libandroid_servers.so`, SHA-256 `815a2fab3a26d6dbbf79d10240add486a78b285f9f8c37250870dc965b1a077e`. Addresses below are ELF virtual addresses for this exact binary, not offsets or addresses valid on every firmware release.
 
 ## JNI bindings

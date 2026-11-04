@@ -1,6 +1,6 @@
 # Porting approaches
 
-The objective is newer Android while retaining the known-working HCT car functions. The factory candidate is the primary analysis baseline; Malaysk remains a comparison/reference, not the requested base.
+The objective is newer Android while retaining the known-working HCT car functions. The owner confirmed that the November 2022 XTRONS archive did not work on this unit. It is excluded as a porting base and retained only for historical analysis. The current January 2025 installation and previously tested Malaysk archive are the working compatibility references. The current installation has no matching archive available, and the preference for a working stock base remains.
 
 | Approach | What it preserves | Work and limits | Assessment |
 | --- | --- | --- | --- |
@@ -23,3 +23,7 @@ A framework-only upgrade can retain an older vendor partition in some Treble con
 6. **Build and offline review:** assemble an experimental image only after meaningful implementations exist, validate dependencies, signatures, layouts and update metadata, and clearly label it untested. Creating placeholder device-tree files is not a completed port.
 
 The no-flashing constraint remains in force. Hardware validation would be a separate future decision, not an implied next action. None of these milestones requires another screenshot right now. A working port cannot ultimately be established from static analysis alone.
+
+## Gate before further hardware-specific implementation
+
+Cross-check the recovered native ABI and framework behaviour against the known-working Malaysk package before extending the transport. Matching Java signatures and Binder constants do not validate the failed package's kernel, device trees, peripherals or native driver ABI. Do not transplant its boot, vendor, dtbo, bootloader or board-specific configuration into a proposed build. The failure mode is unknown; do not infer that RAM/storage capacity caused it.
