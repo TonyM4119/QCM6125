@@ -16,6 +16,15 @@ EventMapping malformed() {
 std::int32_t little16(const std::vector<std::uint8_t>& bytes, std::size_t offset) {
   return bytes[offset] | (static_cast<std::int32_t>(bytes[offset + 1]) << 8);
 }
+std::int32_t radio_frequency(const std::vector<std::uint8_t>& bytes) {
+  const std::uint32_t units = bytes[0] | (static_cast<std::uint32_t>(bytes[1]) << 8) |
+                              (static_cast<std::uint32_t>(bytes[2]) << 16);
+  // Java's int multiplication wraps; avoid C++ signed-overflow undefined behaviour.
+  const std::uint32_t wrapped = units * 1000u;
+  std::int64_t value = wrapped;
+  if (value > 2147483647LL) value -= 4294967296LL;
+  return static_cast<std::int32_t>(value);
+}
 EventMapping boolean_state(const EventFrame& frame, const std::string& key) {
   if (frame.payload.empty()) return malformed();
   auto result = notification("CarEvent", key);
@@ -28,6 +37,49 @@ EventMapping boolean_state(const EventFrame& frame, const std::string& key) {
 
 EventMapping map_event(const EventFrame& frame) {
   const auto& payload = frame.payload;
+  if (frame.category == 0x11) {
+    const char* type = nullptr;
+    switch (frame.subcommand) {
+      case 0x20: type = "seek_end"; break;
+      case 0x22: type = "seek_end_auto"; break;
+      case 0x33: type = "seek_start"; break;
+      case 0x34: type = "seek_start_auto"; break;
+      case 0x40: type = "bg_seek_refresh"; break;
+      case 0x42: type = "bg_seek_end"; break;
+      case 0x31: case 0x32: {
+        auto result = notification("Radio", "ta");
+        result.notifications[0].fields["value"] = std::int32_t(frame.subcommand == 0x31 ? 1 : 0);
+        return result;
+      }
+      case 0x21: case 0x35: {
+        if (payload.empty()) return malformed();
+        auto result = notification("Radio", frame.subcommand == 0x21 ? "seek_found" : "seek_found_auto");
+        result.notifications[0].fields["strength"] = static_cast<std::int32_t>(payload[0]);
+        return result;
+      }
+      case 0x24: case 0x27: case 0x29: {
+        if (payload.empty()) return malformed();
+        const char* name = frame.subcommand == 0x24 ? "tp" : frame.subcommand == 0x27 ? "pty" : "stereo";
+        auto result = notification("Radio", name);
+        result.notifications[0].fields["value"] = static_cast<std::int32_t>(payload[0]);
+        return result;
+      }
+      case 0x28: {
+        if (payload.size() < 2) return malformed();
+        auto result = notification("Radio", "pi");
+        result.notifications[0].fields["value"] = little16(payload, 0);
+        return result;
+      }
+      case 0x25: {
+        if (payload.size() < 3) return malformed();
+        auto result = notification("Radio", "freq");
+        result.notifications[0].fields["value"] = radio_frequency(payload);
+        return result;
+      }
+      default: return {};
+    }
+    return notification("Radio", type);
+  }
   if (frame.category == 0x1f) {
     switch (frame.subcommand) {
       case 0: {

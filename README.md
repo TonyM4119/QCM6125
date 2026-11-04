@@ -17,6 +17,7 @@ The key result: car functionality depends on HCT modifications inside the Java f
 - [Native ABI cross-check against the working Malaysk reference](docs/working-reference-crosscheck.md)
 - [Service messages, callbacks, event stream and audio policy](docs/service-layer.md)
 - [Bounded receive decoder and initial event mappings](docs/event-decoder.md)
+- [Integrated host core and radio callback extension](docs/offline-service-core.md)
 - [Android source target, compatibility and build-resource gates](docs/android-target-gates.md)
 - [Experimental C++ transport and fake-device host tests](native/README.md)
 

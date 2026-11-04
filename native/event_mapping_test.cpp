@@ -42,8 +42,28 @@ int main() {
   check(power.notifications[0].topic == "CarPower" &&
         field<std::string>(power.state_updates, "carpower") == "sleep", "power notification mismatch");
 
+  const auto frequency = hct::map_event({0x11, 0x25, {0x7c, 0xa5, 0x01}});
+  check(frequency.notifications[0].topic == "Radio" &&
+        field<std::int32_t>(frequency.notifications[0].fields, "value") == 107900000,
+        "radio frequency byte order or unit scaling changed");
+  check(frequency.state_updates.empty(), "radio callback invented shared state");
+  const auto wrapped_frequency = hct::map_event({0x11, 0x25, {0xff, 0xff, 0xff}});
+  check(field<std::int32_t>(wrapped_frequency.notifications[0].fields, "value") == -402654184,
+        "Java int overflow semantics changed");
+  const auto traffic = hct::map_event({0x11, 0x31, {}});
+  check(std::holds_alternative<std::int32_t>(traffic.notifications[0].fields.at("value")) &&
+        field<std::int32_t>(traffic.notifications[0].fields, "value") == 1,
+        "traffic announcement must remain int, not bool");
+  const auto seek = hct::map_event({0x11, 0x35, {0xfe}});
+  check(field<std::int32_t>(seek.notifications[0].fields, "strength") == 254 &&
+        !seek.notifications[0].fields.count("value"), "seek callback schema mismatch");
+  check(field<std::int32_t>(hct::map_event({0x11, 0x28, {0xab, 0xcd}}).notifications[0].fields, "value") == 0xcdab,
+        "radio programme identifier endian mismatch");
+
   for (const auto& frame : std::vector<hct::EventFrame>{{0x16, 0x43, {}}, {0x16, 0x4b, {}},
-                                                      {0x1f, 0, {1, 2, 3}}, {0x1f, 2, {1}}}) {
+                                                      {0x1f, 0, {1, 2, 3}}, {0x1f, 2, {1}},
+                                                      {0x11, 0x25, {0x7c, 0xa5}}, {0x11, 0x28, {1}},
+                                                      {0x11, 0x21, {}}}) {
     const auto bad = hct::map_event(frame);
     check(bad.status == hct::EventDecodeStatus::malformed && bad.notifications.empty() &&
           bad.state_updates.empty(), "truncated event produced state or callback");

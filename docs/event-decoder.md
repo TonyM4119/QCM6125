@@ -10,7 +10,7 @@ The default maximum payload is 4091 bytes so one complete frame fits the observe
 
 ## Initial mapper
 
-`native/event_mapping.*` implements only the 18 category/subcommand pairs below. It returns typed state-update descriptions and callback descriptions. No persistent store, Binder, Android UI action, camera switching or power operation is performed. Unknown pairs are left unknown; short payloads for known fixed fields return malformed without any state update or callback.
+The table below records the initial 18 category/subcommand mappings. The [radio extension and integrated host core](offline-service-core.md) add 15 pairs, for 33 implemented pairs. The mapper returns typed state-update descriptions and callback descriptions. It performs no persistent storage, Binder, Android UI, camera or power operation. Unknown pairs remain unknown; short payloads for known fixed fields return malformed without any state update or callback.
 
 | Category / subcommand (hex) | Mapping | Minimum payload |
 | --- | --- | --- |

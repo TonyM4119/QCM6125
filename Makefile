@@ -2,7 +2,8 @@ CXX ?= c++
 CXXFLAGS ?= -std=c++17 -Wall -Wextra -Werror -pedantic
 BUILD_DIR ?= work/tests
 TESTS := $(BUILD_DIR)/transport_test $(BUILD_DIR)/car_parameter_policy_test \
-         $(BUILD_DIR)/event_stream_test $(BUILD_DIR)/event_mapping_test
+         $(BUILD_DIR)/event_stream_test $(BUILD_DIR)/event_mapping_test \
+         $(BUILD_DIR)/offline_service_core_test
 
 .PHONY: all test
 all: $(TESTS)
@@ -22,8 +23,15 @@ $(BUILD_DIR)/event_stream_test: native/event_stream.cpp native/event_stream_test
 $(BUILD_DIR)/event_mapping_test: native/event_stream.cpp native/event_mapping.cpp native/event_mapping_test.cpp native/event_stream.hpp native/event_mapping.hpp | $(BUILD_DIR)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) native/event_stream.cpp native/event_mapping.cpp native/event_mapping_test.cpp $(LDFLAGS) -o $@
 
+CORE_SOURCES := native/offline_service_core.cpp native/car_parameter_policy.cpp native/event_stream.cpp native/event_mapping.cpp
+CORE_HEADERS := native/offline_service_core.hpp native/car_parameter_policy.hpp native/event_stream.hpp native/event_mapping.hpp
+
+$(BUILD_DIR)/offline_service_core_test: $(CORE_SOURCES) $(CORE_HEADERS) native/offline_service_core_test.cpp | $(BUILD_DIR)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -pthread $(CORE_SOURCES) native/offline_service_core_test.cpp $(LDFLAGS) -o $@
+
 test: all
 	$(BUILD_DIR)/transport_test
 	$(BUILD_DIR)/car_parameter_policy_test
 	$(BUILD_DIR)/event_stream_test
 	$(BUILD_DIR)/event_mapping_test
+	$(BUILD_DIR)/offline_service_core_test
