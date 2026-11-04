@@ -21,7 +21,9 @@ int main() {
   check(enter.actions.size() == 2 && enter.return_driver_result, "audio plan missing");
   core.plan_parameter("av_channel_exit=music");
   check(field<std::string>(core.state_snapshot(), "av_channel") == "radio", "stale exit changed shared state");
-  core.plan_parameter("av_gps_package=example.navigation");
+  const auto navigation = core.plan_parameter("av_gps_package=example.navigation");
+  check(navigation.actions.size() == 1 && navigation.actions[0].kind == hct::ParameterActionKind::audio_parameter,
+        "navigation audio side effect not integrated");
   check(field<std::string>(core.state_snapshot(), "navi_package") == "example.navigation", "navigation state not integrated");
 
   const auto partial = core.receive({0xfa, 0x16, 0x43, 1});

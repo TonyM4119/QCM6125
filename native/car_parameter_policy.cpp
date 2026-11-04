@@ -40,7 +40,9 @@ ParameterPlan CarParameterPolicy::plan(std::optional<std::string_view> command) 
   }
   if (starts_with(*command, "av_gps_package=")) {
     navigation_package_ = std::string(value);
-    return {};
+    ParameterPlan result;
+    result.actions.push_back({ParameterActionKind::audio_parameter, std::string(*command)});
+    return result;
   }
   return forward(*command, true);
 }

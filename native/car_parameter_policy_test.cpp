@@ -36,7 +36,11 @@ int main() {
   // A stale exit from another app must not interrupt the active radio channel.
   check_local(policy.plan("av_channel_exit=music"), 0);
   check(policy.audio_channel() == "radio", "inactive exit disturbed audio");
-  check_local(policy.plan("av_gps_package=example.navigation"), 0);
+  const auto navigation = policy.plan("av_gps_package=example.navigation");
+  check(!navigation.return_driver_result && navigation.local_result == 0 && navigation.actions.size() == 1,
+        "navigation should plan one audio action without a driver action");
+  check(navigation.actions[0].kind == hct::ParameterActionKind::audio_parameter &&
+        navigation.actions[0].command == "av_gps_package=example.navigation", "navigation audio configuration missing");
   check(policy.navigation_package() == "example.navigation", "navigation state not retained");
   check(policy.audio_channel() == "radio", "navigation configuration disturbed audio");
 

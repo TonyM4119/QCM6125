@@ -59,12 +59,14 @@ Original portable code in `native/car_parameter_policy.*` models the observed se
 - av_ commands require a non-empty value after the first '='.
 - av_channel_enter updates channel state, then plans audio-system and driver actions.
 - Exiting an inactive channel sends neither action. Exiting the active non-system channel restores sys through av_channel_enter=sys. Exiting sys is a no-op.
-- av_gps_package changes navigation-package state locally without audio/driver actions.
+- av_gps_package changes navigation-package state and plans an audio-system configuration update through putStringState; it does not issue a driver ioctl.
 - Other av_ commands plan audio-system then driver actions.
 
 When forwarding to the driver, the eventual service must return its result. The model starts with sys and updates state before the adapter executes the plan; it does not roll back driver failures. The observed Android service skips AudioManager calls if the manager is unavailable and still calls the native driver; the future adapter must account for that.
 
 Typed state storage, persistence, callbacks, permissions, synchronization and Android adapters remain unimplemented. This is a narrow model, not a full service. Java string encoding and the transport's separate NUL/length checks also remain adapter concerns.
+
+Correction from helper-level review: the original host model treated av_gps_package as having no audio side effect. The concrete service calls putStringState("navi_package", value), whose conditional branch calls AudioManager.setParameters("av_gps_package=" + value). That indirect effect is now included and regression-tested. It does not switch the selected audio channel or issue a native ioctl. The host model still produces plans only; no AudioManager operation was executed.
 
 ## Checks and remaining boundaries
 
