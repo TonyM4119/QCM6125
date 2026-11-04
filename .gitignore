@@ -1,0 +1,21 @@
+# Local firmware, extracted data, reports with arbitrary strings, and credentials.
+/work/
+/private/
+/.venv/
+__pycache__/
+*.pyc
+*.rar
+*.zip
+*.img
+*.bin
+*.apk
+*.jar
+*.dex
+*.so
+*.odex
+*.vdex
+*.oat
+*.pem
+*.key
+.env
+.env.*

@@ -1,0 +1,162 @@
+[
+  {
+    "file": "HCTBackView.apk",
+    "package": "com.microntek.backview",
+    "sharedUserId": null,
+    "target_sdk": "26",
+    "min_sdk": "31",
+    "permissions": [
+      "android.permission.WRITE_SETTINGS",
+      "android.permission.MODIFY_AUDIO_SETTINGS",
+      "android.permission.EXPAND_STATUS_BAR",
+      "android.permission.GET_TASKS",
+      "android.permission.STATUS_BAR"
+    ],
+    "certificates_sha256": [
+      "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+    ]
+  },
+  {
+    "file": "HCTFactorySettings.apk",
+    "package": "com.hct.factory",
+    "sharedUserId": "android.uid.system",
+    "target_sdk": "31",
+    "min_sdk": "31",
+    "permissions": [
+      "android.permission.MODIFY_AUDIO_SETTINGS",
+      "android.permission.WRITE_SETTINGS",
+      "android.permission.SET_PREFERRED_APPLICATIONS",
+      "android.permission.WRITE_EXTERNAL_STORAGE",
+      "android.permission.HCT_FACTORY",
+      "android.permission.READ_EXTERNAL_STORAGE",
+      "android.permission.MOUNT_UNMOUNT_FILESYSTEMS",
+      "android.permission.WRITE_SECURE_SETTINGS"
+    ],
+    "certificates_sha256": [
+      "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+    ]
+  },
+  {
+    "file": "HCTRadio.apk",
+    "package": "com.microntek.radio",
+    "sharedUserId": null,
+    "target_sdk": "26",
+    "min_sdk": "31",
+    "permissions": [
+      "android.permission.MODIFY_AUDIO_SETTINGS",
+      "android.permission.WRITE_SETTINGS",
+      "android.permission.SYSTEM_ALERT_WINDOW"
+    ],
+    "certificates_sha256": [
+      "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"
+    ]
+  },
+  {
+    "file": "HCTWheelStudy.apk",
+    "package": "com.hct.wheelstudy",
+    "sharedUserId": null,
+    "target_sdk": "26",
+    "min_sdk": "31",
+    "permissions": [
+      "android.permission.WRITE_SETTINGS",
+      "android.permission.GET_TASKS"
+    ],
+    "certificates_sha256": [
+      "a40da80a59d170caa950cf15c18c454d47a39b26989d8b640ecd745ba71bf5dc"
+    ]
+  },
+  {
+    "file": "framework-res.apk",
+    "package": "android",
+    "sharedUserId": "android.uid.system",
+    "target_sdk": "31",
+    "min_sdk": "31",
+    "permissions": [
+      "android.permission.BIND_JOB_SERVICE",
+      "android.permission.MANAGE_NOTIFICATION_LISTENERS",
+      "android.permission.LOCAL_MAC_ADDRESS",
+      "android.permission.SEND_SHOW_SUSPENDED_APP_DETAILS",
+      "android.permission.BIND_ROTATION_RESOLVER_SERVICE",
+      "android.permission.LOADER_USAGE_STATS",
+      "android.permission.CONTROL_VPN",
+      "android.permission.MEDIA_RESOURCE_OVERRIDE_PID",
+      "android.permission.CONNECTIVITY_USE_RESTRICTED_NETWORKS",
+      "android.intent.category.MASTER_CLEAR.permission.C2D_MESSAGE",
+      "android.permission.QUERY_ALL_PACKAGES",
+      "android.permission.UNLIMITED_TOASTS",
+      "android.permission.PACKAGE_USAGE_STATS",
+      "android.permission.ACCESS_INSTANT_APPS",
+      "android.permission.LOCATION_HARDWARE",
+      "android.permission.TRIGGER_TIME_ZONE_RULES_CHECK",
+      "android.permission.BIND_NETWORK_RECOMMENDATION_SERVICE",
+      "android.permission.GET_ACCOUNTS",
+      "android.permission.BROADCAST_CLOSE_SYSTEM_DIALOGS",
+      "android.permission.ACCESS_CONTEXT_HUB",
+      "android.permission.BIND_ATTENTION_SERVICE",
+      "android.permission.CONFIRM_FULL_BACKUP",
+      "android.permission.INTERACT_ACROSS_USERS_FULL",
+      "android.permission.UPDATE_PACKAGES_WITHOUT_USER_ACTION"
+    ],
+    "certificates_sha256": [
+      "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+    ]
+  },
+  {
+    "file": "HCTBlueToothManager.apk",
+    "package": "android.microntek.mtcser",
+    "sharedUserId": "android.uid.system",
+    "target_sdk": "22",
+    "min_sdk": "31",
+    "permissions": [
+      "android.permission.MODIFY_AUDIO_SETTINGS",
+      "android.permission.ACCESS_WIFI_STATE",
+      "android.permission.WRITE_SETTINGS",
+      "android.permission.WRITE_EXTERNAL_STORAGE",
+      "android.permission.READ_PHONE_STATE",
+      "android.permission.READ_OWNER_DATA",
+      "android.permission.SYSTEM_ALERT_WINDOW",
+      "android.permission.WAKE_LOCK",
+      "android.permission.MANAGE_EXTERNAL_STORAGE",
+      "android.permission.BROADCAST_STICKY",
+      "android.permission.READ_EXTERNAL_STORAGE",
+      "android.permission.RECEIVE_BOOT_COMPLETED",
+      "android.permission.MOUNT_UNMOUNT_FILESYSTEMS",
+      "android.permission.INTERNET",
+      "android.permission.READ_MEDIA_STORAGE",
+      "android.permission.SERIAL_PORT",
+      "android.permission.WRITE_SECURE_SETTINGS"
+    ],
+    "certificates_sha256": [
+      "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+    ]
+  },
+  {
+    "file": "HCTCanBus.apk",
+    "package": "android.microntek.canbus",
+    "sharedUserId": "android.uid.system",
+    "target_sdk": "31",
+    "min_sdk": "31",
+    "permissions": [
+      "android.permission.MODIFY_AUDIO_SETTINGS",
+      "android.permission.CHANGE_NETWORK_STATE",
+      "android.permission.ACCESS_WIFI_STATE",
+      "android.permission.SET_PREFERRED_APPLICATIONS",
+      "android.permission.WRITE_SETTINGS",
+      "android.permission.SYSTEM_ALERT_WINDOW",
+      "android.permission.BROADCAST_STICKY",
+      "android.permission.RECEIVE_BOOT_COMPLETED",
+      "android.permission.ACCESS_NETWORK_STATE",
+      "android.permission.EXPAND_STATUS_BAR",
+      "android.permission.WRITE_SECURE_SETTINGS",
+      "android.permission.CHANGE_WIFI_STATE",
+      "android.permission.ACCESS_FINE_LOCATION",
+      "android.permission.SERIAL_PORT",
+      "android.permission.SET_TIME_ZONE",
+      "android.permission.GET_TASKS",
+      "android.permission.ACCESS_COARSE_LOCATION"
+    ],
+    "certificates_sha256": [
+      "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+    ]
+  }
+]

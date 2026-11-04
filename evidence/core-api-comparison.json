@@ -1,0 +1,22 @@
+{
+  "framework.jar": {
+    "factory": 69,
+    "malaysk": 69,
+    "removed": [
+      "Landroid/microntek/CarManager;->access$000(Landroid/microntek/CarManager;)Ljava/lang/String;",
+      "Landroid/microntek/CarManager;->access$100(Landroid/microntek/CarManager;)Landroid/os/Handler;",
+      "Landroid/microntek/CarManager;->access$200(Landroid/microntek/CarManager;)Landroid/microntek/CarListener;"
+    ],
+    "added": [
+      "Landroid/microntek/CarManager;->-$$Nest$fgetmHandler(Landroid/microntek/CarManager;)Landroid/os/Handler;",
+      "Landroid/microntek/CarManager;->-$$Nest$fgetmListener(Landroid/microntek/CarManager;)Landroid/microntek/CarListener;",
+      "Landroid/microntek/CarManager;->-$$Nest$fgetmType(Landroid/microntek/CarManager;)Ljava/lang/String;"
+    ]
+  },
+  "services.jar": {
+    "factory": 0,
+    "malaysk": 0,
+    "removed": [],
+    "added": []
+  }
+}
