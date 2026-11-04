@@ -19,6 +19,7 @@ The key result: car functionality depends on HCT modifications inside the Java f
 - [Bounded receive decoder and initial event mappings](docs/event-decoder.md)
 - [Integrated host core and radio callback extension](docs/offline-service-core.md)
 - [Typed HCT state, navigation audio and CarData contract](docs/typed-state-contract.md)
+- [Client callback filtering, delivery and attachment lifecycle](docs/callback-delivery.md)
 - [RDS byte arrays and background station results](docs/radio-payloads.md)
 - [Working-kernel driver bindings, limits and virtual event framing](docs/working-kernel.md)
 - [HCT board/display/touch declarations in compiled device trees](docs/device-tree-findings.md)

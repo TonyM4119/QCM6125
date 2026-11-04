@@ -26,6 +26,8 @@ CarService uses RemoteCallbackList to register non-null interfaces and broadcast
 
 CarManager filters callbacks on the client using the attached type String's `contains(eventName)` result. It then sends a Handler message with what=-1, obj=eventName and the Bundle, or calls the listener's onStatusChanged. This is not an exact server-side topic subscription: changing it to equality would alter clients attaching several event names in one String.
 
+The [callback delivery review](callback-delivery.md) records attachment lifecycle, target precedence and instruction checkpoints. A pure host planner now tests the client filtering and delivery shape without invoking Android or Binder.
+
 ## Separate serial event stream
 
 initComm obtains Android SerialManager and opens `/dev/ttyV2` at 38400 baud, allocating a 4096-byte ByteBuffer and starting a reader. Successful reads feed DataProc, which accumulates bytes, finds frames, calls cmdProc and retains the unconsumed tail. This stream is separate from parameter-command ioctls.

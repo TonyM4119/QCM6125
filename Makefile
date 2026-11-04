@@ -3,7 +3,8 @@ CXXFLAGS ?= -std=c++17 -Wall -Wextra -Werror -pedantic
 BUILD_DIR ?= work/tests
 TESTS := $(BUILD_DIR)/transport_test $(BUILD_DIR)/car_parameter_policy_test \
          $(BUILD_DIR)/event_stream_test $(BUILD_DIR)/event_mapping_test \
-         $(BUILD_DIR)/offline_service_core_test $(BUILD_DIR)/state_contract_test
+         $(BUILD_DIR)/offline_service_core_test $(BUILD_DIR)/state_contract_test \
+         $(BUILD_DIR)/callback_policy_test
 
 .PHONY: all test test-binder test-device-tree
 all: $(TESTS)
@@ -32,6 +33,9 @@ $(BUILD_DIR)/offline_service_core_test: $(CORE_SOURCES) $(CORE_HEADERS) native/o
 $(BUILD_DIR)/state_contract_test: $(CORE_SOURCES) $(CORE_HEADERS) native/state_contract_test.cpp | $(BUILD_DIR)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -pthread $(CORE_SOURCES) native/state_contract_test.cpp $(LDFLAGS) -o $@
 
+$(BUILD_DIR)/callback_policy_test: $(CORE_SOURCES) $(CORE_HEADERS) native/callback_policy.cpp native/callback_policy.hpp native/callback_policy_test.cpp | $(BUILD_DIR)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -pthread $(CORE_SOURCES) native/callback_policy.cpp native/callback_policy_test.cpp $(LDFLAGS) -o $@
+
 test: all
 	$(BUILD_DIR)/transport_test
 	$(BUILD_DIR)/car_parameter_policy_test
@@ -39,6 +43,7 @@ test: all
 	$(BUILD_DIR)/event_mapping_test
 	$(BUILD_DIR)/offline_service_core_test
 	$(BUILD_DIR)/state_contract_test
+	$(BUILD_DIR)/callback_policy_test
 
 AIDL ?= aidl
 test-binder:
