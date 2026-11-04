@@ -10,7 +10,7 @@
 - drain_notifications transfers queued descriptions once, in order. A default backlog limit of 256 drops the oldest description on overflow, retains current state and reports the drop count.
 - Public operations are mutex-protected; no external callback executes under the lock.
 
-The bounded queue is a host-model policy, not a reconstruction of Android Binder/RemoteCallbackList scheduling. This model does not expose all typed ICarService state methods, persist settings, register Binder callbacks or perform Android permission checks. Nor does it roll back state after future adapter failures. It is not an Android service replacement or ROM build.
+The bounded queue is a host-model policy, not a reconstruction of Android Binder/RemoteCallbackList scheduling. The model now exposes the seven typed state getter/setter pairs described in [the state contract](typed-state-contract.md). It does not persist settings, register Binder callbacks or perform Android permission checks. Nor does it roll back state after future adapter failures. It is not an Android service replacement or ROM build.
 
 ## Additional radio mappings
 

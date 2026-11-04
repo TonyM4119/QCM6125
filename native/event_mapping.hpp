@@ -3,13 +3,17 @@
 #include "event_stream.hpp"
 #include <cstdint>
 #include <map>
+#include <optional>
 #include <string>
 #include <variant>
 #include <vector>
 
 namespace hct {
-using EventValue = std::variant<std::monostate, bool, std::int32_t, std::string,
-                                std::vector<std::uint8_t>>;
+using ByteArray = std::vector<std::uint8_t>;
+using IntArray = std::vector<std::int32_t>;
+using StringArray = std::vector<std::optional<std::string>>;
+using EventValue = std::variant<std::monostate, bool, std::int8_t, std::int32_t,
+                                std::string, ByteArray, IntArray, StringArray>;
 using EventFields = std::map<std::string, EventValue>;
 struct EventNotification { std::string topic; EventFields fields; };
 enum class EventDecodeStatus { mapped, unknown, malformed };

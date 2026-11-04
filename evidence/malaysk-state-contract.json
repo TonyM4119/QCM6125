@@ -1,0 +1,176 @@
+{
+  "sha256": "b3c0f55f7e5830d7213576ee3dad3c910422820b3dbf94c5527cad97120ae6fe",
+  "class": "com.android.server.microntek.CarService",
+  "methods": [
+    {
+      "method": "getBooleanState",
+      "descriptor": "(Ljava/lang/String;)Z",
+      "calls": [
+        "Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z",
+        "Landroid/os/Bundle;->getBoolean(Ljava/lang/String;)Z"
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "method": "getByteArrayState",
+      "descriptor": "(Ljava/lang/String;)[B",
+      "calls": [
+        "Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z",
+        "Landroid/os/Bundle;->getByteArray(Ljava/lang/String;)[B"
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "method": "getByteState",
+      "descriptor": "(Ljava/lang/String;)B",
+      "calls": [
+        "Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z",
+        "Landroid/os/Bundle;->getByte(Ljava/lang/String;)B"
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "method": "getIntArrayState",
+      "descriptor": "(Ljava/lang/String;)[I",
+      "calls": [
+        "Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z",
+        "Landroid/os/Bundle;->getIntArray(Ljava/lang/String;)[I"
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "method": "getIntState",
+      "descriptor": "(Ljava/lang/String;)I",
+      "calls": [
+        "Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z",
+        "Landroid/os/Bundle;->getInt(Ljava/lang/String;)I"
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "method": "getStringArrayState",
+      "descriptor": "(Ljava/lang/String;)[Ljava/lang/String;",
+      "calls": [
+        "Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z",
+        "Landroid/os/Bundle;->getStringArray(Ljava/lang/String;)[Ljava/lang/String;"
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "method": "getStringState",
+      "descriptor": "(Ljava/lang/String;)Ljava/lang/String;",
+      "calls": [
+        "Landroid/os/Bundle;->containsKey(Ljava/lang/String;)Z",
+        "Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;"
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "method": "putBooleanState",
+      "descriptor": "(Ljava/lang/String; Z)V",
+      "calls": [
+        "Landroid/os/Bundle;->putBoolean(Ljava/lang/String; Z)V"
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "method": "putByteArraryState",
+      "descriptor": "(Ljava/lang/String; [B)V",
+      "calls": [
+        "Landroid/os/Bundle;->putByteArray(Ljava/lang/String; [B)V"
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "method": "putByteState",
+      "descriptor": "(Ljava/lang/String; B)V",
+      "calls": [
+        "Landroid/os/Bundle;->putByte(Ljava/lang/String; B)V"
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "method": "putDataChanage",
+      "descriptor": "(Ljava/lang/String; Ljava/lang/String;)V",
+      "calls": [
+        "Landroid/os/Bundle;-><init>()V",
+        "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V",
+        "Lcom/android/server/microntek/CarService;->dispatchCallback(Ljava/lang/String; Landroid/os/Bundle;)V"
+      ],
+      "reviewed_constants": [
+        "CarData",
+        "type",
+        "value"
+      ]
+    },
+    {
+      "method": "putIntArraryState",
+      "descriptor": "(Ljava/lang/String; [I)V",
+      "calls": [
+        "Landroid/os/Bundle;->putIntArray(Ljava/lang/String; [I)V"
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "method": "putIntState",
+      "descriptor": "(Ljava/lang/String; I)V",
+      "calls": [
+        "Landroid/os/Bundle;->putInt(Ljava/lang/String; I)V"
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "method": "putStringArraryState",
+      "descriptor": "(Ljava/lang/String; [Ljava/lang/String;)V",
+      "calls": [
+        "Landroid/os/Bundle;->putStringArray(Ljava/lang/String; [Ljava/lang/String;)V"
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "method": "putStringState",
+      "descriptor": "(Ljava/lang/String; Ljava/lang/String;)V",
+      "calls": [
+        "Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;",
+        "Landroid/media/AudioManager;->setParameters(Ljava/lang/String;)V",
+        "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V",
+        "Ljava/lang/String;->equals(Ljava/lang/Object;)Z",
+        "Ljava/lang/StringBuilder;-><init>()V",
+        "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;",
+        "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+      ],
+      "reviewed_constants": [
+        "av_gps_package=",
+        "navi_package"
+      ]
+    },
+    {
+      "method": "setParameters",
+      "descriptor": "(Ljava/lang/String;)I",
+      "calls": [
+        "Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;",
+        "Landroid/media/AudioManager;->setParameters(Ljava/lang/String;)V",
+        "Lcom/android/server/microntek/CarService;->getStringState(Ljava/lang/String;)Ljava/lang/String;",
+        "Lcom/android/server/microntek/CarService;->native_setParameters(Ljava/lang/String;)I",
+        "Lcom/android/server/microntek/CarService;->putStringState(Ljava/lang/String; Ljava/lang/String;)V",
+        "Ljava/lang/String;->equals(Ljava/lang/Object;)Z",
+        "Ljava/lang/String;->indexOf(I I)I",
+        "Ljava/lang/String;->startsWith(Ljava/lang/String;)Z",
+        "Ljava/lang/String;->substring(I)Ljava/lang/String;"
+      ],
+      "reviewed_constants": [
+        "av_channel",
+        "av_channel_enter=",
+        "av_channel_exit=",
+        "av_gps_package=",
+        "navi_package",
+        "sys"
+      ]
+    }
+  ],
+  "limits": [
+    "Static reference inventory, not control-flow or runtime proof.",
+    "Only selected constants are retained; no full disassembly is published.",
+    "Hidden-API metadata is omitted in an in-memory analysis copy only."
+  ]
+}
