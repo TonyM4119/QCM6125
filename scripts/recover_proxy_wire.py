@@ -18,9 +18,52 @@ from androguard.core.dex import DEX
 from recover_binder_constants import analysis_copy
 
 
+def stub_cases(cls):
+    result = []
+    for method in cls.get_methods():
+        if method.get_name() != 'onTransact' or not method.get_code():
+            continue
+        instructions = dict(method.get_instructions_idx())
+        for offset, instruction in instructions.items():
+            if instruction.get_name() not in ('packed-switch', 'sparse-switch'):
+                continue
+            payload = instructions[offset + instruction.get_ref_off() * 2]
+            for code, target in zip(payload.get_keys(), payload.get_targets()):
+                if not 1 <= code <= 26:
+                    continue
+                start = offset + target * 2
+                reads, writes, calls, enforce = [], [], [], False
+                for at, ins in instructions.items():
+                    if at < start:
+                        continue
+                    name, output = ins.get_name(), ins.get_output()
+                    if name.startswith(('goto', 'return')):
+                        break
+                    if name.startswith('if-'):
+                        raise ValueError('Conditional Stub case needs manual control-flow review')
+                    parcel = re.search(r'Landroid/os/Parcel;->(\w+)', output)
+                    if parcel:
+                        operation = parcel[1]
+                        if operation.startswith(('read', 'create')):
+                            reads.append(operation)
+                        elif operation.startswith('write'):
+                            writes.append(operation)
+                        elif operation == 'enforceNoDataAvail':
+                            enforce = True
+                    call = re.search(re.escape(cls.get_name()) + r'->(\w+)\(', output)
+                    if call:
+                        calls.append(call[1])
+                if len(calls) != 1:
+                    raise ValueError('Unexpected Stub dispatch shape')
+                result.append({'stub_class': cls.get_name(), 'method': calls[0], 'code': code,
+                               'request_reads': reads, 'reply_writes': writes,
+                               'enforce_no_data_avail': enforce})
+    return result
+
+
 def recover(path):
     raw = path.read_bytes()
-    records, checks = [], []
+    records, checks, server = [], [], []
     selected = {'Landroid/microntek/ICarService$Stub$Proxy;',
                 'Landroid/microntek/ICarManageCallback$Stub$Proxy;'}
     with zipfile.ZipFile(path) as archive:
@@ -40,6 +83,9 @@ def recover(path):
             checks.append({'entry': info.filename, 'zip_crc_ok': zlib.crc32(data) == info.CRC})
             dex = DEX(analysis_copy(data))
             for cls in dex.get_classes():
+                if cls.get_name() in {'Landroid/microntek/ICarService$Stub;',
+                                      'Landroid/microntek/ICarManageCallback$Stub;'}:
+                    server.extend(stub_cases(cls))
                 if cls.get_name() not in selected:
                     continue
                 for method in cls.get_methods():
@@ -83,7 +129,8 @@ def recover(path):
                                         'signature': method.get_descriptor(), **transactions[0],
                                         'request_parcel_operations': writes, 'reply_parcel_operations': reads})
     return {'file': path.name, 'sha256': hashlib.sha256(raw).hexdigest(), 'dex_crc_checks': checks,
-            'methods': records, 'limits': ['Static proxy evidence only; Bundle layouts, server enforcement and runtime behaviour need separate review.']}
+            'methods': records, 'stub_cases': server,
+            'limits': ['Straight-line proxy/Stub evidence only; Bundle schemas, custom concrete-service overrides and runtime behaviour need separate review.']}
 
 
 if __name__ == '__main__':

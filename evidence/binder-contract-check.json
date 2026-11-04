@@ -1,0 +1,205 @@
+{
+  "check_kind": "AIDL Java generation and static generated-source comparison",
+  "compiler_label": "Debian aidl 14.0.0+r75-1; Java generator, minimum SDK 33",
+  "min_sdk_version": 33,
+  "reference_sha256": "1859e3ec11d28a08d2b44c8efb04e89dc1718f3674bb0b801cc2a08ed65f2207",
+  "input_sha256": {
+    "interfaces/android/microntek/ICarService.aidl": "c9c8ccc495e825dd4a7a2a5960ef6002786f33574b07bae236a5f2e2b292256d",
+    "interfaces/android/microntek/ICarManageCallback.aidl": "7cfbb6dc295a15ee5ad15134bd87a9d4f5acee1297adee6cf1f79571223c7a24"
+  },
+  "checked_methods": [
+    {
+      "interface": "android.microntek.ICarManageCallback",
+      "method": "onStatusChanged",
+      "code": 1,
+      "flags": 1,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "dispatchMessage",
+      "code": 20,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "getBooleanState",
+      "code": 8,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "getByteArrayState",
+      "code": 12,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "getByteState",
+      "code": 9,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "getEqIdx",
+      "code": 22,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "getIntArrayState",
+      "code": 13,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "getIntState",
+      "code": 10,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "getLud",
+      "code": 24,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "getParameters",
+      "code": 18,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "getStringArrayState",
+      "code": 14,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "getStringState",
+      "code": 11,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "getVideoEnable",
+      "code": 26,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "putBooleanState",
+      "code": 1,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "putByteArraryState",
+      "code": 5,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "putByteState",
+      "code": 2,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "putDataChanage",
+      "code": 19,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "putIntArraryState",
+      "code": 6,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "putIntState",
+      "code": 3,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "putStringArraryState",
+      "code": 7,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "putStringState",
+      "code": 4,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "registerCallback",
+      "code": 15,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "setEqIdx",
+      "code": 21,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "setLud",
+      "code": 23,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "setParameters",
+      "code": 17,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "setVideoOverSpeed",
+      "code": 25,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    },
+    {
+      "interface": "android.microntek.ICarService",
+      "method": "unregisterCallback",
+      "code": 16,
+      "flags": 0,
+      "signature_and_parcel_checks": "match"
+    }
+  ],
+  "limits": [
+    "Generated Java was not compiled to bytecode or executed.",
+    "Bundle schemas, concrete service overrides, Android 17 integration and hardware remain untested."
+  ]
+}

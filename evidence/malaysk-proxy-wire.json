@@ -416,7 +416,347 @@
       ]
     }
   ],
+  "stub_cases": [
+    {
+      "stub_class": "Landroid/microntek/ICarManageCallback$Stub;",
+      "method": "onStatusChanged",
+      "code": 1,
+      "request_reads": [
+        "readString",
+        "readTypedObject"
+      ],
+      "reply_writes": [],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "putBooleanState",
+      "code": 1,
+      "request_reads": [
+        "readString",
+        "readBoolean"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "putByteState",
+      "code": 2,
+      "request_reads": [
+        "readString",
+        "readByte"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "putIntState",
+      "code": 3,
+      "request_reads": [
+        "readString",
+        "readInt"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "putStringState",
+      "code": 4,
+      "request_reads": [
+        "readString",
+        "readString"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "putByteArraryState",
+      "code": 5,
+      "request_reads": [
+        "readString",
+        "createByteArray"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "putIntArraryState",
+      "code": 6,
+      "request_reads": [
+        "readString",
+        "createIntArray"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "putStringArraryState",
+      "code": 7,
+      "request_reads": [
+        "readString",
+        "createStringArray"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "getBooleanState",
+      "code": 8,
+      "request_reads": [
+        "readString"
+      ],
+      "reply_writes": [
+        "writeNoException",
+        "writeBoolean"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "getByteState",
+      "code": 9,
+      "request_reads": [
+        "readString"
+      ],
+      "reply_writes": [
+        "writeNoException",
+        "writeByte"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "getIntState",
+      "code": 10,
+      "request_reads": [
+        "readString"
+      ],
+      "reply_writes": [
+        "writeNoException",
+        "writeInt"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "getStringState",
+      "code": 11,
+      "request_reads": [
+        "readString"
+      ],
+      "reply_writes": [
+        "writeNoException",
+        "writeString"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "getByteArrayState",
+      "code": 12,
+      "request_reads": [
+        "readString"
+      ],
+      "reply_writes": [
+        "writeNoException",
+        "writeByteArray"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "getIntArrayState",
+      "code": 13,
+      "request_reads": [
+        "readString"
+      ],
+      "reply_writes": [
+        "writeNoException",
+        "writeIntArray"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "getStringArrayState",
+      "code": 14,
+      "request_reads": [
+        "readString"
+      ],
+      "reply_writes": [
+        "writeNoException",
+        "writeStringArray"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "registerCallback",
+      "code": 15,
+      "request_reads": [
+        "readStrongBinder"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "unregisterCallback",
+      "code": 16,
+      "request_reads": [
+        "readStrongBinder"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "setParameters",
+      "code": 17,
+      "request_reads": [
+        "readString"
+      ],
+      "reply_writes": [
+        "writeNoException",
+        "writeInt"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "getParameters",
+      "code": 18,
+      "request_reads": [
+        "readString"
+      ],
+      "reply_writes": [
+        "writeNoException",
+        "writeString"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "putDataChanage",
+      "code": 19,
+      "request_reads": [
+        "readString",
+        "readString"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "dispatchMessage",
+      "code": 20,
+      "request_reads": [
+        "readString",
+        "readTypedObject"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "setEqIdx",
+      "code": 21,
+      "request_reads": [
+        "readInt"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "getEqIdx",
+      "code": 22,
+      "request_reads": [],
+      "reply_writes": [
+        "writeNoException",
+        "writeInt"
+      ],
+      "enforce_no_data_avail": false
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "setLud",
+      "code": 23,
+      "request_reads": [
+        "readBoolean"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "getLud",
+      "code": 24,
+      "request_reads": [],
+      "reply_writes": [
+        "writeNoException",
+        "writeInt"
+      ],
+      "enforce_no_data_avail": false
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "setVideoOverSpeed",
+      "code": 25,
+      "request_reads": [
+        "readBoolean"
+      ],
+      "reply_writes": [
+        "writeNoException"
+      ],
+      "enforce_no_data_avail": true
+    },
+    {
+      "stub_class": "Landroid/microntek/ICarService$Stub;",
+      "method": "getVideoEnable",
+      "code": 26,
+      "request_reads": [],
+      "reply_writes": [
+        "writeNoException",
+        "writeBoolean"
+      ],
+      "enforce_no_data_avail": false
+    }
+  ],
   "limits": [
-    "Static proxy evidence only; Bundle layouts, server enforcement and runtime behaviour need separate review."
+    "Straight-line proxy/Stub evidence only; Bundle schemas, custom concrete-service overrides and runtime behaviour need separate review."
   ]
 }
