@@ -1,0 +1,189 @@
+{
+  "source_kernel_sha256": "57714b0fdbbb366e8b42059370a5474a7ef6efb6cd468a8b84089af5ddcc3f46",
+  "recovered_elf_sha256": "079db21f8ff14451f57d642ed86088885d915763646834aff59a472ce35cf7bd",
+  "recovered_base": 18446743524088479744,
+  "symbol_table_entries": 120218,
+  "address_anchors": [
+    {
+      "symbol": "linux_banner",
+      "virtual_address": 18446743524106829839,
+      "original_file_offset": 18350095,
+      "bytes_match": true
+    },
+    {
+      "symbol": "__kstrtab_mtc_dev_register",
+      "virtual_address": 18446743524116721165,
+      "original_file_offset": 28241421,
+      "bytes_match": true
+    }
+  ],
+  "device_name": "mtc-car",
+  "pointer_relocations": {
+    "misc_name": {
+      "target": 18446743524123130152,
+      "addend": 18446743524116059375,
+      "relocation_file_offset": 31984048
+    },
+    "misc_fops": {
+      "target": 18446743524123130160,
+      "addend": 18446743524123130232,
+      "relocation_file_offset": 31984072
+    },
+    "unlocked_ioctl": {
+      "target": 18446743524123130304,
+      "addend": 18446743524101695172,
+      "relocation_file_offset": 31984144
+    }
+  },
+  "serial_driver_names": [
+    "ttyV",
+    "ttyV"
+  ],
+  "selected_symbols": {
+    "car_ioctl": 18446743524101695172,
+    "mtc_ioctl": 18446743524101671332,
+    "mtc_send": 18446743524101708336,
+    "vs_send_func": 18446743524101707056,
+    "vs_send_raw_func": 18446743524101707384,
+    "mtc_wakeup": 18446743524101665088,
+    "mtc_pre_sleep": 18446743524101663864,
+    "mtc_camera_probe": 18446743524098563588
+  },
+  "ioctl_instruction_windows": [
+    [
+      {
+        "address": 18446743524101695564,
+        "instruction": "and x20, x21, #0xffff"
+      },
+      {
+        "address": 18446743524101695568,
+        "instruction": "sub w9, w20, #1"
+      },
+      {
+        "address": 18446743524101695572,
+        "instruction": "cmp w9, #0xbfe"
+      },
+      {
+        "address": 18446743524101695576,
+        "instruction": "strb wzr, [x8, #0x94]"
+      },
+      {
+        "address": 18446743524101695580,
+        "instruction": "b.hi #0xffffff8008d1a948"
+      }
+    ],
+    [
+      {
+        "address": 18446743524101695784,
+        "instruction": "add x1, x1, #0x494"
+      },
+      {
+        "address": 18446743524101695788,
+        "instruction": "strb wzr, [x2], #1"
+      },
+      {
+        "address": 18446743524101695792,
+        "instruction": "tbnz w21, #0x10, #0xffffff8008d1a95c"
+      },
+      {
+        "address": 18446743524101695796,
+        "instruction": "mov w0, #1"
+      },
+      {
+        "address": 18446743524101695800,
+        "instruction": "mov x3, xzr"
+      }
+    ],
+    [
+      {
+        "address": 18446743524101695864,
+        "instruction": "bl #0xffffff800900b840"
+      },
+      {
+        "address": 18446743524101695868,
+        "instruction": "add x21, x0, #1"
+      },
+      {
+        "address": 18446743524101695872,
+        "instruction": "cmp x21, #0xf01"
+      },
+      {
+        "address": 18446743524101695876,
+        "instruction": "b.hs #0xffffff8008d1aa7c"
+      },
+      {
+        "address": 18446743524101695880,
+        "instruction": "adrp x0, #0xffffff800ab2f000"
+      }
+    ]
+  ],
+  "selected_calls": [
+    {
+      "address": 18446743524101695324,
+      "callee": "__arch_copy_from_user"
+    },
+    {
+      "address": 18446743524101695472,
+      "callee": "__arch_copy_from_user"
+    },
+    {
+      "address": 18446743524101695704,
+      "callee": "__arch_copy_from_user"
+    },
+    {
+      "address": 18446743524101695768,
+      "callee": "strrchr"
+    },
+    {
+      "address": 18446743524101695804,
+      "callee": "mtc_ioctl"
+    },
+    {
+      "address": 18446743524101695852,
+      "callee": "mtc_ioctl"
+    },
+    {
+      "address": 18446743524101695984,
+      "callee": "__arch_copy_to_user"
+    }
+  ],
+  "virtual_event_header_instructions": [
+    {
+      "address": 18446743524101707164,
+      "instruction": "mov w8, #0xfa"
+    },
+    {
+      "address": 18446743524101707168,
+      "instruction": "mov x20, x0"
+    },
+    {
+      "address": 18446743524101707172,
+      "instruction": "strb w24, [x0, #1]"
+    },
+    {
+      "address": 18446743524101707176,
+      "instruction": "strb w23, [x0, #2]"
+    },
+    {
+      "address": 18446743524101707180,
+      "instruction": "strb w8, [x0]"
+    },
+    {
+      "address": 18446743524101707184,
+      "instruction": "lsr w8, w22, #8"
+    },
+    {
+      "address": 18446743524101707188,
+      "instruction": "strb w22, [x0, #3]"
+    },
+    {
+      "address": 18446743524101707192,
+      "instruction": "strb w8, [x0, #4]"
+    }
+  ],
+  "limits": [
+    "Exact reviewed kernel/layout only; alternative structures or instruction layouts are rejected.",
+    "Recovered ELF is an analysis artifact, not original source or a replacement boot image.",
+    "No current January 2025 kernel or runtime device operation was tested."
+  ]
+}

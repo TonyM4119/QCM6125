@@ -48,8 +48,8 @@ int LinuxDeviceCalls::control(int fd, unsigned long request, void* argument) {
 int LinuxDeviceCalls::close_device(int fd) { return ::close(fd); }
 
 int MtcTransport::set_parameters(std::string_view command) {
-  // Length bit 16 is reserved by the observed query operation.
-  validate(command, 0xffff);
+  // The inspected working kernel accepts text request lengths 1..3071.
+  validate(command, maximum_command_bytes);
   std::lock_guard<std::mutex> lock(mutex_);
   DeviceHandle device(calls_);
   std::string bytes(command);
@@ -61,7 +61,7 @@ int MtcTransport::set_parameters(std::string_view command) {
 }
 
 std::string MtcTransport::get_parameters(std::string_view query) {
-  validate(query, query_capacity - 1);
+  validate(query, maximum_command_bytes);
   std::lock_guard<std::mutex> lock(mutex_);
   DeviceHandle device(calls_);
   std::array<char, query_capacity> buffer{};

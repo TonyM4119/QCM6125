@@ -1,0 +1,2 @@
+# Optional symbol recovery; no kernel binary or recovered ELF is redistributed.
+vmlinux-to-elf==1.4.0

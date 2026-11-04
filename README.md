@@ -19,6 +19,7 @@ The key result: car functionality depends on HCT modifications inside the Java f
 - [Bounded receive decoder and initial event mappings](docs/event-decoder.md)
 - [Integrated host core and radio callback extension](docs/offline-service-core.md)
 - [RDS byte arrays and background station results](docs/radio-payloads.md)
+- [Working-kernel driver bindings, limits and virtual event framing](docs/working-kernel.md)
 - [AIDL declarations and generated Binder contract checks](interfaces/README.md)
 - [Android source target, compatibility and build-resource gates](docs/android-target-gates.md)
 - [Experimental C++ transport and fake-device host tests](native/README.md)

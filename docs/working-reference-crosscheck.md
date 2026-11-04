@@ -34,4 +34,6 @@ Both files were reprocessed. The expected open, strlen, ioctl and close calls we
 
 The C++ transport already uses the matching byte-length/query-flag convention. No transport-code changes were required by this cross-check. Its prior fake-device and sanitizer checks remain host evidence only. Its defensive length, buffer and error handling intentionally differ from the firmware implementation, as documented in native/README.md.
 
+Later [kernel inspection](working-kernel.md) established the actual driver-side input and response-copy bounds and tightened the prototype accordingly. The paragraph above records the earlier JNI-only comparison, not the current complete limit evidence.
+
 The current January 2025 build is still a separate, unavailable binary reference. Its kernel driver ABI has not been inspected or exercised. The next work is to verify Binder parcel/callback behaviour and map the service's state/event and audio arbitration paths using the known-working package, then implement those behaviours against a selected Android source target. A transport match alone does not make a working ROM, establish Android 14+ compatibility, or remove the need for eventual separately authorized hardware validation.

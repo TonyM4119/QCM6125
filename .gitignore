@@ -21,3 +21,6 @@ __pycache__/
 .env.*
 *.o
 *.a
+*.elf
+*.dtb
+*.dtbo

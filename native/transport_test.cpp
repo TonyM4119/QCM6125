@@ -94,8 +94,19 @@ int main() {
   const int before = calls.opens;
   expect_error<std::invalid_argument>([&] { transport.get_parameters(""); });
   expect_error<std::invalid_argument>([&] { transport.get_parameters(std::string(3072, 'x')); });
+  expect_error<std::invalid_argument>([&] { transport.set_parameters(""); });
+  expect_error<std::invalid_argument>([&] { transport.set_parameters(std::string(3072, 'x')); });
   expect_error<std::invalid_argument>([&] { transport.set_parameters(std::string(65536, 'x')); });
   expect_error<std::invalid_argument>([&] { transport.set_parameters(std::string("a\0b", 3)); });
   check(calls.opens == before, "invalid input reached driver");
+  calls.unterminated = false;
+  calls.expected_input = std::string(hct::MtcTransport::maximum_command_bytes, 'x');
+  calls.expected_input.replace(0, 2, "k=");
+  calls.expected_request = calls.expected_input.size();
+  check(transport.set_parameters(calls.expected_input) == 7, "maximum setter length rejected");
+  calls.expected_request = hct::MtcTransport::query_flag | calls.expected_input.size();
+  calls.response = std::string(hct::MtcTransport::query_capacity - 1, 'r');
+  check(transport.get_parameters(calls.expected_input).size() == 3839,
+        "kernel-sized response capacity or maximum query length mismatch");
   std::cout << "All fake-device transport checks passed; no hardware accessed.\n";
 }

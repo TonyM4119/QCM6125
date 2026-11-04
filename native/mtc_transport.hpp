@@ -29,7 +29,11 @@ class LinuxDeviceCalls final : public DeviceCalls {
 class MtcTransport {
  public:
   static constexpr unsigned long query_flag = 0x10000;
-  static constexpr std::size_t query_capacity = 0xc00;
+  static constexpr std::size_t command_capacity = 0xc00;
+  static constexpr std::size_t maximum_command_bytes = command_capacity - 1;
+  // The inspected kernel can copy up to 0xf00 bytes including the terminator,
+  // independently of the smaller command buffer used by the legacy JNI code.
+  static constexpr std::size_t query_capacity = 0xf00;
 
   explicit MtcTransport(DeviceCalls& calls) : calls_(calls) {}
   int set_parameters(std::string_view command);
