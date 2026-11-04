@@ -1,5 +1,7 @@
 #include "event_mapping.hpp"
 
+#include <algorithm>
+
 namespace hct {
 namespace {
 EventMapping notification(const std::string& topic, const std::string& type) {
@@ -74,6 +76,35 @@ EventMapping map_event(const EventFrame& frame) {
         if (payload.size() < 3) return malformed();
         auto result = notification("Radio", "freq");
         result.notifications[0].fields["value"] = radio_frequency(payload);
+        return result;
+      }
+      case 0x23: case 0x26: {
+        auto result = notification("Radio", frame.subcommand == 0x23 ? "rt" : "psn");
+        // The reference keeps bytes up to the first NUL; it does not transcode
+        // this helper's byte-array result to a Java String.
+        const auto end = std::find(payload.begin(), payload.end(), 0);
+        result.notifications[0].fields["value"] = std::vector<std::uint8_t>(payload.begin(), end);
+        return result;
+      }
+      case 0x41: {
+        if (payload.size() < 4 || payload.size() == 5) return malformed();
+        auto result = notification("Radio", "bg_seek_found");
+        auto& fields = result.notifications[0].fields;
+        fields["freq"] = radio_frequency(payload);
+        fields["db"] = static_cast<std::int32_t>(payload[3]);
+        fields["pi"] = payload.size() > 4 ? little16(payload, 4) : std::int32_t(0);
+        fields["psn"] = std::monostate{};
+        if (payload.size() > 6) {
+          std::size_t count = 0;
+          while (count < 8 && 6 + count < payload.size() && payload[6 + count] != 0) ++count;
+          // A short field is accepted only when it has an explicit NUL, as in
+          // the reviewed helper; otherwise it would read beyond this frame.
+          if (count < 8 && 6 + count == payload.size()) return malformed();
+          fields["psn"] = std::vector<std::uint8_t>(payload.begin() + 6, payload.begin() + 6 + count);
+        }
+        fields["pty"] = std::int32_t(0);
+        fields["tp"] = std::int32_t(0);
+        fields["ta"] = std::int32_t(0);
         return result;
       }
       default: return {};

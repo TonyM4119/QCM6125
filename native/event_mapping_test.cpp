@@ -59,11 +59,33 @@ int main() {
         !seek.notifications[0].fields.count("value"), "seek callback schema mismatch");
   check(field<std::int32_t>(hct::map_event({0x11, 0x28, {0xab, 0xcd}}).notifications[0].fields, "value") == 0xcdab,
         "radio programme identifier endian mismatch");
+  const auto text = hct::map_event({0x11, 0x26, {0x41, 0xe9, 0, 0x42}});
+  check(field<std::vector<std::uint8_t>>(text.notifications[0].fields, "value") ==
+        std::vector<std::uint8_t>({0x41, 0xe9}), "RDS bytes were transcoded or NUL suffix retained");
+  const auto no_text = hct::map_event({0x11, 0x23, {}});
+  check(field<std::vector<std::uint8_t>>(no_text.notifications[0].fields, "value").empty(),
+        "empty radio text should remain an empty byte array");
+  const auto background = hct::map_event({0x11, 0x41, {0x7c, 0xa5, 0x01, 73}});
+  const auto& found = background.notifications[0].fields;
+  check(field<std::int32_t>(found, "freq") == 107900000 && field<std::int32_t>(found, "db") == 73,
+        "background search units or strength changed");
+  check(field<std::int32_t>(found, "pi") == 0 && std::holds_alternative<std::monostate>(found.at("psn")),
+        "absent PI/PSN defaults changed");
+  check(!found.count("value") && field<std::int32_t>(found, "pty") == 0, "background callback schema changed");
+  const auto terminated_name = hct::map_event({0x11, 0x41, {0x7c, 0xa5, 1, 73, 0xab, 0xcd, 0}});
+  check(field<std::int32_t>(terminated_name.notifications[0].fields, "pi") == 0xcdab &&
+        field<std::vector<std::uint8_t>>(terminated_name.notifications[0].fields, "psn").empty(),
+        "explicit empty station name confused with absent station name");
+  const auto full_name = hct::map_event({0x11, 0x41, {1, 2, 0, 50, 1, 0, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'}});
+  check(field<std::vector<std::uint8_t>>(full_name.notifications[0].fields, "psn").size() == 8,
+        "full eight-byte station name rejected");
 
   for (const auto& frame : std::vector<hct::EventFrame>{{0x16, 0x43, {}}, {0x16, 0x4b, {}},
                                                       {0x1f, 0, {1, 2, 3}}, {0x1f, 2, {1}},
                                                       {0x11, 0x25, {0x7c, 0xa5}}, {0x11, 0x28, {1}},
-                                                      {0x11, 0x21, {}}}) {
+                                                      {0x11, 0x21, {}}, {0x11, 0x41, {1, 2, 3}},
+                                                      {0x11, 0x41, {1, 2, 3, 4, 5}},
+                                                      {0x11, 0x41, {1, 2, 3, 4, 5, 6, 'A'}}}) {
     const auto bad = hct::map_event(frame);
     check(bad.status == hct::EventDecodeStatus::malformed && bad.notifications.empty() &&
           bad.state_updates.empty(), "truncated event produced state or callback");

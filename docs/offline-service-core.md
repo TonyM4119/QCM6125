@@ -33,6 +33,8 @@ Working Malaysk cmdProc category 0x11 provides these additional mappings. All em
 
 These 15 pairs extend the original 18 to 33 implemented pairs. RDS conversion, background-search result structures and other unimplemented commands remain unknown. Existing switch-target evidence includes these subcommands.
 
+Follow-up: [RDS bytes and background-search results](radio-payloads.md) add three verified receive mappings, bringing the current total to 36. The statement above describes the earlier implementation milestone; unimplemented formats still remain unknown.
+
 Frequency scaling preserves Java int wraparound using unsigned multiplication and explicit signed conversion, avoiding C++ signed-overflow undefined behaviour. Tests encode 107900 as 7C A5 01 and expect 107900000, plus a boundary wraparound case. No frequency command is sent to hardware; these are received callback descriptions.
 
 ## Validation
