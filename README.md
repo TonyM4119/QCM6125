@@ -17,8 +17,11 @@ The key result: car functionality depends on HCT modifications inside the Java f
 - [Native ABI cross-check against the working Malaysk reference](docs/working-reference-crosscheck.md)
 - [Service messages, callbacks, event stream and audio policy](docs/service-layer.md)
 - [Bounded receive decoder and initial event mappings](docs/event-decoder.md)
+- [Android source target, compatibility and build-resource gates](docs/android-target-gates.md)
 - [Experimental C++ transport and fake-device host tests](native/README.md)
 
 This repository contains original inspection scripts and derived findings. Firmware archives, proprietary APKs/libraries, decompiled implementations, device identifiers, keys, and raw property dumps are excluded. Public certificate fingerprints in the evidence identify signing relationships; they are not private signing keys.
 
 All work so far was static analysis and local development. An experimental native transport component passes fake-device host tests; it is not an Android-integrated service. No device connection, unlocking, wiping or flashing was performed. No new Android build was produced, and no Android 14+ hardware compatibility has been established.
+
+Run all portable host checks with `make test`. This builds and executes only fake-device or synthetic-input tests and does not access the head unit.

@@ -1,0 +1,19 @@
+{
+  "source_url": "https://github.com/aosp-mirror-neo/platform_hardware_interfaces/blob/0162af698935100a590b7359581ac8b1b80693e5/compatibility_matrices/Android.bp",
+  "source_file_sha256": "f70b9dfae474513e87cb0060f216598438b5f23be2951ee3db03390f45752f4b",
+  "candidate_release_tag": "android-17.0.0_r1",
+  "default_framework_matrix_modules": [
+    "framework_compatibility_matrix.7.xml",
+    "framework_compatibility_matrix.8.xml",
+    "framework_compatibility_matrix.202404.xml",
+    "framework_compatibility_matrix.202504.xml",
+    "framework_compatibility_matrix.202604.xml",
+    "framework_compatibility_matrix.device.xml"
+  ],
+  "observed_archive_vendor_target_level": 5,
+  "current_installed_vendor_target_level": "unknown: no live vendor manifest available",
+  "limits": [
+    "This establishes source matrix selection only, not complete framework/kernel/HAL compatibility.",
+    "Some selected source mirror projects lack the release tag; full checkout has not been resolved."
+  ]
+}
