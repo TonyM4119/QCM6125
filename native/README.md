@@ -37,3 +37,7 @@ c++ -std=c++17 -Wall -Wextra -Werror -pedantic \
 ```
 
 These host scenarios exercise audio arbitration rules only. They do not test a real audio HAL, driver, Android service or head unit. The policy requires external service synchronization and is not connected to the Linux transport yet.
+
+## Offline event pipeline
+
+`event_stream.*` decodes supplied byte chunks and `event_mapping.*` returns a limited set of typed state and notification descriptions. No serial, camera, power or Binder operation occurs. [Event decoder notes](../docs/event-decoder.md) document supported cases, intentional buffer-policy differences, synthetic tests and build commands.
