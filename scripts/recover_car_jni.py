@@ -9,6 +9,7 @@ from pathlib import Path
 import struct
 
 from capstone import Cs, CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN
+from capstone.arm64 import ARM64_OP_IMM, ARM64_OP_MEM
 from elftools.elf.elffile import ELFFile
 
 
@@ -37,10 +38,31 @@ def recover(path):
         relocations = elf.get_section_by_name('.rela.plt')
         calls = {}
         if plt is not None and relocations is not None:
-            # AArch64 conventional PLT: 32-byte header, 16-byte entries.
             syms = elf.get_section(relocations['sh_link'])
-            calls = {plt['sh_addr'] + 32 + i * 16: syms.get_symbol(r['r_info_sym']).name
-                     for i, r in enumerate(relocations.iter_relocations())}
+            calls = {r['r_offset']: syms.get_symbol(r['r_info_sym']).name
+                     for r in relocations.iter_relocations()}
+
+        def call_name(target):
+            # Resolve the GOT load in the actual stub instead of assuming a PLT
+            # stride. The references use both 16-byte and 24-byte PLT entries.
+            if plt is None or not plt['sh_addr'] <= target < plt['sh_addr'] + plt['sh_size']:
+                return None
+            decoder = Cs(CS_ARCH_ARM64, CS_MODE_LITTLE_ENDIAN)
+            decoder.detail = True
+            registers = {}
+            for instruction in decoder.disasm(at(target, 32), target):
+                operands = instruction.operands
+                if instruction.mnemonic == 'adrp' and len(operands) == 2 and operands[1].type == ARM64_OP_IMM:
+                    registers[operands[0].reg] = operands[1].imm
+                elif instruction.mnemonic == 'ldr' and len(operands) == 2 and operands[1].type == ARM64_OP_MEM:
+                    memory = operands[1].mem
+                    if memory.base in registers and not memory.index:
+                        name = calls.get(registers[memory.base] + memory.disp)
+                        if name:
+                            return name
+                elif instruction.mnemonic in ('br', 'ret'):
+                    break
+            return None
         targets = {
             'native_setParameters': '(Ljava/lang/String;)I',
             'native_getParameters': '(Ljava/lang/String;)Ljava/lang/String;',
@@ -80,7 +102,7 @@ def recover(path):
                 for i, ins in enumerate(instructions):
                     if ins.mnemonic != 'bl':
                         continue
-                    name_at_call = calls.get(int(ins.op_str.lstrip('#'), 16))
+                    name_at_call = call_name(int(ins.op_str.lstrip('#'), 16))
                     if name_at_call not in ('ioctl', '__open_2', 'strlen', '__memcpy_chk', 'close'):
                         continue
                     sites.append({'callee': name_at_call, 'call_address': ins.address,
@@ -91,10 +113,14 @@ def recover(path):
                                 'function_address': function, 'selected_call_sites': sites})
         if {entry['method'] for entry in entries} != set(targets):
             raise ValueError('Could not recover both expected JNI entries; unsupported ELF layout')
+        for entry in entries:
+            resolved = {site['callee'] for site in entry['selected_call_sites']}
+            if not {'ioctl', 'strlen', 'close'}.issubset(resolved):
+                raise ValueError(f'Incomplete transport call resolution for {entry["method"]}; review ELF manually')
         return {'file': path.name, 'sha256': hashlib.file_digest(path.open('rb'), 'sha256').hexdigest(),
                 'registration_symbols': registrations, 'entries': entries,
                 'notes': ['Static evidence only; no firmware code executed.',
-                          'PLT annotations assume conventional AArch64 ELF PLT layout.',
+                          'PLT annotations resolve GOT loads against relocation records, without assuming stub stride.',
                           'Unrelocated or packed JNI pointer tables may require other tooling.']}
 
 

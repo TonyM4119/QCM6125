@@ -1,6 +1,6 @@
 # Experimental MTC transport
 
-**Compatibility correction:** the owner confirmed that the November 2022 XTRONS archive did not work on this exact unit. It is not an approved porting base. Analysis derived from it remains evidence about that package only; the experimental native transport has not yet been validated against a known-working driver/native implementation. The failure symptoms and cause are unknown.
+**Compatibility correction:** the owner confirmed that the November 2022 XTRONS archive did not work on this exact unit. It is not an approved porting base. Analysis derived from it remains evidence about that package only; a follow-up static cross-check confirms the recovered parameter ABI in the known-working Malaysk native bridge. The replacement transport remains untested on any real driver, and the January 2025 native implementation has not been inspected. The failure symptoms and cause are unknown.
 
 This is an original, minimal C++17 implementation of the native parameter transport observed in the November 2022 factory ARM64 library. It is not a ROM, Android service, JNI replacement, or complete CarService implementation. It has only been tested on the host using an injected fake device.
 

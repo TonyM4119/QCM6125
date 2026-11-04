@@ -1,6 +1,6 @@
 # Inspected firmware
 
-**Compatibility correction:** the owner confirmed that the November 2022 XTRONS archive did not work on this exact unit. It is not an approved porting base. Analysis derived from it remains evidence about that package only; the experimental native transport has not yet been validated against a known-working driver/native implementation. The failure symptoms and cause are unknown.
+**Compatibility correction:** the owner confirmed that the November 2022 XTRONS archive did not work on this exact unit. It is not an approved porting base. Analysis derived from it remains evidence about that package only; a follow-up static cross-check confirms the recovered parameter ABI in the known-working Malaysk native bridge. The replacement transport remains untested on any real driver, and the January 2025 native implementation has not been inspected. The failure symptoms and cause are unknown.
 
 | Item | Factory candidate | Malaysk Lite reference |
 | --- | --- | --- |

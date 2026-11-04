@@ -1,6 +1,8 @@
 # Factory native transport reconstruction
 
-**Compatibility correction:** the owner confirmed that the November 2022 XTRONS archive did not work on this exact unit. It is not an approved porting base. Analysis derived from it remains evidence about that package only; the experimental native transport has not yet been validated against a known-working driver/native implementation. The failure symptoms and cause are unknown.
+**Follow-up:** the same basic parameter transport was statically confirmed in the owner-tested Malaysk package. See [the working-reference cross-check](working-reference-crosscheck.md). The current January 2025 driver and replacement transport remain untested on hardware.
+
+**Compatibility correction:** the owner confirmed that the November 2022 XTRONS archive did not work on this exact unit. It is not an approved porting base. Analysis derived from it remains evidence about that package only; a follow-up static cross-check confirms the recovered parameter ABI in the known-working Malaysk native bridge. The replacement transport remains untested on any real driver, and the January 2025 native implementation has not been inspected. The failure symptoms and cause are unknown.
 
 Recovered offline from ARM64 factory `libandroid_servers.so`, SHA-256 `815a2fab3a26d6dbbf79d10240add486a78b285f9f8c37250870dc965b1a077e`. Addresses below are ELF virtual addresses for this exact binary, not offsets or addresses valid on every firmware release.
 
@@ -75,4 +77,4 @@ python3 scripts/recover_car_jni.py \
   work/factory/car-jni.json
 ```
 
-The tool reads ELF tables and disassembles selected instruction windows. It never dlopens or executes the input. `evidence/factory-car-jni.json` records the reviewed address/call-site evidence. It assumes a conventional AArch64 PLT and a JNI table with directly readable pointer addends, as present in this package; other builds may need different relocation handling.
+The tool reads ELF tables and disassembles selected instruction windows. It never dlopens or executes the input. `evidence/factory-car-jni.json` records the reviewed address/call-site evidence. It resolves call stubs through GOT relocation records and reads JNI tables with directly readable pointer addends. Both 16-byte and 24-byte PLT entries were checked; other relocation/table layouts may require additional tooling.

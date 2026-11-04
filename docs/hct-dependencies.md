@@ -1,6 +1,6 @@
 # HCT dependency findings
 
-**Compatibility correction:** the owner confirmed that the November 2022 XTRONS archive did not work on this exact unit. It is not an approved porting base. Analysis derived from it remains evidence about that package only; the experimental native transport has not yet been validated against a known-working driver/native implementation. The failure symptoms and cause are unknown.
+**Compatibility correction:** the owner confirmed that the November 2022 XTRONS archive did not work on this exact unit. It is not an approved porting base. Analysis derived from it remains evidence about that package only; a follow-up static cross-check confirms the recovered parameter ABI in the known-working Malaysk native bridge. The replacement transport remains untested on any real driver, and the January 2025 native implementation has not been inspected. The failure symptoms and cause are unknown.
 
 Inspected November 4, 2026. Evidence comes from the supplied November 2022 factory candidate and March 2024 Malaysk reference. Observations establish what these packages contain, not runtime behaviour on an untested build.
 
@@ -22,7 +22,7 @@ DEX definitions show 33 classes under `android.microntek` in factory `framework.
 
 Disassembly of CarManager's constructor shows a lookup through `ServiceManager.getService("carservice")`, followed by `ICarService.Stub.asInterface`. Its getParameters/setParameters methods call the Binder interface. These are actual instruction observations, rather than conclusions from strings alone.
 
-CarService declares native_getParameters and native_setParameters. The ELF symbol table of factory `libandroid_servers.so` exports JNI registration functions for both CarService and MfiService; its strings include `/dev/mtc-car`. Combined with `init.hct.rc` and the Java native declarations, this establishes the factory native bridge. The exact driver ioctl protocol has not yet been reconstructed.
+CarService declares native_getParameters and native_setParameters. The ELF symbol table of factory `libandroid_servers.so` exports JNI registration functions for both CarService and MfiService; its strings include `/dev/mtc-car`. Combined with `init.hct.rc` and the Java native declarations, this establishes the factory native bridge. Follow-up work recovered the narrow parameter ioctl ABI and confirmed it in the owner-tested Malaysk native library; see [the cross-check](working-reference-crosscheck.md). Driver internals, command semantics and event transport are still unresolved.
 
 ## Application dependencies
 

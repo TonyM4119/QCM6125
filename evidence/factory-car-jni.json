@@ -248,7 +248,7 @@
   ],
   "notes": [
     "Static evidence only; no firmware code executed.",
-    "PLT annotations assume conventional AArch64 ELF PLT layout.",
+    "PLT annotations resolve GOT loads against relocation records, without assuming stub stride.",
     "Unrelocated or packed JNI pointer tables may require other tooling."
   ]
 }
