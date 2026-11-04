@@ -1,0 +1,3168 @@
+{
+  "label": "owner_tested_malaysk_reference",
+  "boot_sha256": "0dc3e8312a96843ae7a20a397f36a18d23d3b085a69745696d0b227a476bfa70",
+  "dtbo_sha256": "b3a8a97c6ffd6bf286189f015a49dd818674affdbe67086a3e316778aed5d402",
+  "boot_layout": {
+    "page_size": 4096,
+    "header_version": 2,
+    "dtb_offset": 36691968,
+    "dtb_size": 317468
+  },
+  "base_trees": [
+    {
+      "index": 0,
+      "offset": 0,
+      "profile": {
+        "blob_sha256": "6a2c282767cd71f9c7140ab528281de35efdd37a3a5d4ceeeda316761dab3e96",
+        "fdt_total_size": 317295,
+        "node_count": 2149,
+        "root": {
+          "model": [
+            "Qualcomm Technologies, Inc. TRINKET IOT IDP SoC"
+          ],
+          "compatible": [
+            "qcom,trinket-iot"
+          ],
+          "qcom,msm-id": [
+            467,
+            0
+          ],
+          "qcom,board-id": [
+            0,
+            0
+          ],
+          "qcom,msm-name": [
+            "trinket"
+          ],
+          "qcom,pmic-name": [
+            "pm6125"
+          ]
+        },
+        "selected_nodes": []
+      }
+    },
+    {
+      "index": 1,
+      "offset": 317295,
+      "profile": {
+        "blob_sha256": "712652106972448abe44d565901f8a6ccf2da39133bd4b465c017368aa07b840",
+        "fdt_total_size": 173,
+        "node_count": 1,
+        "root": {},
+        "selected_nodes": []
+      }
+    }
+  ],
+  "overlays": [
+    {
+      "table": {
+        "index": 0,
+        "size": 143543,
+        "offset": 64,
+        "id": 0,
+        "revision": 0,
+        "custom": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "profile": {
+        "blob_sha256": "7c334c2f9475a8ad1e4e76ca4cd860382674fadfe9aa085b8ab51b7c561b5051",
+        "fdt_total_size": 143543,
+        "node_count": 275,
+        "root": {
+          "model": [
+            "Qualcomm Technologies, Inc. TRINKET IOT IDP Overlay"
+          ],
+          "compatible": [
+            "qcom,trinket-iot"
+          ],
+          "qcom,msm-id": [
+            467,
+            65536
+          ],
+          "qcom,board-id": [
+            34,
+            0
+          ]
+        },
+        "selected_nodes": [
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video",
+            "properties": {
+              "qcom,mdss-dsi-panel-name": [
+                "HCT lvds video mode dsi panel"
+              ]
+            },
+            "property_names": [
+              "phandle",
+              "pwms",
+              "qcom,bl-pmic-pwm-period-usecs",
+              "qcom,esd-check-enabled",
+              "qcom,mdss-dsi-bl-default-level",
+              "qcom,mdss-dsi-bl-max-level",
+              "qcom,mdss-dsi-bl-min-level",
+              "qcom,mdss-dsi-bl-pmic-control-type",
+              "qcom,mdss-dsi-bllp-eof-power-mode",
+              "qcom,mdss-dsi-bllp-power-mode",
+              "qcom,mdss-dsi-border-color",
+              "qcom,mdss-dsi-bpp",
+              "qcom,mdss-dsi-color-order",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-force-clock-lane-hs",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-pulse",
+              "qcom,mdss-dsi-lane-0-state",
+              "qcom,mdss-dsi-lane-1-state",
+              "qcom,mdss-dsi-lane-2-state",
+              "qcom,mdss-dsi-lane-3-state",
+              "qcom,mdss-dsi-lane-map",
+              "qcom,mdss-dsi-lp11-init",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-name",
+              "qcom,mdss-dsi-panel-status-check-mode",
+              "qcom,mdss-dsi-panel-status-command",
+              "qcom,mdss-dsi-panel-status-command-state",
+              "qcom,mdss-dsi-panel-type",
+              "qcom,mdss-dsi-reset-sequence",
+              "qcom,mdss-dsi-stream",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-tx-eot-append",
+              "qcom,mdss-dsi-underflow-color",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-virtual-channel-id",
+              "qcom,mdss-pan-physical-height-dimension",
+              "qcom,mdss-pan-physical-width-dimension",
+              "qcom,panel-supply-entries",
+              "qcom,platform-reset-gpio",
+              "qcom,platform-te-gpio"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings",
+            "properties": {},
+            "property_names": []
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@0",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                800
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                480
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@1",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                800
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                480
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@2",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1024
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                600
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@3",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1024
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                600
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@4",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1024
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                768
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@5",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                800
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@6",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1366
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                768
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@7",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                480
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@8",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                800
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                600
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@9",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1024
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                768
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@10",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                480
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@11",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                480
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@12",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@13",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                58
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@14",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                800
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                480
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@15",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                800
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                480
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@16",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@17",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1920
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1080
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@18",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@19",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1920
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@20",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1440
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                540
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@21",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                480
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@22",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1920
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1080
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@23",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@24",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1024
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                600
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@25",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@26",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1024
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                600
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@27",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@28",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@29",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1200
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1920
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@30",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@31",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                480
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@32",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                480
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@33",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1024
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                600
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@34",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@35",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@36",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@37",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1200
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1600
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@38",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1200
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1920
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@39",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@40",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                600
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1600
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@41",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1920
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@42",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1200
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1920
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@43",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1920
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@44",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@45",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1200
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                2000
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@46",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1200
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                2000
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@47",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                800
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@48",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@49",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@50",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@51",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1200
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                2000
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@52",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1024
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                600
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@53",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1024
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                768
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,lvds-format",
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@54",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@55",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@56",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@57",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                1024
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                600
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@58",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@59",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@60",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@2/__overlay__/qcom,mdss_dsi_td4330_truly_video/qcom,mdss-dsi-display-timings/timing@61",
+            "properties": {
+              "qcom,mdss-dsi-panel-width": [
+                720
+              ],
+              "qcom,mdss-dsi-panel-height": [
+                1280
+              ],
+              "qcom,mdss-dsi-panel-framerate": [
+                60
+              ]
+            },
+            "property_names": [
+              "mtc,panel_hv_mode",
+              "mtc,panel_index",
+              "qcom,default-topology-index",
+              "qcom,display-topology",
+              "qcom,mdss-dsi-dma-trigger",
+              "qcom,mdss-dsi-h-back-porch",
+              "qcom,mdss-dsi-h-front-porch",
+              "qcom,mdss-dsi-h-left-border",
+              "qcom,mdss-dsi-h-pulse-width",
+              "qcom,mdss-dsi-h-right-border",
+              "qcom,mdss-dsi-h-sync-skew",
+              "qcom,mdss-dsi-mdp-trigger",
+              "qcom,mdss-dsi-off-command",
+              "qcom,mdss-dsi-on-command",
+              "qcom,mdss-dsi-panel-framerate",
+              "qcom,mdss-dsi-panel-height",
+              "qcom,mdss-dsi-panel-width",
+              "qcom,mdss-dsi-t-clk-post",
+              "qcom,mdss-dsi-t-clk-pre",
+              "qcom,mdss-dsi-traffic-mode",
+              "qcom,mdss-dsi-v-back-porch",
+              "qcom,mdss-dsi-v-bottom-border",
+              "qcom,mdss-dsi-v-front-porch",
+              "qcom,mdss-dsi-v-pulse-width",
+              "qcom,mdss-dsi-v-top-border",
+              "qcom,mdss-dsi-video-mode"
+            ]
+          },
+          {
+            "path": "/fragment@3/__overlay__/qcom,dsi-display@0",
+            "properties": {
+              "label": [
+                "dsi_td4330_truly_vid_display"
+              ]
+            },
+            "property_names": [
+              "label",
+              "phandle",
+              "qcom,display-type",
+              "qcom,dsi-ctrl-num",
+              "qcom,dsi-panel",
+              "qcom,dsi-phy-num",
+              "qcom,dsi-select-clocks"
+            ]
+          },
+          {
+            "path": "/fragment@9/__overlay__/mtc-init",
+            "properties": {
+              "status": [
+                "okay"
+              ],
+              "compatible": [
+                "mtc,init"
+              ],
+              "mtc,icn6202_rst": [
+                4294967295,
+                33,
+                0
+              ],
+              "mtc,icn6202_power": [
+                4294967295,
+                41,
+                0
+              ],
+              "mtc,power_en": [
+                4294967295,
+                123,
+                0
+              ],
+              "mtc,bl_en": [
+                4294967295,
+                89,
+                0
+              ],
+              "mtc,lcd_en": [
+                4294967295,
+                86,
+                0
+              ],
+              "mtc,otg_drv": [
+                4294967295,
+                32,
+                0
+              ],
+              "mtc,reg_en": [
+                "pm6125_l12"
+              ],
+              "mtc,panel_io1": [
+                4294967295,
+                124,
+                0
+              ],
+              "mtc,panel_io2": [
+                4294967295,
+                44,
+                0
+              ],
+              "mtc,camera_rst": [
+                4294967295,
+                48,
+                0
+              ],
+              "mtc,camera_pwr": [
+                4294967295,
+                26,
+                0
+              ]
+            },
+            "property_names": [
+              "carbox,enable",
+              "compatible",
+              "logo,fullscreen",
+              "mtc,bl_en",
+              "mtc,camera_pwr",
+              "mtc,camera_rst",
+              "mtc,icn6202_power",
+              "mtc,icn6202_rst",
+              "mtc,lcd_en",
+              "mtc,otg_drv",
+              "mtc,panel_io1",
+              "mtc,panel_io2",
+              "mtc,power_en",
+              "mtc,reg_en",
+              "mtc,v_screen_cnt",
+              "mtc,v_screen_list",
+              "screen,hv",
+              "screen,hv_mode",
+              "status"
+            ]
+          },
+          {
+            "path": "/fragment@9/__overlay__/mtc-hdmi",
+            "properties": {
+              "status": [
+                "okay"
+              ],
+              "compatible": [
+                "mtc,hdmi"
+              ],
+              "mtc,dc_power": [
+                4294967295,
+                57,
+                0
+              ],
+              "mtc,hdmi_rst": [
+                4294967295,
+                33,
+                0
+              ],
+              "mtc,hdmi_power": [
+                4294967295,
+                23,
+                0
+              ],
+              "mtc,hdmi_det": [
+                4294967295,
+                84,
+                0
+              ],
+              "mtc,hdmi_ack": [
+                4294967295,
+                83,
+                0
+              ]
+            },
+            "property_names": [
+              "compatible",
+              "mtc,dc_power",
+              "mtc,hdmi_ack",
+              "mtc,hdmi_det",
+              "mtc,hdmi_power",
+              "mtc,hdmi_rst",
+              "status"
+            ]
+          },
+          {
+            "path": "/fragment@9/__overlay__/mtc_camera",
+            "properties": {
+              "status": [
+                "okay"
+              ],
+              "compatible": [
+                "mtc-camera"
+              ]
+            },
+            "property_names": [
+              "compatible",
+              "status"
+            ]
+          },
+          {
+            "path": "/fragment@9/__overlay__/mtc-car",
+            "properties": {
+              "status": [
+                "okay"
+              ],
+              "compatible": [
+                "mtc,car"
+              ]
+            },
+            "property_names": [
+              "compatible",
+              "mtc,vdd_log",
+              "status"
+            ]
+          },
+          {
+            "path": "/fragment@9/__overlay__/mtc-vs",
+            "properties": {
+              "compatible": [
+                "mtc,vs"
+              ],
+              "status": [
+                "okay"
+              ]
+            },
+            "property_names": [
+              "compatible",
+              "status"
+            ]
+          },
+          {
+            "path": "/fragment@9/__overlay__/mtc-dvd",
+            "properties": {
+              "compatible": [
+                "mtc,dvd"
+              ],
+              "status": [
+                "okay"
+              ]
+            },
+            "property_names": [
+              "compatible",
+              "status"
+            ]
+          },
+          {
+            "path": "/fragment@9/__overlay__/mtc-radio_v2",
+            "properties": {
+              "status": [
+                "okay"
+              ],
+              "compatible": [
+                "mtc,radio"
+              ],
+              "mtc,radio_rst": [
+                4294967295,
+                92,
+                0
+              ],
+              "mtc,radio_scl": [
+                4294967295,
+                95,
+                0
+              ],
+              "mtc,radio_sda": [
+                4294967295,
+                93,
+                0
+              ]
+            },
+            "property_names": [
+              "compatible",
+              "mtc,radio_rst",
+              "mtc,radio_scl",
+              "mtc,radio_sda",
+              "status"
+            ]
+          },
+          {
+            "path": "/fragment@20/__overlay__/icn6202@2c",
+            "properties": {
+              "status": [
+                "ok"
+              ],
+              "compatible": [
+                "hct,icn6202"
+              ],
+              "reg": [
+                44
+              ],
+              "mtc,rst": [
+                4294967295,
+                33,
+                0
+              ],
+              "mtc,en": [
+                4294967295,
+                41,
+                0
+              ]
+            },
+            "property_names": [
+              "compatible",
+              "mtc,en",
+              "mtc,rst",
+              "phandle",
+              "reg",
+              "status"
+            ]
+          },
+          {
+            "path": "/fragment@21/__overlay__/goodix@14",
+            "properties": {
+              "compatible": [
+                "goodix,gt9xx"
+              ],
+              "reg": [
+                20
+              ]
+            },
+            "property_names": [
+              "compatible",
+              "goodix,enable-power-off",
+              "goodix,fw_name",
+              "goodix,int-sync",
+              "goodix,power-off-sleep",
+              "goodix,product-id",
+              "goodix,swap-x2y",
+              "interrupt-parent",
+              "interrupts",
+              "irq-flags",
+              "irq-gpios",
+              "max-x",
+              "max-y",
+              "pinctrl-0",
+              "pinctrl-1",
+              "pinctrl-2",
+              "pinctrl-3",
+              "pinctrl-4",
+              "pinctrl-5",
+              "pinctrl-6",
+              "pinctrl-7",
+              "pinctrl-names",
+              "reg",
+              "reset-gpios",
+              "touchscreen-max-p",
+              "touchscreen-max-w",
+              "touchscreen-size-x",
+              "touchscreen-size-y",
+              "tp-size"
+            ]
+          },
+          {
+            "path": "/fragment@21/__overlay__/focaltech@38",
+            "properties": {
+              "compatible": [
+                "focaltech,fts"
+              ],
+              "reg": [
+                56
+              ]
+            },
+            "property_names": [
+              "compatible",
+              "focaltech,display-coords",
+              "focaltech,irq-gpio",
+              "focaltech,max-touch-number",
+              "focaltech,reset-gpio",
+              "interrupt-parent",
+              "interrupts",
+              "pinctrl-0",
+              "pinctrl-1",
+              "pinctrl-2",
+              "pinctrl-3",
+              "pinctrl-4",
+              "pinctrl-5",
+              "pinctrl-6",
+              "pinctrl-7",
+              "pinctrl-names",
+              "reg"
+            ]
+          },
+          {
+            "path": "/fragment@21/__overlay__/himax_ts@48",
+            "properties": {
+              "compatible": [
+                "himax,hxcommon"
+              ],
+              "reg": [
+                72
+              ]
+            },
+            "property_names": [
+              "compatible",
+              "himax,display-coords",
+              "himax,irq-gpio",
+              "himax,panel-coords",
+              "himax,rst-gpio",
+              "interrupt-parent",
+              "interrupts",
+              "pinctrl-0",
+              "pinctrl-1",
+              "pinctrl-2",
+              "pinctrl-3",
+              "pinctrl-4",
+              "pinctrl-5",
+              "pinctrl-6",
+              "pinctrl-7",
+              "pinctrl-names",
+              "reg",
+              "report_type"
+            ]
+          },
+          {
+            "path": "/fragment@21/__overlay__/jadard@68",
+            "properties": {
+              "compatible": [
+                "jadard,jdcommon"
+              ],
+              "reg": [
+                104
+              ]
+            },
+            "property_names": [
+              "compatible",
+              "interrupt-parent",
+              "interrupts",
+              "jadard,irq-gpio",
+              "jadard,panel-coords",
+              "jadard,panel-max-points",
+              "jadard,panel-sense-nums",
+              "jadard,rst-gpio",
+              "jadard.int-is-edge",
+              "pinctrl-0",
+              "pinctrl-1",
+              "pinctrl-2",
+              "pinctrl-3",
+              "pinctrl-4",
+              "pinctrl-5",
+              "pinctrl-6",
+              "pinctrl-7",
+              "pinctrl-names",
+              "reg"
+            ]
+          },
+          {
+            "path": "/fragment@24/__overlay__",
+            "properties": {
+              "qcom,model": [
+                "trinket-idp-snd-card"
+              ]
+            },
+            "property_names": [
+              "asoc-codec",
+              "asoc-codec-names",
+              "qcom,afe-rxtx-lb",
+              "qcom,audio-routing",
+              "qcom,codec-aux-devs",
+              "qcom,codec-max-aux-devs",
+              "qcom,ext-disp-audio-rx",
+              "qcom,model",
+              "qcom,msm-mbhc-gnd-swh",
+              "qcom,msm-mbhc-hphl-swh",
+              "qcom,msm-mi2s-master",
+              "qcom,msm_audio_ssr_devs",
+              "qcom,sec-mi2s-gpios",
+              "qcom,wsa-aux-dev-prefix",
+              "qcom,wsa-max-devs"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "limits": [
+    "Compiled declarations only; overlays were not applied and live bootloader changes are unknown.",
+    "Multiple declared touchscreen/peripheral nodes do not establish fitted or active hardware.",
+    "GPIO cells may contain unresolved overlay phandles, not direct physical pin instructions.",
+    "This does not diagnose the failed XTRONS update or validate another firmware."
+  ]
+}

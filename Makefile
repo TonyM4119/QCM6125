@@ -5,7 +5,7 @@ TESTS := $(BUILD_DIR)/transport_test $(BUILD_DIR)/car_parameter_policy_test \
          $(BUILD_DIR)/event_stream_test $(BUILD_DIR)/event_mapping_test \
          $(BUILD_DIR)/offline_service_core_test
 
-.PHONY: all test test-binder
+.PHONY: all test test-binder test-device-tree
 all: $(TESTS)
 
 $(BUILD_DIR):
@@ -40,3 +40,6 @@ AIDL ?= aidl
 test-binder:
 	python3 scripts/check_binder_contract.py --aidl "$(AIDL)" --reference evidence/malaysk-proxy-wire.json --report work/binder-contract-check.json
 	python3 scripts/check_binder_contract_test.py --generated work/binder-check --reference evidence/malaysk-proxy-wire.json
+
+test-device-tree:
+	python3 scripts/device_tree_profile_test.py
