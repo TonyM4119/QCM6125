@@ -1,0 +1,21 @@
+{
+  "check_kind": "Extracted staged Java methods compiled with fake framework scaffolding",
+  "source_file_sha256": {
+    "services/core/java/com/android/server/StorageManagerService.java": "e305e1ef41a19eb055bf782d88da8ee8dc27a57a19a57cac443d6c3f4820e14d",
+    "services/core/java/com/android/server/storage/StorageSessionController.java": "5563e8ea2a437dd76f82fd2e1dd7fa98a6353650a63f76395693c51fad11b1c7"
+  },
+  "host_recipe_sha256": "47ff762304f12b7535cc11c4ddc6888bb5903360be175a80cc5078f123c7c506",
+  "method_sha256": {
+    "UNMOUNT": "d4537b826db324635d75d9457009efec2b33549fb01627b8610f3047334f3fdf",
+    "RESET": "e42a2cf25270ca948ced7269ce4ea3ca6d17bfd2ffc2c1f4f3e98121253bd8f2",
+    "END_SESSION": "fcfb3fde0895706602855fd3084296aa4e4cf985b89eb774ed241d1f5b2ba4bd"
+  },
+  "harness_sha256": "202f0fde1e8ab6c6d76cdf5c8732df23509eaa7f91ff287cdcbbc901b463fbeb",
+  "test_output": "15 extracted Java method scenarios passed; fake framework objects only.",
+  "limits": [
+    "Not full Android translation-unit compilation or runtime validation.",
+    "Mock API shapes and state transitions do not prove target API compatibility.",
+    "No real Binder identity, permissions, FUSE, vold, sessions or device effects.",
+    "No hotplug/user/mount/concurrency validation."
+  ]
+}

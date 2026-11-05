@@ -16,10 +16,12 @@ These are isolated source experiments and host tests. No Android image has been 
 
 ## Resume work here
 
-November 5 follow-up: added `native/sleep_storage_sequence.hpp` and fake-adapter tests for the manager's sleep/storage ordering and wake cancellation. This is a portable contract model, not Android integration. Both inspected GitHub framework mirror URLs still returned HTTP 404 for the Android 17 StorageManagerService path. See docs/sleep-storage-contract.md for the model's boundaries.
+Latest November 5 checkpoint: official source access is active after user publication. Framework Android 17 r1 is pinned to `94b4c163b7dfe5ce3607f7bb8456f9573f7de57d`; official vold inputs reproduce the old patches unchanged. A review-only framework patch and extracted-Java host harness are documented in docs/framework17-storage-port.md. Fifteen fake-framework scenarios pass. Read its remaining requirements first: native exreset still selects all SD/USB disks, so snapshot validation is not a safety gate. Next work is native disk-set validation and real session-lifecycle/concurrency coordination, not device deployment.
+
+Earlier November 5 checkpoint: added `native/sleep_storage_sequence.hpp` and fake-adapter tests for the manager's sleep/storage ordering and wake cancellation. This is a portable contract model, not Android integration. Both inspected GitHub framework mirror URLs returned HTTP 404; the later official-source route above supersedes that blocker. See docs/sleep-storage-contract.md for the model's boundaries.
 
 1. Read docs/android-target-gates.md and docs/vold17-native-port.md.
-2. Obtain a matching, pinned framework source baseline before making framework patches. On November 5 the active environment policy still excluded android.googlesource.com; the prior notes record a configuration draft, not an applied access change. The inspected GitHub mirror paths had not supplied the matching framework files.
+2. The matching framework source baseline is now pinned from the official host; the earlier mirror/access blocker is resolved for small source reads. Preserve source hashes when preparing further patches.
 3. Implement and validate the permission-checked `hctall` storage route, boot/daemon readiness, media-provider coordination, and manager sleep-state recheck against that baseline. The observed sequence is in docs/sleep-storage-contract.md. Do not treat a portable model as a compiled Android implementation.
 4. Resolve the complete source manifest, legacy vendor/kernel compatibility and build resources before claiming a platform build. The existing filesystem is too small for a full contemporary AOSP checkout and build.
 

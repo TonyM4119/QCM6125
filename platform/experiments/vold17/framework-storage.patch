@@ -1,0 +1,90 @@
+--- a/services/core/java/com/android/server/StorageManagerService.java
++++ b/services/core/java/com/android/server/StorageManagerService.java
+@@ -2509,8 +2509,57 @@
+ 
+         super.unmount_enforcePermission();
+ 
++        if ("hctall".equals(volId)) {
++            resetHctExternalDisks();
++            return;
++        }
++
+         final WatchedVolumeInfo vol = findVolumeByIdOrThrow(volId);
+         unmount(vol.getClonedImmutableVolumeInfo());
++    }
++
++    /**
++     * Experimental public SD/USB preparation. Not a replacement for a full reset.
++     * Snapshot validation does not serialize hotplug, user or mount transitions.
++     */
++    private void resetHctExternalDisks() {
++        if (!mBootCompleted || !mDaemonConnected) return;
++
++        final long token = Binder.clearCallingIdentity();
++        try {
++            final List<ImmutableVolumeInfo> external = new ArrayList<>();
++            synchronized (mLock) {
++                // Validate the complete snapshot before the first storage operation.
++                for (int i = 0; i < mVolumes.size(); i++) {
++                    final ImmutableVolumeInfo vol =
++                            mVolumes.valueAt(i).getClonedImmutableVolumeInfo();
++                    final DiskInfo disk = vol.getDisk();
++                    if (disk == null || (!disk.isSd() && !disk.isUsb())) continue;
++                    if (vol.getType() != VolumeInfo.TYPE_PUBLIC) {
++                        throw new IllegalStateException(
++                                "HCT experimental reset supports public SD/USB only");
++                    }
++                    if (vol.getState() == VolumeInfo.STATE_UNMOUNTED) continue;
++                    if (vol.getState() != VolumeInfo.STATE_MOUNTED
++                            && vol.getState() != VolumeInfo.STATE_MOUNTED_READ_ONLY) {
++                        throw new IllegalStateException("External volume is transitioning");
++                    }
++                    external.add(vol);
++                }
++            }
++            for (ImmutableVolumeInfo vol : external) {
++                // End the corresponding session only after vold unmount returns.
++                mVold.unmount(vol.getId());
++                mStorageSessionController.endHctExternalSession(vol);
++            }
++            mVold.exreset();
++        } catch (Exception e) {
++            // Matches the reviewed manager-facing handled storage failure path.
++            // A return here is not an acknowledgement that disks are safe.
++            Slog.wtf(TAG, e);
++        } finally {
++            Binder.restoreCallingIdentity(token);
++        }
+     }
+ 
+     private void unmount(ImmutableVolumeInfo vol) {
+--- a/services/core/java/com/android/server/storage/StorageSessionController.java
++++ b/services/core/java/com/android/server/storage/StorageSessionController.java
+@@ -358,6 +358,27 @@
+         }
+     }
+ 
++    /**
++     * Review-only narrow reset helper. Does not kill MediaProvider, close the
++     * shared user connection, or reset unrelated sessions. Caller unmounts first.
++     */
++    public void endHctExternalSession(ImmutableVolumeInfo vol)
++            throws ExternalStorageServiceException {
++        if (!shouldHandle(vol)) {
++            throw new ExternalStorageServiceException("Storage controller is resetting");
++        }
++        final int userId = getConnectionUserIdForVolume(vol);
++        final StorageUserConnection connection;
++        synchronized (mLock) {
++            connection = mConnections.get(userId);
++        }
++        if (connection != null) {
++            // Do not call onVolumeRemove first: it removes the session before
++            // removeSessionAndWait can obtain the session to end.
++            connection.removeSessionAndWait(vol.getId());
++        }
++    }
++
+     private void initExternalStorageServiceComponent() throws ExternalStorageServiceException {
+         Slog.i(TAG, "Initialialising...");
+         ProviderInfo provider = mContext.getPackageManager().resolveContentProvider(

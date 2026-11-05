@@ -28,9 +28,9 @@ Sources inspected:
 
 ## Official framework source access
 
-At the next framework-integration checkpoint, the managed environment's enforced restricted HTTP policy did not include android.googlesource.com. The selected GitHub framework mirrors still did not expose the requested Android 17 revision. A configuration draft was saved to add only android.googlesource.com to the custom host list while preserving the three Dropbox hosts and existing package-manager preset. The save did not apply the policy; the environment workflow requires user review and publication.
+On November 5 the user published the source-access change. The new environment reports android.googlesource.com in its enforced policy, and official file reads succeeded. The frameworks/base Android 17 r1 tag resolves to `94b4c163b7dfe5ce3607f7bb8456f9573f7de57d`. The official vold tag and all nine inspected files match the earlier pinned mirror inputs. See [official source fingerprints](../evidence/android17-official-source.json).
 
-That access is intended for small, pinned official source reads to establish a matching framework baseline. It does not authorize a disk-filling full source sync, resolve the build-storage limit or prove that the requested source tag is available upstream. Once access is active, the actual official revisions and file contents must be checked before preparing framework patches.
+The [framework storage proposal](framework17-storage-port.md) now uses that baseline. The source-access gate is resolved for these small reads; full manifest resolution, platform compilation, build capacity and runtime compatibility remain open. No full source sync was started.
 
 ## Vendor/kernel compatibility gate
 

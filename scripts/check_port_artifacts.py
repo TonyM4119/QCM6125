@@ -6,6 +6,7 @@ from pathlib import Path
 from check_vold_bindings import check as check_bindings
 from experiment_vold_extension import EXPECTED_FILES, REVISION
 from prepare_vold_native_patch import EXPECTED, extract_method
+from prepare_framework_storage_patch import EXPECTED as FRAMEWORK_INPUTS, REVISION as FRAMEWORK_REVISION
 
 
 def digest(path):
@@ -51,7 +52,20 @@ def check(root):
     upstream = json.loads((evidence / 'vold-transaction-comparison.json').read_text())
     if upstream['reference_sha256'] != digest(reference_path):
         raise ValueError('Upstream transaction comparison references stale recovered data')
-    return ('Tracked AIDL/native patches, tested-method body, harness and storage binding reports agree. '
+    framework = json.loads((evidence / 'framework17-storage-patch.json').read_text())
+    host = json.loads((evidence / 'framework17-storage-host.json').read_text())
+    if framework['source_revision'] != FRAMEWORK_REVISION or framework['input_sha256'] != FRAMEWORK_INPUTS:
+        raise ValueError('Framework source pins changed')
+    if framework['patch_sha256'] != digest(experiment / 'framework-storage.patch'):
+        raise ValueError('Framework patch differs from its report')
+    if framework['recipe_sha256'] != digest(root / 'scripts/prepare_framework_storage_patch.py'):
+        raise ValueError('Framework patch recipe changed since staging')
+    for name, value in host['source_file_sha256'].items():
+        if framework['output_sha256'][name] != value:
+            raise ValueError('Java host check used a different staged framework file')
+    if host['host_recipe_sha256'] != digest(root / 'scripts/check_framework_storage_host.py'):
+        raise ValueError('Java host recipe changed since recorded run')
+    return ('Tracked AIDL/native/framework patches, host-check inputs and storage binding reports agree. '
             'Consistency check only; no platform build or device validation.')
 
 

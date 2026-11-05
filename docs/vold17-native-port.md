@@ -35,6 +35,6 @@ Five additional regression cases check unique anchors, method extraction and ref
 
 ## Remaining integration boundary
 
-The framework must still implement the permission-checked hctall routing, media-provider coordination, boot/daemon readiness and the manager's sleep-state recheck. The inspected Android 17 frameworks/base mirror path remains unavailable, so no patch against an unrelated framework release is substituted here. Full source/build, vendor/kernel compatibility and real runtime validation remain open.
+Official Android 17 framework access is now available. A [review-only framework adaptation](framework17-storage-port.md) adds permission-checked hctall routing, boot/daemon gates and scoped public-volume session preparation. Its actual added Java methods pass a fake-framework host harness. It deliberately avoids the old MediaProvider kill, whose newer disconnect path can trigger a broad reset. It is not ready for integration: the native reset still selects all external disks and cannot enforce the framework's snapshot scope. Full source/build, session/concurrency handling, manager sleep routing, vendor/kernel compatibility and real runtime validation remain open.
 
 The two source patches are a concrete porting proposal for review, not a complete working ROM or authorization to test storage/suspend on the head unit. No flashing or device operation occurred.

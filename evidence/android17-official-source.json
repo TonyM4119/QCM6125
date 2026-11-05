@@ -1,0 +1,18 @@
+{
+  "revision": "94b4c163b7dfe5ce3607f7bb8456f9573f7de57d",
+  "files": {
+    "services/core/java/com/android/server/StorageManagerService.java": "4b274514605d62962712a6ee729cbc5676c7b49897353e59ab910aec857aacb1",
+    "services/java/com/android/server/SystemServer.java": "5138c483c8495bac185e1bdbd328d287a1235ff0549e124e8c3d2d3a4fc473bd",
+    "services/core/java/com/android/server/storage/StorageSessionController.java": "05d0f2db32ca635e2a096ec11515e0bf201fb1869d6ead07e060aa893ed6c836",
+    "services/core/java/com/android/server/storage/StorageUserConnection.java": "56ad1318a997930a608c75b4e20fccc72117060577c79853f43d1ec10ffe7d21",
+    "core/java/android/content/pm/UserInfo.java": "9fc4ce276364ba5216b881628c160e35259434e3d2a43c98969a8c34d3413b04",
+    "core/java/android/app/IActivityManager.aidl": "70c9e645e21a0c782763db8785e021dd3713dd926afc6abe380a1bbe00390d86",
+    "services/core/java/com/android/server/pm/PackageManagerInternalBase.java": "26d7b63b9b24ac10dba47ce85232b784a60cc6a3d1d476e36baaaab1f52d22ee"
+  },
+  "source_url": "https://android.googlesource.com/platform/frameworks/base/+/94b4c163b7dfe5ce3607f7bb8456f9573f7de57d",
+  "vold_revision": "6d20a0078c2bcaa2499dc5d032f337bfe1182d9e",
+  "vold_official_inputs_match_pinned": true,
+  "limits": [
+    "Small pinned source reads only; not a coherent full checkout or platform build."
+  ]
+}

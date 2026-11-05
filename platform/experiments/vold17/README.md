@@ -38,3 +38,7 @@ The default make test also runs scripts/check_port_artifacts.py without needing 
 See [the native source-port review](../../../docs/vold17-native-port.md) for the implementation boundary and remaining framework work.
 
 Remaining work includes Android compilation and review of permission/locking/error semantics, framework sleep/storage routing, all affected consumers, complete source/build availability and runtime validation under separately authorized device testing. No firmware, storage, power or flashing command is included in this experiment.
+
+## Framework follow-up
+
+`framework-storage.patch` is a separate review-only proposal against frameworks/base revision `94b4c163b7dfe5ce3607f7bb8456f9573f7de57d`, obtained from the official Android 17 r1 tag. It introduces permission-checked hctall routing and narrow public-volume session handling. It does not reproduce legacy MediaProvider termination. Fifteen extracted-method Java scenarios pass with fake framework objects; full Android classes were not compiled. Native disk selection and session races still prevent a public-only safety guarantee. Do not treat the three patches as a validated platform integration. See [the framework review](../../../docs/framework17-storage-port.md) for reproduction and known gaps.
