@@ -1,0 +1,30 @@
+{
+  "check_kind": "Pinned native patch and extracted-method host test with fake disk objects",
+  "source_revision": "6d20a0078c2bcaa2499dc5d032f337bfe1182d9e",
+  "input_sha256": {
+    "VolumeManager.cpp": "35526fed10321312f8180d0d380a2cadef38c0dd9720a438253058dcd387d8e8",
+    "VolumeManager.h": "e682e153f0b6c47196729683082cd646a7e54678ba0835eef9944e834f2ad72d",
+    "VoldNativeService.cpp": "6481fce1ef520fdda7a9b17f514d9a427292336f5372c6f283dac9ca5e36587f",
+    "VoldNativeService.h": "2bbee5a6cd1994ebb788c95eb664081b50bfd431a3692f78293f445ef436cf59",
+    "model/Disk.h": "adfd37b4f31cfb5896e60bad635e0c42637d47fcfa80f7f08606c0e614e887c1"
+  },
+  "output_sha256": {
+    "VolumeManager.cpp": "de4150f971d72a17ec0e3350bc1c295f8fc47ac89452001c60a47df6263840e9",
+    "VolumeManager.h": "f2ba9843e37bec0645881f3f9c72392383660aa272686ed6c8bcee24cef5d65a",
+    "VoldNativeService.cpp": "56af33c73f69f1575d973354c141bd4ccf984e8e2d02a824f471daf133ce3b12",
+    "VoldNativeService.h": "575029b744a2d34058e25062dca9839705cf3d8639f64497b4f8267d0a1a4de2",
+    "model/Disk.h": "adfd37b4f31cfb5896e60bad635e0c42637d47fcfa80f7f08606c0e614e887c1"
+  },
+  "patch_sha256": "90a2f1026f20856f5a26e9e685c69571f3d33c939767481a4c62bbc25b586b7b",
+  "extracted_method_sha256": "b8413f72d31f47baf898611086dfbb9ce3067aabdf65b2c01f1194adeb2b20d2",
+  "host_harness_sha256": "960130e7ac62791e38631667cbcd977359b083942ddf4ac612001e775871c3be",
+  "host_compiler_sha256": "6b3696e4dcb85e1c949c732a02befa50e3983ecf94ce7e8e58d9d503b954b79d",
+  "host_test_output": "Patched VolumeManager::exreset method passed fake-disk selection/order/status checks.",
+  "limits": [
+    "Actual patched method body compiled in a fake-object harness only.",
+    "Full VoldNativeService/VolumeManager translation units and Android 17 daemon not compiled.",
+    "Requires the separate appended AIDL method and regeneration/rebuilding of affected components.",
+    "Framework storage/sleep routing, native side effects and runtime validation remain incomplete.",
+    "No firmware executable, physical disk, Binder, sleep or flashing operation executed."
+  ]
+}

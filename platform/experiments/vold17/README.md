@@ -1,6 +1,6 @@
 # Android 17 storage-interface experiment
 
-This directory contains an **interface-only experiment**, not a complete or buildable vold integration patch. Appending the method requires a real native implementation and coordinated regeneration/rebuilding of the affected Java/C++ components. Nothing here is an installable update.
+This directory contains **source experiments**, not a complete validated vold/platform integration. Nothing here is an installable update. The initial interface-only experiment is append-exreset.patch; the follow-up native-exreset.patch adds an experimental implementation. Coordinated regeneration/rebuilding and framework adaptation are still required.
 
 The patch applies to platform/system/vold at revision `6d20a0078c2bcaa2499dc5d032f337bfe1182d9e`, from the inspected android-17.0.0_r1 mirror tag. It appends exreset after the existing method declarations, preserving every standard method's transaction ID.
 
@@ -12,7 +12,8 @@ Local Java and C++ AIDL generation found:
 | Existing IDs preserved | All 84 |
 | Experimental exreset code | 85 |
 | Java/C++ generated code tables | Match |
-| Native implementation or Android 17 platform build | Not performed |
+| Native implementation | Experimental follow-up patch; extracted method host-tested with fake disks |
+| Android 17 daemon/platform build | Not performed |
 
 This deliberately does **not** retain the old HCT exreset code 4. The original working daemon is incompatible with the experimental interface; it must not be paired with the generated clients. The old Java storage routing also needs adaptation against the real target framework. The existing isolated external-disk helper is a source-correlated prototype, not an installed daemon implementation.
 
@@ -24,4 +25,14 @@ Run scripts/experiment_vold_extension.py with --source-root, --work-dir, --aidl,
 
 The script creates baseline and extended Java/C++ output in the ignored work directory, compares all method codes and emits the small patch. Seven synthetic regression checks cover appending and rejection of renumbering, language mismatches, unexpected methods and unsupported constants.
 
-Remaining work includes the native implementation, correct permission/locking/error semantics, framework sleep/storage routing, all affected consumers, complete source/build availability and runtime validation under separately authorized device testing. No firmware, storage, power or flashing command is included in this experiment.
+## Native follow-up
+
+native-exreset.patch modifies four files at the same pinned revision. It adds VolumeManager::exreset and the matching VoldNativeService declaration/wrapper. The wrapper uses the existing ENFORCE_SYSTEM_OR_ROOT, ACQUIRE_LOCK and status translation pattern. The volume-manager method selects SD/USB flags and calls destroy/create in the recovered order without the broader stock reset operations.
+
+Apply append-exreset.patch and native-exreset.patch together in a separate source checkout for review. The second patch alone leaves the generated interface without the method. No Android build has verified the pair yet.
+
+scripts/prepare_vold_native_patch.py verifies the five pinned native reference files, stages the proposed changes outside that input tree, emits the patch and extracts the actual new method into an ignored host-test include. It compiles that method with fake Disk/VolumeManager scaffolding using native/vold_method_host_test.cpp and runs only that host harness. The real Android translation units, Binder wrapper and daemon are not compiled or executed. [The native-patch report](../../../evidence/vold17-native-patch.json) records inputs, outputs, patch/body/harness hashes and the host result.
+
+See [the native source-port review](../../../docs/vold17-native-port.md) for the implementation boundary and remaining framework work.
+
+Remaining work includes Android compilation and review of permission/locking/error semantics, framework sleep/storage routing, all affected consumers, complete source/build availability and runtime validation under separately authorized device testing. No firmware, storage, power or flashing command is included in this experiment.
