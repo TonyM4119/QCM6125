@@ -1,0 +1,717 @@
+{
+  "sha256": "b3c0f55f7e5830d7213576ee3dad3c910422820b3dbf94c5527cad97120ae6fe",
+  "hooks": [
+    {
+      "class": "Lcom/android/server/SystemServer;",
+      "method": "startMtcManage",
+      "descriptor": "(Landroid/content/Context;)V",
+      "calls": [
+        {
+          "offset": 4,
+          "reference": "Landroid/content/Intent;-><init>()V"
+        },
+        {
+          "offset": 22,
+          "reference": "Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 28,
+          "reference": "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 38,
+          "reference": "Landroid/content/Context;->startServiceAsUser(Landroid/content/Intent; Landroid/os/UserHandle;)Landroid/content/ComponentName;"
+        }
+      ],
+      "reviewed_strings": [
+        {
+          "offset": 14,
+          "value": "android.microntek.service"
+        },
+        {
+          "offset": 18,
+          "value": "android.microntek.service.ManageService"
+        }
+      ],
+      "fields": [
+        {
+          "offset": 34,
+          "operation": "sget-object",
+          "reference": "Landroid/os/UserHandle;->SYSTEM Landroid/os/UserHandle;"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/am/ActivityManagerService;",
+      "method": "sendHCTRemoveTask",
+      "descriptor": "(Ljava/lang/String;)V",
+      "calls": [
+        {
+          "offset": 12,
+          "reference": "Lcom/android/server/am/UserController;->getCurrentUserId()I"
+        },
+        {
+          "offset": 24,
+          "reference": "Landroid/os/Binder;->getCallingUid()I"
+        },
+        {
+          "offset": 36,
+          "reference": "Landroid/os/Binder;->getCallingPid()I"
+        },
+        {
+          "offset": 56,
+          "reference": "Landroid/content/Intent;-><init>(Ljava/lang/String;)V"
+        },
+        {
+          "offset": 74,
+          "reference": "Landroid/content/Intent;->putExtra(Ljava/lang/String; Ljava/lang/String;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 138,
+          "reference": "Lcom/android/server/am/ActivityManagerService;->broadcastIntentLocked(Lcom/android/server/am/ProcessRecord; Ljava/lang/String; Ljava/lang/String; Landroid/content/Intent; Ljava/lang/String; Landroid/content/IIntentReceiver; I Ljava/lang/String; Landroid/os/Bundle; [Ljava/lang/String; [Ljava/lang/String; [Ljava/lang/String; I Landroid/os/Bundle; Z Z I I I I I)I"
+        }
+      ],
+      "reviewed_strings": [
+        {
+          "offset": 52,
+          "value": "com.microntek.removetask"
+        }
+      ],
+      "fields": [
+        {
+          "offset": 8,
+          "operation": "iget-object",
+          "reference": "Lcom/android/server/am/ActivityManagerService;->mUserController Lcom/android/server/am/UserController;"
+        },
+        {
+          "offset": 80,
+          "operation": "sget",
+          "reference": "Lcom/android/server/am/ActivityManagerService;->MY_PID I"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/pm/permission/PermissionManagerService;",
+      "method": "isHctAppLists",
+      "descriptor": "(Ljava/lang/String;)Z",
+      "calls": [
+        {
+          "offset": 18,
+          "reference": "Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z"
+        }
+      ],
+      "reviewed_strings": [],
+      "fields": [
+        {
+          "offset": 0,
+          "operation": "sget-object",
+          "reference": "Lcom/android/server/pm/permission/PermissionManagerService;->HctAppLists [Ljava/lang/String;"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/policy/PhoneWindowManager;",
+      "method": "checkHctAuioApp",
+      "descriptor": "()Z",
+      "calls": [
+        {
+          "offset": 8,
+          "reference": "Landroid/content/Context;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;"
+        },
+        {
+          "offset": 24,
+          "reference": "Landroid/app/ActivityManager;->getRunningTasks(I)Ljava/util/List;"
+        },
+        {
+          "offset": 32,
+          "reference": "Ljava/util/List;->iterator()Ljava/util/Iterator;"
+        },
+        {
+          "offset": 40,
+          "reference": "Ljava/util/Iterator;->hasNext()Z"
+        },
+        {
+          "offset": 52,
+          "reference": "Ljava/util/Iterator;->next()Ljava/lang/Object;"
+        },
+        {
+          "offset": 68,
+          "reference": "Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;"
+        },
+        {
+          "offset": 76,
+          "reference": "Lcom/android/server/policy/PhoneWindowManager;->checkAudioName(Ljava/lang/String;)Z"
+        }
+      ],
+      "reviewed_strings": [],
+      "fields": [
+        {
+          "offset": 0,
+          "operation": "iget-object",
+          "reference": "Lcom/android/server/policy/PhoneWindowManager;->mContext Landroid/content/Context;"
+        },
+        {
+          "offset": 64,
+          "operation": "iget-object",
+          "reference": "Landroid/app/ActivityManager$RunningTaskInfo;->topActivity Landroid/content/ComponentName;"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/policy/PhoneWindowManager;",
+      "method": "sendHctKeyCode",
+      "descriptor": "(I)V",
+      "calls": [
+        {
+          "offset": 12,
+          "reference": "Landroid/microntek/CarManager;-><init>()V"
+        },
+        {
+          "offset": 26,
+          "reference": "Landroid/os/Bundle;-><init>()V"
+        },
+        {
+          "offset": 42,
+          "reference": "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 54,
+          "reference": "Landroid/os/Bundle;->putInt(Ljava/lang/String; I)V"
+        },
+        {
+          "offset": 68,
+          "reference": "Landroid/microntek/CarManager;->dispatchMessage(Ljava/lang/String; Landroid/os/Bundle;)V"
+        }
+      ],
+      "reviewed_strings": [],
+      "fields": [
+        {
+          "offset": 0,
+          "operation": "iget-object",
+          "reference": "Lcom/android/server/policy/PhoneWindowManager;->mCarManager Landroid/microntek/CarManager;"
+        },
+        {
+          "offset": 18,
+          "operation": "iput-object",
+          "reference": "Lcom/android/server/policy/PhoneWindowManager;->mCarManager Landroid/microntek/CarManager;"
+        },
+        {
+          "offset": 60,
+          "operation": "iget-object",
+          "reference": "Lcom/android/server/policy/PhoneWindowManager;->mCarManager Landroid/microntek/CarManager;"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/wm/AppWarnings;",
+      "method": "isHctAppLists",
+      "descriptor": "(Ljava/lang/String;)Z",
+      "calls": [
+        {
+          "offset": 18,
+          "reference": "Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z"
+        }
+      ],
+      "reviewed_strings": [],
+      "fields": [
+        {
+          "offset": 0,
+          "operation": "sget-object",
+          "reference": "Lcom/android/server/wm/AppWarnings;->HctAppLists [Ljava/lang/String;"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/wm/PointerEventDispatcher;",
+      "method": "sendHctTouchStudy",
+      "descriptor": "(Landroid/view/MotionEvent;)V",
+      "calls": [
+        {
+          "offset": 4,
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->hctTouchAppStudy()V"
+        },
+        {
+          "offset": 32,
+          "reference": "Landroid/view/MotionEvent;->getAction()I"
+        },
+        {
+          "offset": 44,
+          "reference": "Landroid/view/MotionEvent;->getAction()I"
+        },
+        {
+          "offset": 60,
+          "reference": "Landroid/os/Bundle;-><init>()V"
+        },
+        {
+          "offset": 70,
+          "reference": "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 76,
+          "reference": "Landroid/view/MotionEvent;->getAction()I"
+        },
+        {
+          "offset": 84,
+          "reference": "Landroid/os/Bundle;->putInt(Ljava/lang/String; I)V"
+        },
+        {
+          "offset": 102,
+          "reference": "Landroid/microntek/CarManager;->dispatchMessage(Ljava/lang/String; Landroid/os/Bundle;)V"
+        },
+        {
+          "offset": 128,
+          "reference": "Landroid/view/MotionEvent;->getPointerCount()I"
+        },
+        {
+          "offset": 142,
+          "reference": "Landroid/view/MotionEvent;->getAction()I"
+        },
+        {
+          "offset": 156,
+          "reference": "Landroid/view/MotionEvent;->getAction()I"
+        },
+        {
+          "offset": 180,
+          "reference": "Landroid/os/SystemClock;->uptimeMillis()J"
+        },
+        {
+          "offset": 192,
+          "reference": "Landroid/os/SystemClock;->uptimeMillis()J"
+        },
+        {
+          "offset": 240,
+          "reference": "Landroid/os/Bundle;-><init>()V"
+        },
+        {
+          "offset": 246,
+          "reference": "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 252,
+          "reference": "Landroid/os/Bundle;->putInt(Ljava/lang/String; I)V"
+        },
+        {
+          "offset": 266,
+          "reference": "Landroid/microntek/CarManager;->dispatchMessage(Ljava/lang/String; Landroid/os/Bundle;)V"
+        },
+        {
+          "offset": 276,
+          "reference": "Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I"
+        },
+        {
+          "offset": 304,
+          "reference": "Ljava/lang/StringBuilder;-><init>()V"
+        },
+        {
+          "offset": 314,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 322,
+          "reference": "Landroid/view/MotionEvent;->getAction()I"
+        },
+        {
+          "offset": 330,
+          "reference": "Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 342,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 350,
+          "reference": "Landroid/view/MotionEvent;->getPointerCount()I"
+        },
+        {
+          "offset": 358,
+          "reference": "Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 366,
+          "reference": "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 374,
+          "reference": "Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I"
+        },
+        {
+          "offset": 380,
+          "reference": "Landroid/view/MotionEvent;->getPointerCount()I"
+        },
+        {
+          "offset": 392,
+          "reference": "Landroid/view/MotionEvent;->getAction()I"
+        },
+        {
+          "offset": 408,
+          "reference": "Landroid/os/Bundle;-><init>()V"
+        },
+        {
+          "offset": 414,
+          "reference": "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 420,
+          "reference": "Landroid/os/Bundle;->putInt(Ljava/lang/String; I)V"
+        },
+        {
+          "offset": 434,
+          "reference": "Landroid/microntek/CarManager;->dispatchMessage(Ljava/lang/String; Landroid/os/Bundle;)V"
+        },
+        {
+          "offset": 444,
+          "reference": "Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I"
+        },
+        {
+          "offset": 476,
+          "reference": "Ljava/lang/StringBuilder;-><init>()V"
+        },
+        {
+          "offset": 486,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 494,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 502,
+          "reference": "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 510,
+          "reference": "Landroid/util/Log;->e(Ljava/lang/String; Ljava/lang/String;)I"
+        }
+      ],
+      "reviewed_strings": [],
+      "fields": [
+        {
+          "offset": 10,
+          "operation": "iget-boolean",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->isCarTouch Z"
+        },
+        {
+          "offset": 90,
+          "operation": "iget-object",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->mCarManager Landroid/microntek/CarManager;"
+        },
+        {
+          "offset": 108,
+          "operation": "iget-boolean",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->isTouchApp Z"
+        },
+        {
+          "offset": 168,
+          "operation": "iget-boolean",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->isTouchMode Z"
+        },
+        {
+          "offset": 176,
+          "operation": "iput-boolean",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->isTouchMode Z"
+        },
+        {
+          "offset": 188,
+          "operation": "iput-wide",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->downTime J"
+        },
+        {
+          "offset": 200,
+          "operation": "iget-wide",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->downTime J"
+        },
+        {
+          "offset": 224,
+          "operation": "iget-boolean",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->isEnterTouch Z"
+        },
+        {
+          "offset": 232,
+          "operation": "iput-boolean",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->isEnterTouch Z"
+        },
+        {
+          "offset": 258,
+          "operation": "iget-object",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->mCarManager Landroid/microntek/CarManager;"
+        },
+        {
+          "offset": 284,
+          "operation": "iget-boolean",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->isTouchMode Z"
+        },
+        {
+          "offset": 292,
+          "operation": "iget-boolean",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->isEnterTouch Z"
+        },
+        {
+          "offset": 426,
+          "operation": "iget-object",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->mCarManager Landroid/microntek/CarManager;"
+        },
+        {
+          "offset": 450,
+          "operation": "iput-boolean",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->isEnterTouch Z"
+        },
+        {
+          "offset": 454,
+          "operation": "iput-boolean",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->isTouchMode Z"
+        },
+        {
+          "offset": 460,
+          "operation": "iput-boolean",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->isEnterTouch Z"
+        },
+        {
+          "offset": 464,
+          "operation": "iput-boolean",
+          "reference": "Lcom/android/server/wm/PointerEventDispatcher;->isTouchMode Z"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/wm/Task;",
+      "method": "HctSendAppinfo",
+      "descriptor": "(Lcom/android/server/wm/ActivityRecord; Z)V",
+      "calls": [
+        {
+          "offset": 4,
+          "reference": "Landroid/content/Intent;->getComponent()Landroid/content/ComponentName;"
+        },
+        {
+          "offset": 12,
+          "reference": "Landroid/content/ComponentName;->getPackageName()Ljava/lang/String;"
+        },
+        {
+          "offset": 24,
+          "reference": "Landroid/content/Intent;->getComponent()Landroid/content/ComponentName;"
+        },
+        {
+          "offset": 32,
+          "reference": "Landroid/content/ComponentName;->getClassName()Ljava/lang/String;"
+        },
+        {
+          "offset": 42,
+          "reference": "Landroid/app/AppGlobals;->getPackageManager()Landroid/content/pm/IPackageManager;"
+        },
+        {
+          "offset": 68,
+          "reference": "Landroid/content/pm/IPackageManager;->resolveIntent(Landroid/content/Intent; Ljava/lang/String; J I)Landroid/content/pm/ResolveInfo;"
+        },
+        {
+          "offset": 84,
+          "reference": "Landroid/content/Context;->getPackageManager()Landroid/content/pm/PackageManager;"
+        },
+        {
+          "offset": 92,
+          "reference": "Landroid/content/pm/ResolveInfo;->loadLabel(Landroid/content/pm/PackageManager;)Ljava/lang/CharSequence;"
+        },
+        {
+          "offset": 100,
+          "reference": "Ljava/lang/CharSequence;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 110,
+          "reference": "Lcom/android/server/wm/ActivityRecord;->getDisplayId()I"
+        },
+        {
+          "offset": 128,
+          "reference": "Landroid/os/SystemProperties;->set(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 138,
+          "reference": "Landroid/microntek/CarManager;-><init>()V"
+        },
+        {
+          "offset": 148,
+          "reference": "Landroid/os/Bundle;-><init>()V"
+        },
+        {
+          "offset": 154,
+          "reference": "Lcom/android/server/wm/ActivityRecord;->getDisplayId()I"
+        },
+        {
+          "offset": 176,
+          "reference": "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 188,
+          "reference": "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 200,
+          "reference": "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 210,
+          "reference": "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 222,
+          "reference": "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 244,
+          "reference": "Landroid/os/Bundle;->putInt(Ljava/lang/String; I)V"
+        },
+        {
+          "offset": 254,
+          "reference": "Landroid/microntek/CarManager;->dispatchMessage(Ljava/lang/String; Landroid/os/Bundle;)V"
+        },
+        {
+          "offset": 268,
+          "reference": "Ljava/lang/StringBuilder;-><init>()V"
+        },
+        {
+          "offset": 278,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 286,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/Object;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 294,
+          "reference": "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 306,
+          "reference": "Landroid/util/Slog;->w(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I"
+        }
+      ],
+      "reviewed_strings": [],
+      "fields": [
+        {
+          "offset": 0,
+          "operation": "iget-object",
+          "reference": "Lcom/android/server/wm/ActivityRecord;->intent Landroid/content/Intent;"
+        },
+        {
+          "offset": 20,
+          "operation": "iget-object",
+          "reference": "Lcom/android/server/wm/ActivityRecord;->intent Landroid/content/Intent;"
+        },
+        {
+          "offset": 50,
+          "operation": "iget-object",
+          "reference": "Lcom/android/server/wm/ActivityRecord;->intent Landroid/content/Intent;"
+        },
+        {
+          "offset": 54,
+          "operation": "iget-object",
+          "reference": "Lcom/android/server/wm/ActivityRecord;->resolvedType Ljava/lang/String;"
+        },
+        {
+          "offset": 64,
+          "operation": "iget",
+          "reference": "Lcom/android/server/wm/ActivityRecord;->mUserId I"
+        },
+        {
+          "offset": 76,
+          "operation": "iget-object",
+          "reference": "Lcom/android/server/wm/Task;->mAtmService Lcom/android/server/wm/ActivityTaskManagerService;"
+        },
+        {
+          "offset": 80,
+          "operation": "iget-object",
+          "reference": "Lcom/android/server/wm/ActivityTaskManagerService;->mContext Landroid/content/Context;"
+        }
+      ]
+    }
+  ],
+  "call_sites_within_selected_classes": [
+    {
+      "class": "Lcom/android/server/SystemServer;",
+      "method": "startOtherServices",
+      "descriptor": "(Lcom/android/server/utils/TimingsTraceAndSlog;)V",
+      "offset": 9940,
+      "hook": "Lcom/android/server/SystemServer;->startMtcManage(Landroid/content/Context;)V"
+    },
+    {
+      "class": "Lcom/android/server/am/ActivityManagerService;",
+      "method": "forceStopPackage",
+      "descriptor": "(Ljava/lang/String; I)V",
+      "offset": 80,
+      "hook": "Lcom/android/server/am/ActivityManagerService;->sendHCTRemoveTask(Ljava/lang/String;)V"
+    },
+    {
+      "class": "Lcom/android/server/am/ActivityManagerService;",
+      "method": "killBackgroundProcesses",
+      "descriptor": "(Ljava/lang/String; I)V",
+      "offset": 222,
+      "hook": "Lcom/android/server/am/ActivityManagerService;->sendHCTRemoveTask(Ljava/lang/String;)V"
+    },
+    {
+      "class": "Lcom/android/server/pm/permission/PermissionManagerService;",
+      "method": "checkPermission",
+      "descriptor": "(Ljava/lang/String; Ljava/lang/String; I)I",
+      "offset": 74,
+      "hook": "Lcom/android/server/pm/permission/PermissionManagerService;->isHctAppLists(Ljava/lang/String;)Z"
+    },
+    {
+      "class": "Lcom/android/server/pm/permission/PermissionManagerService;",
+      "method": "checkUidPermission",
+      "descriptor": "(I Ljava/lang/String;)I",
+      "offset": 68,
+      "hook": "Lcom/android/server/pm/permission/PermissionManagerService;->isHctAppLists(Ljava/lang/String;)Z"
+    },
+    {
+      "class": "Lcom/android/server/policy/PhoneWindowManager;",
+      "method": "interceptKeyBeforeQueueing",
+      "descriptor": "(Landroid/view/KeyEvent; I)I",
+      "offset": 768,
+      "hook": "Lcom/android/server/policy/PhoneWindowManager;->sendHctKeyCode(I)V"
+    },
+    {
+      "class": "Lcom/android/server/policy/PhoneWindowManager;",
+      "method": "interceptKeyBeforeQueueing",
+      "descriptor": "(Landroid/view/KeyEvent; I)I",
+      "offset": 830,
+      "hook": "Lcom/android/server/policy/PhoneWindowManager;->checkHctAuioApp()Z"
+    },
+    {
+      "class": "Lcom/android/server/policy/PhoneWindowManager;",
+      "method": "interceptKeyBeforeQueueing",
+      "descriptor": "(Landroid/view/KeyEvent; I)I",
+      "offset": 854,
+      "hook": "Lcom/android/server/policy/PhoneWindowManager;->sendHctKeyCode(I)V"
+    },
+    {
+      "class": "Lcom/android/server/policy/PhoneWindowManager;",
+      "method": "interceptKeyBeforeQueueing",
+      "descriptor": "(Landroid/view/KeyEvent; I)I",
+      "offset": 866,
+      "hook": "Lcom/android/server/policy/PhoneWindowManager;->sendHctKeyCode(I)V"
+    },
+    {
+      "class": "Lcom/android/server/policy/PhoneWindowManager;",
+      "method": "interceptKeyBeforeQueueing",
+      "descriptor": "(Landroid/view/KeyEvent; I)I",
+      "offset": 878,
+      "hook": "Lcom/android/server/policy/PhoneWindowManager;->sendHctKeyCode(I)V"
+    },
+    {
+      "class": "Lcom/android/server/wm/AppWarnings;",
+      "method": "showDeprecatedTargetDialogIfNeeded",
+      "descriptor": "(Lcom/android/server/wm/ActivityRecord;)V",
+      "offset": 12,
+      "hook": "Lcom/android/server/wm/AppWarnings;->isHctAppLists(Ljava/lang/String;)Z"
+    },
+    {
+      "class": "Lcom/android/server/wm/PointerEventDispatcher;",
+      "method": "onInputEvent",
+      "descriptor": "(Landroid/view/InputEvent;)V",
+      "offset": 106,
+      "hook": "Lcom/android/server/wm/PointerEventDispatcher;->sendHctTouchStudy(Landroid/view/MotionEvent;)V"
+    }
+  ],
+  "limits": [
+    "Selected-class scan only; not a complete platform call graph.",
+    "Static references do not prove branches or runtime execution.",
+    "Only reviewed string prefixes retained; no full bytecode or disassembly.",
+    "Hidden-API metadata omitted in an in-memory copy; originals unchanged."
+  ]
+}

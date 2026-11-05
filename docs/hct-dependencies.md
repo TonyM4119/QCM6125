@@ -56,6 +56,8 @@ SystemServer.startMtcManage contains an explicit request to start `android.micro
 
 HCTApi also exposes task/window/process helpers, implying reliance on private platform APIs. Porting a CarManager facade alone would leave these framework behaviours unresolved.
 
+Follow-up inspection confirms eight selected hooks in the owner-tested Android 13 reference, with twelve direct call sites in the scoped class set. See [the working-reference platform map](platform-hooks.md) for startup, input/task payloads, permission-path distinctions and unresolved caller/source boundaries.
+
 ## Native and init dependencies
 
 Factory `libcvbs_jni.so` exports JNI entry points for `com.microntek.cvbs.JniUtil` (open, close and surface/frame methods), and contains `/dev/mtc-cvbs` and `/dev/mtc-car` strings. Its DT_NEEDED list includes private platform libraries such as libandroidfw, libui, libhwui, libmedia and libgui. It therefore cannot be assumed to work unchanged with a newer framework simply because it is ARM64.
