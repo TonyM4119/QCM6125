@@ -44,6 +44,8 @@ This establishes that the inspected Java interfaces cannot be paired interchange
 
 The working system image contains a 948136-byte ARM64 vold executable. The report records its SHA-256, DT_NEEDED libraries and the presence of an exreset string. No exreset-named ELF symbol was recovered in the inspected symbol tables. These facts identify a native reference; a string is not proof of the function's behaviour or dispatch. The native reset implementation remains unresolved and the old executable is not proposed for transplant into a new Android platform.
 
+The [native follow-up](native-external-reset.md) now ties that trace string to a relocated vtable entry and a flag-filtered loop, with source-correlated disk destroy/create routines. An isolated experimental helper is tested with fake disks only. Complete native dispatch, callee effects and newer-platform integration remain open.
+
 ## Reproducible evidence
 
 - [Sleep dependency inventory](../evidence/malaysk-sleep-contract.json): source hashes, selected references/constants, both recovered IVold transaction tables, native metadata and upstream source metadata.

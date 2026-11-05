@@ -1,0 +1,35 @@
+{
+  "source_tag": "android-13.0.0_r1",
+  "reference_only": true,
+  "files": [
+    {
+      "path": "VolumeManager.cpp",
+      "sha256": "1ec0fb8e982d9bbfc1d5cbf41255171132c447e3a3db378aca68258f7f737d0d",
+      "url": "https://github.com/aosp-mirror-neo/platform_system_vold/blob/android-13.0.0_r1/VolumeManager.cpp"
+    },
+    {
+      "path": "VolumeManager.h",
+      "sha256": "be07ba07f03735ae44a779fdf0999996d0ccd5cc444c9be7020fbbd0eb3c1a58",
+      "url": "https://github.com/aosp-mirror-neo/platform_system_vold/blob/android-13.0.0_r1/VolumeManager.h"
+    },
+    {
+      "path": "VoldNativeService.cpp",
+      "sha256": "9820855ece516cf111c065c817deff69cc1ed723fad67fc158257b386d25e2f0",
+      "url": "https://github.com/aosp-mirror-neo/platform_system_vold/blob/android-13.0.0_r1/VoldNativeService.cpp"
+    },
+    {
+      "path": "model/Disk.cpp",
+      "sha256": "2abe1414dab128d84b6a0dd14fdabc9d82a8a1dc75056da5f5cdecaea41f93c0",
+      "url": "https://github.com/aosp-mirror-neo/platform_system_vold/blob/android-13.0.0_r1/model/Disk.cpp"
+    },
+    {
+      "path": "model/Disk.h",
+      "sha256": "adfd37b4f31cfb5896e60bad635e0c42637d47fcfa80f7f08606c0e614e887c1",
+      "url": "https://github.com/aosp-mirror-neo/platform_system_vold/blob/android-13.0.0_r1/model/Disk.h"
+    }
+  ],
+  "limits": [
+    "Upstream source is a comparison reference, not recovered HCT source.",
+    "Flag/type/method correlations do not prove all downstream side effects or Android 17 compatibility."
+  ]
+}

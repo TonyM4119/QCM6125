@@ -1,0 +1,504 @@
+{
+  "sha256": "5b7e13fac3ab33272462cee42f2635696cf132fa6e8c059290ef025737d5c215",
+  "plt_stride": 24,
+  "validated_plt_entries": 438,
+  "aps2_relocation_count": 505,
+  "relr_relocation_count": 714,
+  "reviewed_vtable_slots": [
+    {
+      "slot_address": 907280,
+      "target": 356108,
+      "trace_labels": [
+        "setListener"
+      ],
+      "instruction_sha256": "550be48ffd56e6ea824e3e267e835341e9019e04044b9a34415ddca260338911"
+    },
+    {
+      "slot_address": 907288,
+      "target": 357220,
+      "trace_labels": [],
+      "instruction_sha256": "b72867f51c8e9376f7acfd0ca840b87df5b7a1dff6261180f8d3ce237bce5222"
+    },
+    {
+      "slot_address": 907296,
+      "target": 356468,
+      "trace_labels": [
+        "monitor",
+        "monitor"
+      ],
+      "instruction_sha256": "02543c4ac0637747c72305c5c9172c2a8d398e88b28f84fcd28bbfb2386f9f5e"
+    },
+    {
+      "slot_address": 907304,
+      "target": 356688,
+      "trace_labels": [
+        "exreset"
+      ],
+      "instruction_sha256": "f685cab56659a872c4e6ad1721decc49a38af492d0dc7d3021a8192c50a3a94b"
+    },
+    {
+      "slot_address": 907312,
+      "target": 356876,
+      "trace_labels": [
+        "reset"
+      ],
+      "instruction_sha256": "897fdc530daa28f1bed03c0746f8131deb9928f98b26a66f5ceff81a55e5dd03"
+    },
+    {
+      "slot_address": 907320,
+      "target": 357048,
+      "trace_labels": [
+        "shutdown"
+      ],
+      "instruction_sha256": "c26bc26a7935e69555e28b8af2d6f6a45cf783c51bb3111fe55bf309295753eb"
+    }
+  ],
+  "functions": [
+    {
+      "role": "exreset_trace_wrapper",
+      "address": 356688,
+      "fde_size": 172,
+      "instruction_sha256": "f685cab56659a872c4e6ad1721decc49a38af492d0dc7d3021a8192c50a3a94b",
+      "direct_calls": [
+        {
+          "address": 356716,
+          "target": 582052,
+          "import": null
+        },
+        {
+          "address": 356748,
+          "target": 894520,
+          "import": "_ZN7android7String8D1Ev"
+        },
+        {
+          "address": 356752,
+          "target": 584404,
+          "import": null
+        },
+        {
+          "address": 356764,
+          "target": 893704,
+          "import": "_ZNSt3__15mutex4lockEv"
+        },
+        {
+          "address": 356768,
+          "target": 891760,
+          "import": "atrace_get_enabled_tags"
+        },
+        {
+          "address": 356776,
+          "target": 584404,
+          "import": null
+        },
+        {
+          "address": 356780,
+          "target": 602680,
+          "import": null
+        },
+        {
+          "address": 356792,
+          "target": 898264,
+          "import": "_ZN7android6binder6Status24fromServiceSpecificErrorEi"
+        },
+        {
+          "address": 356796,
+          "target": 891760,
+          "import": "atrace_get_enabled_tags"
+        },
+        {
+          "address": 356820,
+          "target": 893752,
+          "import": "_ZNSt3__15mutex6unlockEv"
+        },
+        {
+          "address": 356824,
+          "target": 894496,
+          "import": "_ZN7android6binder6Status2okEv"
+        },
+        {
+          "address": 356828,
+          "target": 891760,
+          "import": "atrace_get_enabled_tags"
+        },
+        {
+          "address": 356836,
+          "target": 892336,
+          "import": "atrace_end_body"
+        },
+        {
+          "address": 356840,
+          "target": 356804,
+          "import": null
+        },
+        {
+          "address": 356852,
+          "target": 892288,
+          "import": "atrace_begin_body"
+        },
+        {
+          "address": 356856,
+          "target": 356776,
+          "import": null
+        }
+      ],
+      "checkpoints": [
+        {
+          "address": 356704,
+          "mnemonic": "mov",
+          "operands": "w0, #0x3e8"
+        },
+        {
+          "address": 356716,
+          "mnemonic": "bl",
+          "operands": "#0x8e1a4"
+        },
+        {
+          "address": 356780,
+          "mnemonic": "bl",
+          "operands": "#0x93238"
+        }
+      ]
+    },
+    {
+      "role": "calling_uid_guard",
+      "address": 582052,
+      "fde_size": 216,
+      "instruction_sha256": "5567f2c903a150a719ce554d110b1065b9590d92b34de1a2c4a703ae56157a54",
+      "direct_calls": [
+        {
+          "address": 582096,
+          "target": 892240,
+          "import": "_ZN7android14IPCThreadState4selfEv"
+        },
+        {
+          "address": 582100,
+          "target": 899224,
+          "import": "_ZNK7android14IPCThreadState13getCallingUidEv"
+        },
+        {
+          "address": 582140,
+          "target": 893080,
+          "import": "_ZN7android4base12StringPrintfEPKcz"
+        },
+        {
+          "address": 582168,
+          "target": 894664,
+          "import": "_ZN7android7String8C1EPKc"
+        },
+        {
+          "address": 582184,
+          "target": 899176,
+          "import": "_ZN7android6binder6Status17fromExceptionCodeEiRKNS_7String8E"
+        },
+        {
+          "address": 582192,
+          "target": 894520,
+          "import": "_ZN7android7String8D1Ev"
+        },
+        {
+          "address": 582208,
+          "target": 892024,
+          "import": "_ZdlPv"
+        },
+        {
+          "address": 582212,
+          "target": 582224,
+          "import": null
+        },
+        {
+          "address": 582220,
+          "target": 894496,
+          "import": "_ZN7android6binder6Status2okEv"
+        },
+        {
+          "address": 582264,
+          "target": 892792,
+          "import": "__stack_chk_fail"
+        }
+      ],
+      "checkpoints": [
+        {
+          "address": 582100,
+          "mnemonic": "bl",
+          "operands": "#0xdb898"
+        },
+        {
+          "address": 582104,
+          "mnemonic": "cmp",
+          "operands": "w0, w20"
+        },
+        {
+          "address": 582116,
+          "mnemonic": "cbz",
+          "operands": "w0, #0x8e248"
+        }
+      ]
+    },
+    {
+      "role": "filtered_disk_loop",
+      "address": 602680,
+      "fde_size": 164,
+      "instruction_sha256": "2980c8a330a35b8356bc88bcd9d85d1ed443cc90216bebcca30a371ec596e042",
+      "direct_calls": [
+        {
+          "address": 602708,
+          "target": 602716,
+          "import": null
+        },
+        {
+          "address": 602740,
+          "target": 891328,
+          "import": null
+        },
+        {
+          "address": 602760,
+          "target": 631524,
+          "import": null
+        },
+        {
+          "address": 602768,
+          "target": 625468,
+          "import": null
+        },
+        {
+          "address": 602784,
+          "target": 891536,
+          "import": null
+        },
+        {
+          "address": 602812,
+          "target": 892144,
+          "import": "_ZNSt3__119__shared_weak_count14__release_weakEv"
+        },
+        {
+          "address": 602816,
+          "target": 602712,
+          "import": null
+        }
+      ],
+      "checkpoints": [
+        {
+          "address": 602744,
+          "mnemonic": "ldrb",
+          "operands": "w8, [x20, #0xc0]"
+        },
+        {
+          "address": 602748,
+          "mnemonic": "tst",
+          "operands": "w8, #0xc"
+        },
+        {
+          "address": 602760,
+          "mnemonic": "bl",
+          "operands": "#0x9a2e4"
+        },
+        {
+          "address": 602768,
+          "mnemonic": "bl",
+          "operands": "#0x98b3c"
+        },
+        {
+          "address": 602824,
+          "mnemonic": "mov",
+          "operands": "w0, wzr"
+        }
+      ]
+    },
+    {
+      "role": "destroy_candidate",
+      "address": 631524,
+      "fde_size": 396,
+      "instruction_sha256": "f55da2d09ba17408ad6dc82445ff2d784e3db775a453217d1fd2d3eee3235473",
+      "direct_calls": [
+        {
+          "address": 631592,
+          "target": 677612,
+          "import": null
+        },
+        {
+          "address": 631636,
+          "target": 891536,
+          "import": null
+        },
+        {
+          "address": 631664,
+          "target": 892144,
+          "import": "_ZNSt3__119__shared_weak_count14__release_weakEv"
+        },
+        {
+          "address": 631668,
+          "target": 631608,
+          "import": null
+        },
+        {
+          "address": 631680,
+          "target": 584404,
+          "import": null
+        },
+        {
+          "address": 631712,
+          "target": 898144,
+          "import": "_ZNK7android7RefBase9incStrongEPKv"
+        },
+        {
+          "address": 631752,
+          "target": 894520,
+          "import": "_ZN7android7String8D1Ev"
+        },
+        {
+          "address": 631780,
+          "target": 894616,
+          "import": "_ZNK7android7RefBase9decStrongEPKv"
+        },
+        {
+          "address": 631860,
+          "target": 891952,
+          "import": "_ZN7android4base10LogMessageC1EPKcjNS0_11LogSeverityES3_i"
+        },
+        {
+          "address": 631868,
+          "target": 891976,
+          "import": "_ZN7android4base10LogMessage6streamEv"
+        },
+        {
+          "address": 631884,
+          "target": 168460,
+          "import": null
+        },
+        {
+          "address": 631900,
+          "target": 168460,
+          "import": null
+        },
+        {
+          "address": 631908,
+          "target": 892120,
+          "import": "_ZN7android4base10LogMessageD1Ev"
+        },
+        {
+          "address": 631912,
+          "target": 631576,
+          "import": null
+        },
+        {
+          "address": 631916,
+          "target": 892792,
+          "import": "__stack_chk_fail"
+        }
+      ],
+      "checkpoints": [
+        {
+          "address": 631568,
+          "mnemonic": "ldrb",
+          "operands": "w8, [x0, #0xc4]"
+        },
+        {
+          "address": 631676,
+          "mnemonic": "strb",
+          "operands": "wzr, [x19, #0xc4]"
+        }
+      ]
+    },
+    {
+      "role": "create_candidate",
+      "address": 625468,
+      "fde_size": 344,
+      "instruction_sha256": "11689663fef63c09548aaa5448c5ee5b275746ebaf23ccd09e81baf8bf0fc53d",
+      "direct_calls": [
+        {
+          "address": 625524,
+          "target": 584404,
+          "import": null
+        },
+        {
+          "address": 625556,
+          "target": 898144,
+          "import": "_ZNK7android7RefBase9incStrongEPKv"
+        },
+        {
+          "address": 625600,
+          "target": 894520,
+          "import": "_ZN7android7String8D1Ev"
+        },
+        {
+          "address": 625620,
+          "target": 625812,
+          "import": null
+        },
+        {
+          "address": 625648,
+          "target": 894616,
+          "import": "_ZNK7android7RefBase9decStrongEPKv"
+        },
+        {
+          "address": 625700,
+          "target": 626184,
+          "import": null
+        },
+        {
+          "address": 625708,
+          "target": 628416,
+          "import": null
+        },
+        {
+          "address": 625720,
+          "target": 625652,
+          "import": null
+        },
+        {
+          "address": 625752,
+          "target": 891952,
+          "import": "_ZN7android4base10LogMessageC1EPKcjNS0_11LogSeverityES3_i"
+        },
+        {
+          "address": 625760,
+          "target": 891976,
+          "import": "_ZN7android4base10LogMessage6streamEv"
+        },
+        {
+          "address": 625776,
+          "target": 168460,
+          "import": null
+        },
+        {
+          "address": 625792,
+          "target": 168460,
+          "import": null
+        },
+        {
+          "address": 625800,
+          "target": 892120,
+          "import": "_ZN7android4base10LogMessageD1Ev"
+        },
+        {
+          "address": 625804,
+          "target": 625516,
+          "import": null
+        },
+        {
+          "address": 625808,
+          "target": 892792,
+          "import": "__stack_chk_fail"
+        }
+      ],
+      "checkpoints": [
+        {
+          "address": 625508,
+          "mnemonic": "ldrb",
+          "operands": "w8, [x0, #0xc4]"
+        },
+        {
+          "address": 625520,
+          "mnemonic": "strb",
+          "operands": "w8, [x19, #0xc4]"
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Known-binary static review, not a general function-name recovery tool.",
+    "create/destroy names are source-correlated candidates, not recovered ELF symbols.",
+    "C++ vtable evidence does not prove complete native Binder transaction dispatch.",
+    "No native routine, device, storage or power operation executed; no full disassembly published."
+  ]
+}

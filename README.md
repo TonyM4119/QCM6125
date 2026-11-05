@@ -25,6 +25,7 @@ The key result: car functionality depends on HCT modifications inside the Java f
 - [Working-reference startup, task, key, touch and permission hooks](docs/platform-hooks.md)
 - [Working HCT manager APK, signing relationship and startup chain](docs/manager-service.md)
 - [Sleep/storage sequence and incompatible HCT vold transaction numbering](docs/sleep-storage-contract.md)
+- [Native external-reset evidence and isolated experimental reconstruction](docs/native-external-reset.md)
 - [RDS byte arrays and background station results](docs/radio-payloads.md)
 - [Working-kernel driver bindings, limits and virtual event framing](docs/working-kernel.md)
 - [HCT board/display/touch declarations in compiled device trees](docs/device-tree-findings.md)
