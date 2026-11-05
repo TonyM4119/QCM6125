@@ -26,6 +26,12 @@ Sources inspected:
 - [Hardware compatibility matrix build definitions](https://github.com/aosp-mirror-neo/platform_hardware_interfaces/blob/0162af698935100a590b7359581ac8b1b80693e5/compatibility_matrices/Android.bp)
 - [BPF loader](https://github.com/aosp-mirror-neo/platform_system_bpf/blob/d68a263039127dc709114802395e57537a02babf/loader/Loader.cpp)
 
+## Official framework source access
+
+At the next framework-integration checkpoint, the managed environment's enforced restricted HTTP policy did not include android.googlesource.com. The selected GitHub framework mirrors still did not expose the requested Android 17 revision. A configuration draft was saved to add only android.googlesource.com to the custom host list while preserving the three Dropbox hosts and existing package-manager preset. The save did not apply the policy; the environment workflow requires user review and publication.
+
+That access is intended for small, pinned official source reads to establish a matching framework baseline. It does not authorize a disk-filling full source sync, resolve the build-storage limit or prove that the requested source tag is available upstream. Once access is active, the actual official revisions and file contents must be checked before preparing framework patches.
+
 ## Vendor/kernel compatibility gate
 
 Both available firmware archives declare vendor FCM target level 5 and kernel target level 5, alongside an Android 11 vendor base and Linux 4.14.190. The current January 2025 installation's vendor manifest is unavailable, so its level must not be assumed from the photos.

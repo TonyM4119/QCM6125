@@ -69,6 +69,7 @@ test: all
 	python3 scripts/check_vold_bindings_test.py
 	python3 scripts/experiment_vold_extension_test.py
 	python3 scripts/prepare_vold_native_patch_test.py
+	python3 scripts/check_port_artifacts.py
 
 AIDL ?= aidl
 test-binder:

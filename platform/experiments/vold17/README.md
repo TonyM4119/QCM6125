@@ -33,6 +33,8 @@ Apply append-exreset.patch and native-exreset.patch together in a separate sourc
 
 scripts/prepare_vold_native_patch.py verifies the five pinned native reference files, stages the proposed changes outside that input tree, emits the patch and extracts the actual new method into an ignored host-test include. It compiles that method with fake Disk/VolumeManager scaffolding using native/vold_method_host_test.cpp and runs only that host harness. The real Android translation units, Binder wrapper and daemon are not compiled or executed. [The native-patch report](../../../evidence/vold17-native-patch.json) records inputs, outputs, patch/body/harness hashes and the host result.
 
+The default make test also runs scripts/check_port_artifacts.py without needing firmware or a platform checkout. It checks tracked patch hashes, the native method additions against the recorded tested-body hash, the harness fingerprint and the source/report links for the storage transaction comparisons. This catches stale or mismatched review artifacts; it does not repeat code generation or independently establish runtime compatibility.
+
 See [the native source-port review](../../../docs/vold17-native-port.md) for the implementation boundary and remaining framework work.
 
 Remaining work includes Android compilation and review of permission/locking/error semantics, framework sleep/storage routing, all affected consumers, complete source/build availability and runtime validation under separately authorized device testing. No firmware, storage, power or flashing command is included in this experiment.
