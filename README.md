@@ -27,6 +27,7 @@ The key result: car functionality depends on HCT modifications inside the Java f
 - [Sleep/storage sequence and incompatible HCT vold transaction numbering](docs/sleep-storage-contract.md)
 - [Native external-reset evidence and isolated experimental reconstruction](docs/native-external-reset.md)
 - [Native vold dispatch and selected Java/native transaction agreement](docs/native-vold-dispatch.md)
+- [Android 17 storage-interface experiment preserving standard transaction IDs](platform/experiments/vold17/README.md)
 - [RDS byte arrays and background station results](docs/radio-payloads.md)
 - [Working-kernel driver bindings, limits and virtual event framing](docs/working-kernel.md)
 - [HCT board/display/touch declarations in compiled device trees](docs/device-tree-findings.md)

@@ -1,0 +1,34 @@
+{
+  "check_kind": "Isolated Java/C++ AIDL generation and transaction preservation experiment",
+  "source_revision": "6d20a0078c2bcaa2499dc5d032f337bfe1182d9e",
+  "source_tag": "android-17.0.0_r1",
+  "source_files": {
+    "IVold.aidl": "8e81eac438a1b468c7bccf1d3cd49b0a824ea454b87544475bf1bd4da5fcf1f6",
+    "IVoldListener.aidl": "0e5410fd8f0dae3f5dcfaa480e9c775937266d0149976af763e264e0c4c43e85",
+    "IVoldMountCallback.aidl": "0eb6fe4e00132338c5b65e67c32f00dab8a76974324f5bd0981dbe7f13ab74d9",
+    "IVoldTaskListener.aidl": "38329ac1b6e51232213cd5713952f11a600004cd21a5bf68a20f9a64a5842cb5"
+  },
+  "compiler_label": "Debian aidl 14.0.0+r75-1; min SDK 33; compiler-only Parcelable forwards",
+  "compiler_sha256": "2c30c0ad97185cdf9e224d820a74f6a1a8123864b2e330feb3b072c38b7c30b9",
+  "compiler_forward_declarations_sha256": "49d7e06366613bf9b34c2c6a238b37782621ad14a3bcce3091d251269805e551",
+  "extended_aidl_sha256": "4eab5e4c49b852b033a4ec9377f44f0ca8100e103980d4bd310d8e17323860cb",
+  "patch_sha256": "58edc06fbd8c1fb4a76b5dfd00b7081a47f0662b02b564465227bf35c296c957",
+  "generated_file_sha256": {
+    "baseline_java": "98a6604048b6fe1b51516160b5736d311d6621bf0bdecbfa473b48083c74bda8",
+    "baseline_cpp": "634441a4e6924a8b6a05e87a9e5f8e6f8a52a8b83077a72c5ea3899babcf509e",
+    "extended_java": "e407e3e79602fb422d497a957022919de442bdb6d599d1e5a5ff20401b569a44",
+    "extended_cpp": "3ec33fa3531bb8fba323c8342e47673fac369a4e96e563d724a1e255cf8cf074"
+  },
+  "upstream_method_count": 84,
+  "extended_method_count": 85,
+  "preserved_upstream_transaction_count": 84,
+  "extension_code": 85,
+  "java_cpp_codes_match": true,
+  "limits": [
+    "Code generation only using the named local compiler; no Android 17 platform compilation.",
+    "Compiler-only Parcelable forwards are not runtime implementations.",
+    "No native service implementation, framework routing or complete Parcel compatibility check.",
+    "Extended code 85 differs from old HCT code 4; all affected clients/servers must be rebuilt consistently.",
+    "Input source files unchanged; no device, Binder, storage or flashing operation."
+  ]
+}

@@ -18,6 +18,8 @@ Observed peeled revisions:
 
 The manifest's default revision is refs/tags/android-17.0.0_r1. Its listed projects include packages/modules/Connectivity. The inspected Connectivity mirror did not advertise Android 16/17 tags, and cloning its Android 17 tag failed. Some guessed raw source URLs also returned 404. These observations limit this mirror route; they do not prove that upstream source is unavailable. A coherent checkout must resolve all manifest revisions before a target build is claimed.
 
+Follow-up: the vold mirror does provide the Android 17 tag, peeled revision `6d20a0078c2bcaa2499dc5d032f337bfe1182d9e`. Four pinned Binder-interface files were fetched and used in an [isolated Java/C++ code-generation experiment](../platform/experiments/vold17/README.md). Its appended reset method preserves all 84 standard transaction IDs. This is progress within one source project, not resolution of the complete manifest. The inspected frameworks/base SystemServer path still returned 404 at the Android 17 tag; no platform build is claimed.
+
 Sources inspected:
 
 - [Release manifest](https://github.com/aosp-mirror-neo/platform_manifest/blob/5bc9a7ce1cd78dd53613bbfd0ebf506e1e4adb0f/default.xml)

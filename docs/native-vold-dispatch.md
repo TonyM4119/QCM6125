@@ -39,4 +39,6 @@ The earlier mismatch with generated upstream Android 13 is now supported by sele
 
 The historical HCT numbers need not be imposed on every newly generated upstream interface if the relevant native and Java clients are rebuilt together. The remaining design task is to choose a target-source integration that implements the operation while keeping that pair consistent. This report does not provide an Android 17 interface, a complete native ABI audit or a bootable image.
 
+A subsequent [Android 17 interface-only experiment](../platform/experiments/vold17/README.md) appends exreset without renumbering any of 84 standard methods. It supplies a reviewable interface patch and generation checks, but no native service implementation or platform image.
+
 No Binder, mount/unmount, sleep, power or flashing operation was performed.

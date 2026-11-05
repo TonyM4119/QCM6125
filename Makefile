@@ -67,6 +67,7 @@ test: all
 	$(BUILD_DIR)/external_disk_reset_test
 	python3 scripts/android_packed_relocations_test.py
 	python3 scripts/check_vold_bindings_test.py
+	python3 scripts/experiment_vold_extension_test.py
 
 AIDL ?= aidl
 test-binder:
