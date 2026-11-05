@@ -8,6 +8,8 @@ The stripped executable has no recovered exreset-named symbol. It does retain an
 
 This connects the native trace wrapper to a concrete vtable entry. It still does not prove every BnVold transaction case, Parcel argument or return layout. [The native evidence report](../evidence/working-vold-native.json) records the pointers, unwind bounds and selected instruction checkpoints.
 
+The [native dispatch follow-up](native-vold-dispatch.md) now resolves the 78-entry native switch and traces six selected cases. Five trace-labelled functions agree with both working Java transaction tables, including exreset at code 4. Complete native dispatch and construction/runtime review remain outside that check.
+
 The wrapper calls a UID-checking helper with 1000. That helper reads IPCThreadState.getCallingUid and permits the requested UID or zero, otherwise constructing a Binder exception status. The normal wrapper acquires a mutex, calls the lower routine at 0x93238 and translates its status. Imported mutex, Binder-status and tracing functions were resolved through validated PLT/GOT relocations. This binary's PLT entries are 24 bytes; assuming a 16-byte stride would assign incorrect symbol names.
 
 ## Lower reset loop

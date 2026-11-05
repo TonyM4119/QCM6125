@@ -1,0 +1,65 @@
+{
+  "labelled_case_count": 5,
+  "java_table_count": 2,
+  "matches": [
+    {
+      "source_file": "services.jar",
+      "method": "setListener",
+      "code": 1
+    },
+    {
+      "source_file": "services.jar",
+      "method": "monitor",
+      "code": 3
+    },
+    {
+      "source_file": "services.jar",
+      "method": "exreset",
+      "code": 4
+    },
+    {
+      "source_file": "services.jar",
+      "method": "reset",
+      "code": 5
+    },
+    {
+      "source_file": "services.jar",
+      "method": "shutdown",
+      "code": 6
+    },
+    {
+      "source_file": "framework.jar",
+      "method": "setListener",
+      "code": 1
+    },
+    {
+      "source_file": "framework.jar",
+      "method": "monitor",
+      "code": 3
+    },
+    {
+      "source_file": "framework.jar",
+      "method": "exreset",
+      "code": 4
+    },
+    {
+      "source_file": "framework.jar",
+      "method": "reset",
+      "code": 5
+    },
+    {
+      "source_file": "framework.jar",
+      "method": "shutdown",
+      "code": 6
+    }
+  ],
+  "unlabelled_reviewed_codes": [
+    2
+  ],
+  "limits": [
+    "Only reviewed trace-labelled cases compared; other transaction meanings remain unverified.",
+    "No complete Parcel, object-construction, runtime or Android 17 compatibility proof."
+  ],
+  "reference_sha256": "16550ed00611f974ad2bf17057e0d53abc6eeefe9b61780237fd372f9a83835c",
+  "native_report_sha256": "4e11d5de63757a11986e72705aeafa5431516237a55c4600fa7fa246ebaf1802"
+}

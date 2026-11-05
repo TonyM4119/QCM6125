@@ -110,9 +110,80 @@ def profile(path):
                     checkpoints.append({'address': ins.address, 'mnemonic': ins.mnemonic, 'operands': ins.op_str})
             facts.append({'role': role, 'address': address, 'fde_size': ranges[address],
                           'instruction_sha256': code_hash, 'direct_calls': calls, 'checkpoints': checkpoints})
+        dispatch, dispatch_hash = function(0xd3268)
+        by_address = {ins.address: ins for ins in dispatch}
+        expected_switch = {
+            0xd3298: ('sub', 'w8, w1, #1'),
+            0xd329c: ('cmp', 'w8, #0x4d'),
+            0xd32a8: ('adrp', 'x9, #0x1a000'),
+            0xd32ac: ('add', 'x9, x9, #0x53c'),
+            0xd32b0: ('adr', 'x10, #0xd32c0'),
+            0xd32b4: ('ldrh', 'w11, [x9, x8, lsl #1]'),
+            0xd32b8: ('add', 'x10, x10, x11, lsl #2'),
+            0xd32bc: ('br', 'x10'),
+        }
+        for address, expected in expected_switch.items():
+            ins = by_address[address]
+            if (ins.mnemonic, ins.op_str) != expected:
+                raise ValueError('Reviewed dispatch switch changed')
+        rodata = elf.get_section_by_name('.rodata')
+        table = struct.unpack_from('<78H', rodata.data(), 0x1a53c - rodata['sh_addr'])
+        targets = [0xd32c0 + entry * 4 for entry in table]
+        if any(target not in by_address or by_address[target].mnemonic != 'bti' for target in targets):
+            raise ValueError('Jump target does not identify a reviewed dispatch block')
+        cases = []
+        address_point = None
+        for code in range(1, 7):
+            start = targets[code - 1]
+            block, at = [], start
+            for _ in range(64):
+                ins = by_address[at]
+                block.append(ins)
+                if ins.mnemonic == 'b':
+                    break
+                at += ins.size
+            else:
+                raise ValueError('Reviewed case did not reach its shared tail')
+            loads = [ins for ins in block if ins.mnemonic == 'ldr' and ins.op_str.startswith('x9, [x8, #')]
+            if len(loads) != 1:
+                raise ValueError('Ambiguous reviewed vtable load')
+            slot_offset = loads[0].operands[1].mem.disp
+            if code == 1:
+                address_point = slots[0]['slot_address'] - slot_offset
+            slot_address = address_point + slot_offset
+            if slot_address not in relative_offsets:
+                raise ValueError('Dispatch slot lacks relative relocation')
+            target = struct.unpack_from('<Q', data.data(), slot_address - data['sh_addr'])[0]
+            target_instructions, _ = function(target)
+            imported_calls = [imports[ins.operands[0].imm] for ins in block
+                              if ins.mnemonic == 'bl' and ins.operands[0].imm in imports]
+            cases.append({'code': code, 'case_address': start, 'vtable_slot_offset': slot_offset,
+                          'slot_address': slot_address, 'target': target,
+                          'trace_labels': trace_labels(target_instructions),
+                          'imported_calls_before_shared_tail': imported_calls,
+                          'shared_tail_address': block[-1].operands[0].imm})
+        if cases[3]['trace_labels'] != ['exreset'] or cases[4]['trace_labels'] != ['reset']:
+            raise ValueError('Native dispatch does not match the reviewed anchors')
+        tail = [by_address[address] for address in range(0xd56c0, 0xd56ec, 4)]
+        if by_address[0xd56cc].mnemonic != 'blr' or by_address[0xd56cc].op_str != 'x9':
+            raise ValueError('Shared virtual invocation changed')
+        write_status = by_address[0xd56d8]
+        if write_status.mnemonic != 'bl' or imports.get(write_status.operands[0].imm) != '_ZNK7android6binder6Status13writeToParcelEPNS_6ParcelE':
+            raise ValueError('Shared status reply path changed')
+        dispatch_evidence = {
+            'function_address': 0xd3268, 'fde_size': ranges[0xd3268],
+            'instruction_sha256': dispatch_hash, 'jump_table_address': 0x1a53c,
+            'relative_target_base': 0xd32c0, 'entry_count': len(targets),
+            'all_targets_are_in_function_bti_entries': True,
+            'inferred_primary_address_point': address_point, 'reviewed_cases': cases,
+            'case4_shared_tail': [{'address': ins.address, 'mnemonic': ins.mnemonic,
+                                   'operands': ins.op_str,
+                                   'import': imports.get(ins.operands[0].imm) if ins.mnemonic == 'bl' else None}
+                                  for ins in tail],
+            'limit': 'Six cases statically traced; address point inferred from the setListener anchor. Object construction and other cases not fully reviewed.'}
     return {'sha256': digest, 'plt_stride': stride, 'validated_plt_entries': len(imports),
             'aps2_relocation_count': len(packed), 'relr_relocation_count': len(relative_offsets),
-            'reviewed_vtable_slots': slots, 'functions': facts,
+            'reviewed_vtable_slots': slots, 'functions': facts, 'native_dispatch': dispatch_evidence,
             'limits': ['Known-binary static review, not a general function-name recovery tool.',
                        'create/destroy names are source-correlated candidates, not recovered ELF symbols.',
                        'C++ vtable evidence does not prove complete native Binder transaction dispatch.',

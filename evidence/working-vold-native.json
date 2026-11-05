@@ -495,6 +495,172 @@
       ]
     }
   ],
+  "native_dispatch": {
+    "function_address": 864872,
+    "fde_size": 11592,
+    "instruction_sha256": "56ca042981b245b24dfb13c33aba12837901c595f73f74052794dac2a366a3b4",
+    "jump_table_address": 107836,
+    "relative_target_base": 864960,
+    "entry_count": 78,
+    "all_targets_are_in_function_bti_entries": true,
+    "inferred_primary_address_point": 907248,
+    "reviewed_cases": [
+      {
+        "code": 1,
+        "case_address": 864960,
+        "vtable_slot_offset": 32,
+        "slot_address": 907280,
+        "target": 356108,
+        "trace_labels": [
+          "setListener"
+        ],
+        "imported_calls_before_shared_tail": [
+          "_ZNK7android6Parcel14checkInterfaceEPNS_7IBinderE",
+          "_ZNK7android6Parcel18enforceNoDataAvailEv",
+          "_ZN7android7String8D1Ev"
+        ],
+        "shared_tail_address": 870124
+      },
+      {
+        "code": 2,
+        "case_address": 867776,
+        "vtable_slot_offset": 40,
+        "slot_address": 907288,
+        "target": 357220,
+        "trace_labels": [],
+        "imported_calls_before_shared_tail": [
+          "_ZNK7android6Parcel14checkInterfaceEPNS_7IBinderE"
+        ],
+        "shared_tail_address": 874176
+      },
+      {
+        "code": 3,
+        "case_address": 867816,
+        "vtable_slot_offset": 48,
+        "slot_address": 907296,
+        "target": 356468,
+        "trace_labels": [
+          "monitor",
+          "monitor"
+        ],
+        "imported_calls_before_shared_tail": [
+          "_ZNK7android6Parcel14checkInterfaceEPNS_7IBinderE"
+        ],
+        "shared_tail_address": 874176
+      },
+      {
+        "code": 4,
+        "case_address": 867856,
+        "vtable_slot_offset": 56,
+        "slot_address": 907304,
+        "target": 356688,
+        "trace_labels": [
+          "exreset"
+        ],
+        "imported_calls_before_shared_tail": [
+          "_ZNK7android6Parcel14checkInterfaceEPNS_7IBinderE"
+        ],
+        "shared_tail_address": 874176
+      },
+      {
+        "code": 5,
+        "case_address": 867896,
+        "vtable_slot_offset": 64,
+        "slot_address": 907312,
+        "target": 356876,
+        "trace_labels": [
+          "reset"
+        ],
+        "imported_calls_before_shared_tail": [
+          "_ZNK7android6Parcel14checkInterfaceEPNS_7IBinderE"
+        ],
+        "shared_tail_address": 874176
+      },
+      {
+        "code": 6,
+        "case_address": 867936,
+        "vtable_slot_offset": 72,
+        "slot_address": 907320,
+        "target": 357048,
+        "trace_labels": [
+          "shutdown"
+        ],
+        "imported_calls_before_shared_tail": [
+          "_ZNK7android6Parcel14checkInterfaceEPNS_7IBinderE"
+        ],
+        "shared_tail_address": 874176
+      }
+    ],
+    "case4_shared_tail": [
+      {
+        "address": 874176,
+        "mnemonic": "sub",
+        "operands": "x8, x29, #0x60",
+        "import": null
+      },
+      {
+        "address": 874180,
+        "mnemonic": "mov",
+        "operands": "x0, x20",
+        "import": null
+      },
+      {
+        "address": 874184,
+        "mnemonic": "stp",
+        "operands": "xzr, xzr, [x29, #-0x60]",
+        "import": null
+      },
+      {
+        "address": 874188,
+        "mnemonic": "blr",
+        "operands": "x9",
+        "import": null
+      },
+      {
+        "address": 874192,
+        "mnemonic": "sub",
+        "operands": "x0, x29, #0x60",
+        "import": null
+      },
+      {
+        "address": 874196,
+        "mnemonic": "mov",
+        "operands": "x1, x19",
+        "import": null
+      },
+      {
+        "address": 874200,
+        "mnemonic": "bl",
+        "operands": "#0xdc258",
+        "import": "_ZNK7android6binder6Status13writeToParcelEPNS_6ParcelE"
+      },
+      {
+        "address": 874204,
+        "mnemonic": "mov",
+        "operands": "w22, w0",
+        "import": null
+      },
+      {
+        "address": 874208,
+        "mnemonic": "mov",
+        "operands": "x0, x21",
+        "import": null
+      },
+      {
+        "address": 874212,
+        "mnemonic": "bl",
+        "operands": "#0xda638",
+        "import": "_ZN7android7String8D1Ev"
+      },
+      {
+        "address": 874216,
+        "mnemonic": "b",
+        "operands": "#0xd5b34",
+        "import": null
+      }
+    ],
+    "limit": "Six cases statically traced; address point inferred from the setListener anchor. Object construction and other cases not fully reviewed."
+  },
   "limits": [
     "Known-binary static review, not a general function-name recovery tool.",
     "create/destroy names are source-correlated candidates, not recovered ELF symbols.",
