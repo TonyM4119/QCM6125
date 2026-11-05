@@ -4,7 +4,8 @@ BUILD_DIR ?= work/tests
 TESTS := $(BUILD_DIR)/transport_test $(BUILD_DIR)/car_parameter_policy_test \
          $(BUILD_DIR)/event_stream_test $(BUILD_DIR)/event_mapping_test \
          $(BUILD_DIR)/offline_service_core_test $(BUILD_DIR)/state_contract_test \
-         $(BUILD_DIR)/callback_policy_test
+         $(BUILD_DIR)/callback_policy_test $(BUILD_DIR)/control_policy_test \
+         $(BUILD_DIR)/deferred_controls_test
 
 .PHONY: all test test-binder test-device-tree
 all: $(TESTS)
@@ -36,6 +37,12 @@ $(BUILD_DIR)/state_contract_test: $(CORE_SOURCES) $(CORE_HEADERS) native/state_c
 $(BUILD_DIR)/callback_policy_test: $(CORE_SOURCES) $(CORE_HEADERS) native/callback_policy.cpp native/callback_policy.hpp native/callback_policy_test.cpp | $(BUILD_DIR)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -pthread $(CORE_SOURCES) native/callback_policy.cpp native/callback_policy_test.cpp $(LDFLAGS) -o $@
 
+$(BUILD_DIR)/control_policy_test: native/control_policy.cpp native/control_policy.hpp native/event_mapping.hpp native/event_stream.hpp native/control_policy_test.cpp | $(BUILD_DIR)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) native/control_policy.cpp native/control_policy_test.cpp $(LDFLAGS) -o $@
+
+$(BUILD_DIR)/deferred_controls_test: native/deferred_controls.cpp native/deferred_controls.hpp native/control_policy.cpp native/control_policy.hpp native/event_mapping.hpp native/event_stream.hpp native/deferred_controls_test.cpp | $(BUILD_DIR)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) native/control_policy.cpp native/deferred_controls.cpp native/deferred_controls_test.cpp $(LDFLAGS) -o $@
+
 test: all
 	$(BUILD_DIR)/transport_test
 	$(BUILD_DIR)/car_parameter_policy_test
@@ -44,6 +51,8 @@ test: all
 	$(BUILD_DIR)/offline_service_core_test
 	$(BUILD_DIR)/state_contract_test
 	$(BUILD_DIR)/callback_policy_test
+	$(BUILD_DIR)/control_policy_test
+	$(BUILD_DIR)/deferred_controls_test
 
 AIDL ?= aidl
 test-binder:

@@ -1,0 +1,734 @@
+{
+  "sha256": "b3c0f55f7e5830d7213576ee3dad3c910422820b3dbf94c5527cad97120ae6fe",
+  "methods": [
+    {
+      "class": "Lcom/android/server/microntek/CarService$1;",
+      "method": "handleMessage",
+      "descriptor": "(Landroid/os/Message;)V",
+      "instruction_sha256": "f3eca282d1bbd58bb012bb28ff1e48fc068e3461a06efb004703d9dbadf1ec1c",
+      "calls": [
+        {
+          "offset": 0,
+          "reference": "Landroid/os/Handler;->handleMessage(Landroid/os/Message;)V"
+        },
+        {
+          "offset": 22,
+          "reference": "Lcom/android/server/microntek/CarService;->-$$Nest$fgetmLock(Lcom/android/server/microntek/CarService;)Ljava/lang/Object;"
+        },
+        {
+          "offset": 44,
+          "reference": "Ljava/lang/Boolean;->booleanValue()Z"
+        },
+        {
+          "offset": 52,
+          "reference": "Lcom/android/server/microntek/CarService;->-$$Nest$fputisVideoOverSpeed(Lcom/android/server/microntek/CarService; Z)V"
+        },
+        {
+          "offset": 62,
+          "reference": "Landroid/os/Bundle;-><init>()V"
+        },
+        {
+          "offset": 80,
+          "reference": "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 102,
+          "reference": "Lcom/android/server/microntek/CarService;->getBooleanState(Ljava/lang/String;)Z"
+        },
+        {
+          "offset": 110,
+          "reference": "Landroid/os/Bundle;->putBoolean(Ljava/lang/String; Z)V"
+        },
+        {
+          "offset": 124,
+          "reference": "Lcom/android/server/microntek/CarService;->-$$Nest$mdispatchCallback(Lcom/android/server/microntek/CarService; Ljava/lang/String; Landroid/os/Bundle;)V"
+        },
+        {
+          "offset": 154,
+          "reference": "Lcom/android/server/microntek/CarService;->-$$Nest$msetLUD(Lcom/android/server/microntek/CarService; I)V"
+        },
+        {
+          "offset": 170,
+          "reference": "Lcom/android/server/microntek/CarService;->-$$Nest$msetEQ(Lcom/android/server/microntek/CarService; I)V"
+        }
+      ],
+      "reviewed_constants": [
+        {
+          "offset": 68,
+          "value": "type"
+        },
+        {
+          "offset": 74,
+          "value": "handbrake"
+        },
+        {
+          "offset": 86,
+          "value": "value"
+        },
+        {
+          "offset": 96,
+          "value": "handbrake"
+        },
+        {
+          "offset": 120,
+          "value": "CarEvent"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/microntek/CarService;",
+      "method": "getEqIdx",
+      "descriptor": "()I",
+      "instruction_sha256": "b372e178340913da0890512b2500c2d480a3a0b3907e50e127c4ee7a7ac547db",
+      "calls": [
+        {
+          "offset": 10,
+          "reference": "Lcom/android/server/microntek/CarService;->isKGLCustomerSub()Z"
+        },
+        {
+          "offset": 28,
+          "reference": "Lcom/android/server/microntek/CarService;->getInt(Ljava/lang/String; I)I"
+        }
+      ],
+      "reviewed_constants": [
+        {
+          "offset": 6,
+          "value": "KeyEQmode"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/microntek/CarService;",
+      "method": "getInt",
+      "descriptor": "(Ljava/lang/String; I)I",
+      "instruction_sha256": "645ec9f50a3c577140d72c308f47fda0b98c0efcd6bce9d8408159edfd945c00",
+      "calls": [
+        {
+          "offset": 6,
+          "reference": "Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;"
+        },
+        {
+          "offset": 14,
+          "reference": "Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver; Ljava/lang/String; I)I"
+        },
+        {
+          "offset": 28,
+          "reference": "Ljava/lang/Exception;->printStackTrace()V"
+        }
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "class": "Lcom/android/server/microntek/CarService;",
+      "method": "getLud",
+      "descriptor": "()I",
+      "instruction_sha256": "6626b2793460bee4ec67d8109ba793736d9d1038b70f176863d02dac4527b812",
+      "calls": [
+        {
+          "offset": 22,
+          "reference": "Landroid/os/SystemProperties;->get(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 34,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 52,
+          "reference": "Lcom/android/server/microntek/CarService;->getInt(Ljava/lang/String; I)I"
+        }
+      ],
+      "reviewed_constants": [
+        {
+          "offset": 6,
+          "value": "key_Lud"
+        },
+        {
+          "offset": 12,
+          "value": "ro.product.customer.sub"
+        },
+        {
+          "offset": 18,
+          "value": "HCT"
+        },
+        {
+          "offset": 30,
+          "value": "KGLMMR"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/microntek/CarService;",
+      "method": "getParameters",
+      "descriptor": "(Ljava/lang/String;)Ljava/lang/String;",
+      "instruction_sha256": "10ec48a5ddf2f7675edcd3f77e45e0d12549c1d8774449fc21f3cb4e192b3001",
+      "calls": [
+        {
+          "offset": 6,
+          "reference": "Lcom/android/server/microntek/CarService;->native_getParameters(Ljava/lang/String;)Ljava/lang/String;"
+        }
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "class": "Lcom/android/server/microntek/CarService;",
+      "method": "getVideoEnable",
+      "descriptor": "()Z",
+      "instruction_sha256": "96ee19de16b65fcab98bb42b4d423a2422ec8b1bc625082c69b5aa3ff4fd9c3a",
+      "calls": [
+        {
+          "offset": 12,
+          "reference": "Lcom/android/server/microntek/CarService;->getInt(Ljava/lang/String; I)I"
+        },
+        {
+          "offset": 24,
+          "reference": "Lcom/android/server/microntek/CarService;->getInt(Ljava/lang/String; I)I"
+        },
+        {
+          "offset": 38,
+          "reference": "Lcom/android/server/microntek/CarService;->getBooleanState(Ljava/lang/String;)Z"
+        }
+      ],
+      "reviewed_constants": [
+        {
+          "offset": 6,
+          "value": "DrivingVideoEN"
+        },
+        {
+          "offset": 20,
+          "value": "DrivingVideoOverSpeed"
+        },
+        {
+          "offset": 32,
+          "value": "handbrake"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/microntek/CarService;",
+      "method": "isKGLCustomerSub",
+      "descriptor": "()Z",
+      "instruction_sha256": "8e4677a9209d91a2c47adc54972d48f26d1c94483378caf01d866bbec620b228",
+      "calls": [
+        {
+          "offset": 10,
+          "reference": "Landroid/os/SystemProperties;->get(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 22,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 34,
+          "reference": "Landroid/os/SystemProperties;->get(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 46,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        }
+      ],
+      "reviewed_constants": [
+        {
+          "offset": 0,
+          "value": "ro.product.customer.sub"
+        },
+        {
+          "offset": 6,
+          "value": "HCT"
+        },
+        {
+          "offset": 18,
+          "value": "KGLMMR"
+        },
+        {
+          "offset": 42,
+          "value": "KGL1"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/microntek/CarService;",
+      "method": "putInt",
+      "descriptor": "(Ljava/lang/String; I)V",
+      "instruction_sha256": "843f1f1047450468d17bd0f0394f5ef03143b427d1cb329443aafdc5d99c2941",
+      "calls": [
+        {
+          "offset": 4,
+          "reference": "Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;"
+        },
+        {
+          "offset": 12,
+          "reference": "Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver; Ljava/lang/String; I)Z"
+        },
+        {
+          "offset": 22,
+          "reference": "Ljava/lang/Exception;->printStackTrace()V"
+        }
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "class": "Lcom/android/server/microntek/CarService;",
+      "method": "setEQ",
+      "descriptor": "(I)V",
+      "instruction_sha256": "67ec944bec9042dcf70c34ef3d6a4229d015b5f3030b9aa91aaeb89bce7c8a1b",
+      "calls": [
+        {
+          "offset": 16,
+          "reference": "Lcom/android/server/microntek/CarService;->getInt(Ljava/lang/String; I)I"
+        },
+        {
+          "offset": 52,
+          "reference": "Lcom/android/server/microntek/CarService;->getString(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 68,
+          "reference": "Lcom/android/server/microntek/CarService;->getString(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 84,
+          "reference": "Lcom/android/server/microntek/CarService;->getString(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 100,
+          "reference": "Lcom/android/server/microntek/CarService;->getString(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 116,
+          "reference": "Lcom/android/server/microntek/CarService;->getString(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 132,
+          "reference": "Lcom/android/server/microntek/CarService;->getString(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 148,
+          "reference": "Lcom/android/server/microntek/CarService;->getString(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 196,
+          "reference": "Lcom/android/server/microntek/CarService;->getDefEq9modeString()Ljava/lang/String;"
+        },
+        {
+          "offset": 216,
+          "reference": "Ljava/lang/StringBuffer;-><init>()V"
+        },
+        {
+          "offset": 224,
+          "reference": "Ljava/lang/StringBuffer;->append(I)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 234,
+          "reference": "Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 240,
+          "reference": "Ljava/lang/StringBuffer;->append(I)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 250,
+          "reference": "Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 256,
+          "reference": "Ljava/lang/StringBuffer;->append(I)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 262,
+          "reference": "Ljava/lang/StringBuffer;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 278,
+          "reference": "Ljava/lang/StringBuffer;-><init>()V"
+        },
+        {
+          "offset": 302,
+          "reference": "Ljava/lang/StringBuffer;->append(I)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 312,
+          "reference": "Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 334,
+          "reference": "Ljava/lang/StringBuffer;->append(I)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 344,
+          "reference": "Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 368,
+          "reference": "Ljava/lang/StringBuffer;->append(I)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 374,
+          "reference": "Ljava/lang/StringBuffer;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 388,
+          "reference": "Ljava/lang/StringBuilder;-><init>()V"
+        },
+        {
+          "offset": 398,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 406,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 414,
+          "reference": "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 422,
+          "reference": "Lcom/android/server/microntek/CarService;->native_setParameters(Ljava/lang/String;)I"
+        },
+        {
+          "offset": 444,
+          "reference": "Ljava/lang/StringBuffer;-><init>()V"
+        },
+        {
+          "offset": 462,
+          "reference": "Ljava/lang/StringBuffer;->append(I)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 482,
+          "reference": "Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 494,
+          "reference": "Ljava/lang/StringBuffer;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 510,
+          "reference": "Ljava/lang/StringBuffer;-><init>()V"
+        },
+        {
+          "offset": 548,
+          "reference": "Ljava/lang/StringBuffer;->append(I)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 572,
+          "reference": "Ljava/lang/StringBuffer;->append(I)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 592,
+          "reference": "Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 604,
+          "reference": "Ljava/lang/StringBuffer;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 618,
+          "reference": "Ljava/lang/StringBuilder;-><init>()V"
+        },
+        {
+          "offset": 628,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 636,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 644,
+          "reference": "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 652,
+          "reference": "Lcom/android/server/microntek/CarService;->native_setParameters(Ljava/lang/String;)I"
+        },
+        {
+          "offset": 662,
+          "reference": "Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;"
+        },
+        {
+          "offset": 674,
+          "reference": "Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver; Ljava/lang/String; I)Z"
+        },
+        {
+          "offset": 684,
+          "reference": "Landroid/os/Bundle;-><init>()V"
+        },
+        {
+          "offset": 700,
+          "reference": "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 712,
+          "reference": "Landroid/os/Bundle;->putInt(Ljava/lang/String; I)V"
+        },
+        {
+          "offset": 722,
+          "reference": "Lcom/android/server/microntek/CarService;->dispatchCallback(Ljava/lang/String; Landroid/os/Bundle;)V"
+        }
+      ],
+      "reviewed_constants": [
+        {
+          "offset": 10,
+          "value": "KeyCTmode"
+        },
+        {
+          "offset": 48,
+          "value": "KeyCustom6EQ"
+        },
+        {
+          "offset": 64,
+          "value": "KeyCustom5EQ"
+        },
+        {
+          "offset": 80,
+          "value": "KeyCustom4EQ"
+        },
+        {
+          "offset": 96,
+          "value": "KeyCustom3EQ"
+        },
+        {
+          "offset": 112,
+          "value": "KeyCustom2EQ"
+        },
+        {
+          "offset": 128,
+          "value": "KeyCustom1EQ"
+        },
+        {
+          "offset": 144,
+          "value": "KeyCustomEQ"
+        },
+        {
+          "offset": 394,
+          "value": "av_eq="
+        },
+        {
+          "offset": 624,
+          "value": "av_dsp=0,"
+        },
+        {
+          "offset": 670,
+          "value": "KeyEQmode"
+        },
+        {
+          "offset": 690,
+          "value": "type"
+        },
+        {
+          "offset": 696,
+          "value": "EQ_MODE"
+        },
+        {
+          "offset": 706,
+          "value": "value"
+        },
+        {
+          "offset": 718,
+          "value": "CarData"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/microntek/CarService;",
+      "method": "setEqIdx",
+      "descriptor": "(I)V",
+      "instruction_sha256": "7641aa9b5a10ce3d6c652f947c3a452aaac4815cbde114337d9fe77a9fa0b11a",
+      "calls": [
+        {
+          "offset": 6,
+          "reference": "Landroid/os/Handler;->removeMessages(I)V"
+        },
+        {
+          "offset": 16,
+          "reference": "Landroid/os/Handler;->obtainMessage()Landroid/os/Message;"
+        },
+        {
+          "offset": 40,
+          "reference": "Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message; J)Z"
+        }
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "class": "Lcom/android/server/microntek/CarService;",
+      "method": "setLUD",
+      "descriptor": "(I)V",
+      "instruction_sha256": "b989550144a59fcd25fa4328a3f5358f304a4c53b18d77e79903ef533b2b33c5",
+      "calls": [
+        {
+          "offset": 24,
+          "reference": "Lcom/android/server/microntek/CarService;->native_setParameters(Ljava/lang/String;)I"
+        },
+        {
+          "offset": 36,
+          "reference": "Lcom/android/server/microntek/CarService;->native_setParameters(Ljava/lang/String;)I"
+        },
+        {
+          "offset": 48,
+          "reference": "Lcom/android/server/microntek/CarService;->getString(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 74,
+          "reference": "Ljava/lang/StringBuilder;-><init>()V"
+        },
+        {
+          "offset": 84,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 92,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 100,
+          "reference": "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 108,
+          "reference": "Lcom/android/server/microntek/CarService;->native_setParameters(Ljava/lang/String;)I"
+        },
+        {
+          "offset": 120,
+          "reference": "Ljava/lang/StringBuilder;-><init>()V"
+        },
+        {
+          "offset": 130,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 138,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 146,
+          "reference": "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 154,
+          "reference": "Lcom/android/server/microntek/CarService;->native_setParameters(Ljava/lang/String;)I"
+        },
+        {
+          "offset": 164,
+          "reference": "Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;"
+        },
+        {
+          "offset": 178,
+          "reference": "Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver; Ljava/lang/String; I)Z"
+        },
+        {
+          "offset": 188,
+          "reference": "Landroid/os/Bundle;-><init>()V"
+        },
+        {
+          "offset": 204,
+          "reference": "Landroid/os/Bundle;->putString(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 216,
+          "reference": "Landroid/os/Bundle;->putInt(Ljava/lang/String; I)V"
+        },
+        {
+          "offset": 226,
+          "reference": "Lcom/android/server/microntek/CarService;->dispatchCallback(Ljava/lang/String; Landroid/os/Bundle;)V"
+        }
+      ],
+      "reviewed_constants": [
+        {
+          "offset": 20,
+          "value": "av_lud=on"
+        },
+        {
+          "offset": 32,
+          "value": "av_lud=off"
+        },
+        {
+          "offset": 44,
+          "value": "KeyLudGain"
+        },
+        {
+          "offset": 60,
+          "value": "0,0"
+        },
+        {
+          "offset": 80,
+          "value": "av_dsp=1,1,"
+        },
+        {
+          "offset": 126,
+          "value": "av_dsp=1,0,"
+        },
+        {
+          "offset": 172,
+          "value": "key_Lud"
+        },
+        {
+          "offset": 194,
+          "value": "type"
+        },
+        {
+          "offset": 200,
+          "value": "LOUND_MODE"
+        },
+        {
+          "offset": 210,
+          "value": "value"
+        },
+        {
+          "offset": 222,
+          "value": "CarData"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/microntek/CarService;",
+      "method": "setLud",
+      "descriptor": "(Z)V",
+      "instruction_sha256": "6701abec9ea439cddbc29935aa33bf8ace32ab4eb9effadda6f7690ab3bd52a8",
+      "calls": [
+        {
+          "offset": 6,
+          "reference": "Landroid/os/Handler;->removeMessages(I)V"
+        },
+        {
+          "offset": 16,
+          "reference": "Landroid/os/Handler;->obtainMessage()Landroid/os/Message;"
+        },
+        {
+          "offset": 40,
+          "reference": "Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message; J)Z"
+        }
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "class": "Lcom/android/server/microntek/CarService;",
+      "method": "setVideoOverSpeed",
+      "descriptor": "(Z)V",
+      "instruction_sha256": "7b6fa9575bac236d71322a02fbdd2734eec591a8dc16d16b3a616ee6002cb9ef",
+      "calls": [
+        {
+          "offset": 6,
+          "reference": "Landroid/os/Handler;->removeMessages(I)V"
+        },
+        {
+          "offset": 16,
+          "reference": "Landroid/os/Handler;->obtainMessage()Landroid/os/Message;"
+        },
+        {
+          "offset": 28,
+          "reference": "Ljava/lang/Boolean;->valueOf(Z)Ljava/lang/Boolean;"
+        },
+        {
+          "offset": 48,
+          "reference": "Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message; J)Z"
+        }
+      ],
+      "reviewed_constants": []
+    }
+  ],
+  "limits": [
+    "Static metadata only; branch semantics require separate instruction review.",
+    "Offsets are bytes within each method, not file offsets.",
+    "No full bytecode or disassembly retained; originals are unchanged."
+  ]
+}
