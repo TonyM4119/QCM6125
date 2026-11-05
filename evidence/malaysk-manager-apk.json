@@ -1,0 +1,801 @@
+{
+  "sha256": "e08636a048ca813813e777d0910712577b960a88a3de2f2b8a207227059a4c29",
+  "package": "android.microntek.service",
+  "shared_user_id": "android.uid.system",
+  "min_sdk": "33",
+  "target_sdk": "33",
+  "permissions": [
+    "android.permission.ACCESS_CACHE_FILESYSTEM",
+    "android.permission.ACCESS_FINE_LOCATION",
+    "android.permission.ACCESS_LOCATION_EXTRA_COMMANDS",
+    "android.permission.ACCESS_NETWORK_STATE",
+    "android.permission.ACCESS_WIFI_STATE",
+    "android.permission.BLUETOOTH",
+    "android.permission.BROADCAST_STICKY",
+    "android.permission.CHANGE_CONFIGURATION",
+    "android.permission.CHANGE_NETWORK_STATE",
+    "android.permission.CHANGE_WIFI_MULTICAST_STATE",
+    "android.permission.CHANGE_WIFI_STATE",
+    "android.permission.DEVICE_POWER",
+    "android.permission.GET_TASKS",
+    "android.permission.INTERNET",
+    "android.permission.KILL_BACKGROUND_PROCESSES",
+    "android.permission.MANAGE_APP_OPS_MODES",
+    "android.permission.MANAGE_APP_OPS_RESTRICTIONS",
+    "android.permission.MANAGE_EXTERNAL_STORAGE",
+    "android.permission.MODIFY_AUDIO_SETTINGS",
+    "android.permission.MOUNT_UNMOUNT_FILESYSTEMS",
+    "android.permission.READ_EXTERNAL_STORAGE",
+    "android.permission.READ_PHONE_STATE",
+    "android.permission.REAL_GET_TASKS",
+    "android.permission.REBOOT",
+    "android.permission.RECEIVE_BOOT_COMPLETED",
+    "android.permission.SET_PREFERRED_APPLICATIONS",
+    "android.permission.SET_TIME_ZONE",
+    "android.permission.SHUTDOWN",
+    "android.permission.SYSTEM_ALERT_WINDOW",
+    "android.permission.VIBRATE",
+    "android.permission.WAKE_LOCK",
+    "android.permission.WRITE_EXTERNAL_STORAGE",
+    "android.permission.WRITE_MEDIA_STORAGE",
+    "android.permission.WRITE_SECURE_SETTINGS",
+    "android.permission.WRITE_SETTINGS"
+  ],
+  "components": [
+    {
+      "kind": "service",
+      "attributes": {
+        "name": ".ManageService",
+        "exported": "true"
+      },
+      "actions": [
+        "com.microntek.service.start"
+      ]
+    },
+    {
+      "kind": "service",
+      "attributes": {
+        "name": ".MicrontekServer",
+        "exported": "true"
+      },
+      "actions": [
+        "com.microntek.carserver"
+      ]
+    },
+    {
+      "kind": "service",
+      "attributes": {
+        "name": ".MicrontekTimeUpdateServer",
+        "exported": "true"
+      },
+      "actions": [
+        "com.microntek.timeupdateserver"
+      ]
+    },
+    {
+      "kind": "receiver",
+      "attributes": {
+        "name": ".MicrontekReceiver",
+        "exported": "true"
+      },
+      "actions": [
+        "android.intent.action.BOOT_COMPLETED"
+      ]
+    }
+  ],
+  "certificate_sha256": [
+    "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  ],
+  "platform_resource_sha256": "139be233a46f333feff34a78c9ebba08a962462123e4c7651656881eae68d40c",
+  "platform_certificate_sha256": [
+    "c8a2e9bccf597c2fb6dc66bee293fc13f2fc47ec77bc6b2b0d52c11f51192ab8"
+  ],
+  "nonempty_certificate_sets_match": true,
+  "defined_class_count": 96,
+  "external_hct_calls": [
+    "Landroid/microntek/CarManager;-><init>()V",
+    "Landroid/microntek/CarManager;->attach(Landroid/os/Handler; Ljava/lang/String;)V",
+    "Landroid/microntek/CarManager;->detach()V",
+    "Landroid/microntek/CarManager;->getBooleanState(Ljava/lang/String;)Z",
+    "Landroid/microntek/CarManager;->getEqIdx()I",
+    "Landroid/microntek/CarManager;->getIntState(Ljava/lang/String;)I",
+    "Landroid/microntek/CarManager;->getLud()I",
+    "Landroid/microntek/CarManager;->getParameters(Ljava/lang/String;)Ljava/lang/String;",
+    "Landroid/microntek/CarManager;->getStringState(Ljava/lang/String;)Ljava/lang/String;",
+    "Landroid/microntek/CarManager;->putState(Ljava/lang/String; I)V",
+    "Landroid/microntek/CarManager;->putState(Ljava/lang/String; Ljava/lang/String;)V",
+    "Landroid/microntek/CarManager;->setEqIdx(I)V",
+    "Landroid/microntek/CarManager;->setLud(Z)V",
+    "Landroid/microntek/CarManager;->setParameters(Ljava/lang/String;)V",
+    "Landroid/microntek/CarManager;->setVideoOverSpeed(Z)V",
+    "Landroid/microntek/HCTApi;->getHctwmPloy()I",
+    "Landroid/microntek/HCTApi;->isSecondScreenApp(Ljava/lang/String;)Z",
+    "Landroid/microntek/HCTApi;->switchDualScreen()V",
+    "Landroid/microntek/mfi/MfiManager;-><init>()V",
+    "Landroid/microntek/mfi/MfiManager;->isConnected()Z",
+    "Landroid/microntek/mfi/MfiManager;->registerListener(Landroid/microntek/mfi/MfiListener;)V",
+    "Landroid/microntek/mfi/MfiManager;->unregisterListener(Landroid/microntek/mfi/MfiListener;)V"
+  ],
+  "internal_platform_calls": [
+    "Lcom/android/internal/widget/LockPatternUtils;-><init>(Landroid/content/Context;)V",
+    "Lcom/android/internal/widget/LockPatternUtils;->clearLock([B I)Z"
+  ],
+  "manager_start_methods": [
+    {
+      "method": "StartAISpeechService",
+      "descriptor": "()Z",
+      "calls": [
+        {
+          "offset": 8,
+          "reference": "Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 26,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 46,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 66,
+          "reference": "Ljava/lang/StringBuilder;-><init>()V"
+        },
+        {
+          "offset": 76,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 88,
+          "reference": "Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 96,
+          "reference": "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 104,
+          "reference": "Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I"
+        },
+        {
+          "offset": 114,
+          "reference": "Landroid/content/Intent;-><init>()V"
+        },
+        {
+          "offset": 124,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 148,
+          "reference": "Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 154,
+          "reference": "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 166,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 190,
+          "reference": "Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 196,
+          "reference": "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 206,
+          "reference": "Landroid/microntek/service/ManageService;->startServiceAsUser(Landroid/content/Intent; Landroid/os/UserHandle;)Landroid/content/ComponentName;"
+        },
+        {
+          "offset": 218,
+          "reference": "Ljava/lang/StringBuilder;-><init>()V"
+        },
+        {
+          "offset": 228,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 236,
+          "reference": "Landroid/content/ComponentName;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 244,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 252,
+          "reference": "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 260,
+          "reference": "Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I"
+        },
+        {
+          "offset": 278,
+          "reference": "Ljava/lang/StringBuilder;-><init>()V"
+        },
+        {
+          "offset": 288,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 296,
+          "reference": "Ljava/lang/Exception;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 304,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 312,
+          "reference": "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 320,
+          "reference": "Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I"
+        },
+        {
+          "offset": 356,
+          "reference": "Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable; J)Z"
+        }
+      ],
+      "reviewed_strings": [
+        {
+          "offset": 4,
+          "value": "ro.product.aispeech.asr"
+        }
+      ]
+    },
+    {
+      "method": "StartAdbOn",
+      "descriptor": "()V",
+      "calls": [],
+      "reviewed_strings": []
+    },
+    {
+      "method": "StartBTService",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 4,
+          "reference": "Landroid/content/Intent;-><init>()V"
+        },
+        {
+          "offset": 22,
+          "reference": "Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 28,
+          "reference": "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 38,
+          "reference": "Landroid/microntek/service/ManageService;->startServiceAsUser(Landroid/content/Intent; Landroid/os/UserHandle;)Landroid/content/ComponentName;"
+        }
+      ],
+      "reviewed_strings": [
+        {
+          "offset": 14,
+          "value": "android.microntek.mtcser"
+        },
+        {
+          "offset": 18,
+          "value": "android.microntek.mtcser.BlueToothService"
+        }
+      ]
+    },
+    {
+      "method": "StartBoxService",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 8,
+          "reference": "Landroid/os/SystemProperties;->get(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 20,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 36,
+          "reference": "Landroid/content/Intent;-><init>()V"
+        },
+        {
+          "offset": 54,
+          "reference": "Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 60,
+          "reference": "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 70,
+          "reference": "Landroid/microntek/service/ManageService;->startServiceAsUser(Landroid/content/Intent; Landroid/os/UserHandle;)Landroid/content/ComponentName;"
+        }
+      ],
+      "reviewed_strings": [
+        {
+          "offset": 0,
+          "value": "ro.product.project"
+        },
+        {
+          "offset": 46,
+          "value": "android.microntek.box"
+        },
+        {
+          "offset": 50,
+          "value": "android.microntek.box.BoxServer"
+        }
+      ]
+    },
+    {
+      "method": "StartCanBusService",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 4,
+          "reference": "Landroid/content/Intent;-><init>()V"
+        },
+        {
+          "offset": 22,
+          "reference": "Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 28,
+          "reference": "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 38,
+          "reference": "Landroid/microntek/service/ManageService;->startServiceAsUser(Landroid/content/Intent; Landroid/os/UserHandle;)Landroid/content/ComponentName;"
+        }
+      ],
+      "reviewed_strings": [
+        {
+          "offset": 14,
+          "value": "android.microntek.canbus"
+        },
+        {
+          "offset": 18,
+          "value": "android.microntek.canbus.CanBusServer"
+        }
+      ]
+    },
+    {
+      "method": "StartCarService",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 4,
+          "reference": "Landroid/content/Intent;-><init>()V"
+        },
+        {
+          "offset": 22,
+          "reference": "Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 28,
+          "reference": "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 38,
+          "reference": "Landroid/microntek/service/ManageService;->startServiceAsUser(Landroid/content/Intent; Landroid/os/UserHandle;)Landroid/content/ComponentName;"
+        }
+      ],
+      "reviewed_strings": [
+        {
+          "offset": 14,
+          "value": "android.microntek.service"
+        },
+        {
+          "offset": 18,
+          "value": "android.microntek.service.MicrontekServer"
+        }
+      ]
+    },
+    {
+      "method": "StartLedSettingService",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 8,
+          "reference": "Landroid/content/Intent;-><init>()V"
+        },
+        {
+          "offset": 22,
+          "reference": "Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 28,
+          "reference": "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 34,
+          "reference": "Landroid/microntek/HctUtil;->isPackageApplicationEnabled(Landroid/content/Context; Ljava/lang/String;)Z"
+        },
+        {
+          "offset": 50,
+          "reference": "Landroid/microntek/service/ManageService;->startServiceAsUser(Landroid/content/Intent; Landroid/os/UserHandle;)Landroid/content/ComponentName;"
+        }
+      ],
+      "reviewed_strings": [
+        {
+          "offset": 0,
+          "value": "com.microntek.ledsettings"
+        },
+        {
+          "offset": 18,
+          "value": "com.microntek.ledsettings.VisualizerService"
+        }
+      ]
+    },
+    {
+      "method": "StartOrgBTService",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 8,
+          "reference": "Landroid/os/SystemProperties;->get(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 20,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 36,
+          "reference": "Landroid/content/Intent;-><init>()V"
+        },
+        {
+          "offset": 54,
+          "reference": "Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 60,
+          "reference": "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 70,
+          "reference": "Landroid/microntek/service/ManageService;->startServiceAsUser(Landroid/content/Intent; Landroid/os/UserHandle;)Landroid/content/ComponentName;"
+        }
+      ],
+      "reviewed_strings": [
+        {
+          "offset": 0,
+          "value": "ro.product.support.org_bt_audroute"
+        },
+        {
+          "offset": 46,
+          "value": "android.microntek.passthrough"
+        },
+        {
+          "offset": 50,
+          "value": "android.microntek.passthrough.OrgBlueToothService"
+        }
+      ]
+    },
+    {
+      "method": "StartSuzukiService",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 4,
+          "reference": "Landroid/content/Intent;-><init>()V"
+        },
+        {
+          "offset": 22,
+          "reference": "Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 28,
+          "reference": "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 34,
+          "reference": "Landroid/microntek/service/ManageService;->getApplicationContext()Landroid/content/Context;"
+        },
+        {
+          "offset": 42,
+          "reference": "Landroid/content/Context;->startForegroundService(Landroid/content/Intent;)Landroid/content/ComponentName;"
+        },
+        {
+          "offset": 54,
+          "reference": "Ljava/lang/Exception;->printStackTrace()V"
+        },
+        {
+          "offset": 68,
+          "reference": "Landroid/util/Log;->d(Ljava/lang/String; Ljava/lang/String;)I"
+        },
+        {
+          "offset": 106,
+          "reference": "Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable; J)Z"
+        }
+      ],
+      "reviewed_strings": []
+    },
+    {
+      "method": "StartTxzAsrService",
+      "descriptor": "()Z",
+      "calls": [
+        {
+          "offset": 8,
+          "reference": "Landroid/os/SystemProperties;->get(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 26,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 46,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 66,
+          "reference": "Ljava/lang/StringBuilder;-><init>()V"
+        },
+        {
+          "offset": 76,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 88,
+          "reference": "Ljava/lang/StringBuilder;->append(I)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 96,
+          "reference": "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 104,
+          "reference": "Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I"
+        },
+        {
+          "offset": 114,
+          "reference": "Landroid/content/Intent;-><init>()V"
+        },
+        {
+          "offset": 124,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 148,
+          "reference": "Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 154,
+          "reference": "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 166,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 190,
+          "reference": "Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 196,
+          "reference": "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 206,
+          "reference": "Landroid/microntek/service/ManageService;->startServiceAsUser(Landroid/content/Intent; Landroid/os/UserHandle;)Landroid/content/ComponentName;"
+        },
+        {
+          "offset": 218,
+          "reference": "Ljava/lang/StringBuilder;-><init>()V"
+        },
+        {
+          "offset": 228,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 236,
+          "reference": "Landroid/content/ComponentName;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 244,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 252,
+          "reference": "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 260,
+          "reference": "Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I"
+        },
+        {
+          "offset": 278,
+          "reference": "Ljava/lang/StringBuilder;-><init>()V"
+        },
+        {
+          "offset": 288,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 296,
+          "reference": "Ljava/lang/Exception;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 304,
+          "reference": "Ljava/lang/StringBuilder;->append(Ljava/lang/String;)Ljava/lang/StringBuilder;"
+        },
+        {
+          "offset": 312,
+          "reference": "Ljava/lang/StringBuilder;->toString()Ljava/lang/String;"
+        },
+        {
+          "offset": 320,
+          "reference": "Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I"
+        },
+        {
+          "offset": 356,
+          "reference": "Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable; J)Z"
+        }
+      ],
+      "reviewed_strings": [
+        {
+          "offset": 4,
+          "value": "ro.product.txz.asr"
+        }
+      ]
+    },
+    {
+      "method": "onCreate",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 0,
+          "reference": "Landroid/app/Service;->onCreate()V"
+        },
+        {
+          "offset": 14,
+          "reference": "Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I"
+        },
+        {
+          "offset": 20,
+          "reference": "Landroid/microntek/service/ManageService;->StartCarService()V"
+        },
+        {
+          "offset": 26,
+          "reference": "Landroid/microntek/service/ManageService;->StartBTService()V"
+        },
+        {
+          "offset": 32,
+          "reference": "Landroid/microntek/service/ManageService;->StartOrgBTService()V"
+        },
+        {
+          "offset": 38,
+          "reference": "Landroid/microntek/service/ManageService;->StartCanBusService()V"
+        },
+        {
+          "offset": 44,
+          "reference": "Landroid/microntek/service/ManageService;->StartBoxService()V"
+        },
+        {
+          "offset": 50,
+          "reference": "Landroid/microntek/service/ManageService;->startNaviBarService()V"
+        },
+        {
+          "offset": 56,
+          "reference": "Landroid/microntek/service/ManageService;->StartLedSettingService()V"
+        },
+        {
+          "offset": 80,
+          "reference": "Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable; J)Z"
+        },
+        {
+          "offset": 86,
+          "reference": "Landroid/microntek/service/ManageService;->getContentResolver()Landroid/content/ContentResolver;"
+        },
+        {
+          "offset": 98,
+          "reference": "Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver; Ljava/lang/String; I)Z"
+        },
+        {
+          "offset": 108,
+          "reference": "Lcom/android/internal/widget/LockPatternUtils;-><init>(Landroid/content/Context;)V"
+        },
+        {
+          "offset": 116,
+          "reference": "Lcom/android/internal/widget/LockPatternUtils;->clearLock([B I)Z"
+        },
+        {
+          "offset": 126,
+          "reference": "Ljava/lang/Exception;->printStackTrace()V"
+        },
+        {
+          "offset": 132,
+          "reference": "Landroid/microntek/service/ManageService;->StartAdbOn()V"
+        },
+        {
+          "offset": 142,
+          "reference": "Landroid/microntek/CarManager;-><init>()V"
+        },
+        {
+          "offset": 156,
+          "reference": "Landroid/microntek/service/ManageService$4;-><init>(Landroid/microntek/service/ManageService;)V"
+        },
+        {
+          "offset": 166,
+          "reference": "Landroid/microntek/CarManager;->attach(Landroid/os/Handler; Ljava/lang/String;)V"
+        }
+      ],
+      "reviewed_strings": [
+        {
+          "offset": 94,
+          "value": "show_touches"
+        },
+        {
+          "offset": 162,
+          "value": "Appinfo"
+        }
+      ]
+    },
+    {
+      "method": "startNaviBarService",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 0,
+          "reference": "Landroid/microntek/HCTApi;->getHctwmPloy()I"
+        },
+        {
+          "offset": 20,
+          "reference": "Landroid/content/Intent;-><init>()V"
+        },
+        {
+          "offset": 38,
+          "reference": "Landroid/content/ComponentName;-><init>(Ljava/lang/String; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 44,
+          "reference": "Landroid/content/Intent;->setComponent(Landroid/content/ComponentName;)Landroid/content/Intent;"
+        },
+        {
+          "offset": 54,
+          "reference": "Landroid/microntek/service/ManageService;->startServiceAsUser(Landroid/content/Intent; Landroid/os/UserHandle;)Landroid/content/ComponentName;"
+        }
+      ],
+      "reviewed_strings": [
+        {
+          "offset": 30,
+          "value": "com.microntek.NavigationBar.service"
+        },
+        {
+          "offset": 34,
+          "value": "com.microntek.NavigationBar.service.EventService"
+        }
+      ]
+    },
+    {
+      "method": "startRecentsActivity",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 8,
+          "reference": "Landroid/microntek/service/ManageService$3;-><init>(Landroid/microntek/service/ManageService;)V"
+        },
+        {
+          "offset": 18,
+          "reference": "Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable; J)Z"
+        }
+      ],
+      "reviewed_strings": []
+    }
+  ],
+  "limits": [
+    "Static APK/DEX/manifest observations only; no APK, service or command executed.",
+    "Certificate identities are parsed metadata, not a complete signature-verification result.",
+    "Not all hidden APIs, native dependencies or reachable paths are inventoried.",
+    "Only selected constants retained; no full APK, bytecode or disassembly published."
+  ],
+  "external_hct_definition_check": {
+    "inventory_sha256": "c49c4dee270b09985124fe7df6698fe889edf3d5299e7adafd82f0dde1ba328a",
+    "reference_count": 22,
+    "missing_direct_definitions": [],
+    "limit": "Exact direct signatures only; no visibility, inheritance, class-loading or runtime validation."
+  }
+}

@@ -10,6 +10,8 @@ SystemServer.startOtherServices registers `carservice` using a new CarService af
 
 The same startup method later calls startMtcManage at 0x26d4. That hook constructs an explicit Intent for package `android.microntek.service`, class `android.microntek.service.ManageService`, and starts it as UserHandle.SYSTEM. A service-layer replacement therefore also needs to account for this APK and its boot lifecycle, not just framework classes. The selected body catches its startup exception. The exact modern service-start placement must be reviewed against a coherent target source tree.
 
+The [manager APK follow-up](manager-service.md) locates this package in the working image, checks its declared identity and signing relationship, and maps its startup dependencies.
+
 ## Task and input contracts
 
 | Hook | Reviewed behaviour | Remaining adaptation |

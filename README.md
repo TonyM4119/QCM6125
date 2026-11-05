@@ -23,6 +23,7 @@ The key result: car functionality depends on HCT modifications inside the Java f
 - [Deferred EQ/loudness/video controls, settings and driver routing](docs/control-methods.md)
 - [EQ preset recovery, custom coefficients and default conversion](docs/eq-policy.md)
 - [Working-reference startup, task, key, touch and permission hooks](docs/platform-hooks.md)
+- [Working HCT manager APK, signing relationship and startup chain](docs/manager-service.md)
 - [RDS byte arrays and background station results](docs/radio-payloads.md)
 - [Working-kernel driver bindings, limits and virtual event framing](docs/working-kernel.md)
 - [HCT board/display/touch declarations in compiled device trees](docs/device-tree-findings.md)
