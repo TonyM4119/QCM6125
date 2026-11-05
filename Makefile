@@ -6,7 +6,7 @@ TESTS := $(BUILD_DIR)/transport_test $(BUILD_DIR)/car_parameter_policy_test \
          $(BUILD_DIR)/offline_service_core_test $(BUILD_DIR)/state_contract_test \
          $(BUILD_DIR)/callback_policy_test $(BUILD_DIR)/control_policy_test \
          $(BUILD_DIR)/deferred_controls_test $(BUILD_DIR)/eq_policy_test \
-         $(BUILD_DIR)/external_disk_reset_test
+         $(BUILD_DIR)/external_disk_reset_test $(BUILD_DIR)/sleep_storage_sequence_test
 
 .PHONY: all test test-binder test-device-tree
 all: $(TESTS)
@@ -53,6 +53,9 @@ $(BUILD_DIR)/eq_policy_test: native/eq_policy.cpp native/eq_policy.hpp native/ev
 $(BUILD_DIR)/external_disk_reset_test: native/external_disk_reset.hpp native/external_disk_reset_test.cpp | $(BUILD_DIR)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) native/external_disk_reset_test.cpp $(LDFLAGS) -o $@
 
+$(BUILD_DIR)/sleep_storage_sequence_test: native/sleep_storage_sequence.hpp native/sleep_storage_sequence_test.cpp | $(BUILD_DIR)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) native/sleep_storage_sequence_test.cpp $(LDFLAGS) -o $@
+
 test: all
 	$(BUILD_DIR)/transport_test
 	$(BUILD_DIR)/car_parameter_policy_test
@@ -65,6 +68,7 @@ test: all
 	$(BUILD_DIR)/deferred_controls_test
 	$(BUILD_DIR)/eq_policy_test
 	$(BUILD_DIR)/external_disk_reset_test
+	$(BUILD_DIR)/sleep_storage_sequence_test
 	python3 scripts/android_packed_relocations_test.py
 	python3 scripts/check_vold_bindings_test.py
 	python3 scripts/experiment_vold_extension_test.py

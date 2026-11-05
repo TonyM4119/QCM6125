@@ -17,7 +17,15 @@ The reviewed sleep branch broadcasts SCREEN_OFF and calls MicrontekServiceBase.d
 
 The second state check matters if a new power event arrives during storage work. These calls are observations of firmware code, not instructions executed by this project. Exception scopes, unreviewed callers and MCU acknowledgement meanings remain integration boundaries.
 
-## Special storage operation
+## Portable manager-sequence experiment
+
+`native/sleep_storage_sequence.hpp` models the reviewed manager call order through an injected adapter. It checks sleep state before reporting start, requests the special storage operation, reports end after normal completion or an explicitly handled storage failure, and reads state again before requesting sleep. It does not infer that storage preparation succeeded from the fact that the manager continues.
+
+Fake-adapter tests cover normal completion, handled storage failure, waking during either storage outcome, an initially awake state and propagation of an unexpected adapter exception. The adapter must classify the actual reviewed Java exception scope; this experiment does not map arbitrary exceptions into handled failures.
+
+This is an isolated portable model, not a framework patch or an Android integration. It does not implement permissions, Binder, media-provider termination, boot/daemon gates, uptime handling or real suspend. Callers must serialize invocations and supply current state reads. The final state check does not make the subsequent sleep request atomic with incoming power events; runtime event ordering needs separate review against the actual Android implementation.
+
+## Special storage operation (framework)
 
 Working StorageManagerService.unmount(String) first enforces MOUNT_UNMOUNT_FILESYSTEMS. It treats the literal hctall specially, invoking resetExDevice instead of resolving it as a normal volume ID. Other strings use the ordinary volume lookup/unmount path.
 
