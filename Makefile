@@ -5,7 +5,7 @@ TESTS := $(BUILD_DIR)/transport_test $(BUILD_DIR)/car_parameter_policy_test \
          $(BUILD_DIR)/event_stream_test $(BUILD_DIR)/event_mapping_test \
          $(BUILD_DIR)/offline_service_core_test $(BUILD_DIR)/state_contract_test \
          $(BUILD_DIR)/callback_policy_test $(BUILD_DIR)/control_policy_test \
-         $(BUILD_DIR)/deferred_controls_test
+         $(BUILD_DIR)/deferred_controls_test $(BUILD_DIR)/eq_policy_test
 
 .PHONY: all test test-binder test-device-tree
 all: $(TESTS)
@@ -43,6 +43,12 @@ $(BUILD_DIR)/control_policy_test: native/control_policy.cpp native/control_polic
 $(BUILD_DIR)/deferred_controls_test: native/deferred_controls.cpp native/deferred_controls.hpp native/control_policy.cpp native/control_policy.hpp native/event_mapping.hpp native/event_stream.hpp native/deferred_controls_test.cpp | $(BUILD_DIR)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) native/control_policy.cpp native/deferred_controls.cpp native/deferred_controls_test.cpp $(LDFLAGS) -o $@
 
+$(BUILD_DIR)/eq_reference.hpp: evidence/malaysk-eq-tables.json scripts/eq_test_fixture.py | $(BUILD_DIR)
+	python3 scripts/eq_test_fixture.py $< $@
+
+$(BUILD_DIR)/eq_policy_test: native/eq_policy.cpp native/eq_policy.hpp native/event_mapping.hpp native/event_stream.hpp native/eq_policy_test.cpp $(BUILD_DIR)/eq_reference.hpp | $(BUILD_DIR)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -Inative -I$(BUILD_DIR) native/eq_policy.cpp native/eq_policy_test.cpp $(LDFLAGS) -o $@
+
 test: all
 	$(BUILD_DIR)/transport_test
 	$(BUILD_DIR)/car_parameter_policy_test
@@ -53,6 +59,7 @@ test: all
 	$(BUILD_DIR)/callback_policy_test
 	$(BUILD_DIR)/control_policy_test
 	$(BUILD_DIR)/deferred_controls_test
+	$(BUILD_DIR)/eq_policy_test
 
 AIDL ?= aidl
 test-binder:

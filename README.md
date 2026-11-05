@@ -21,6 +21,7 @@ The key result: car functionality depends on HCT modifications inside the Java f
 - [Typed HCT state, navigation audio and CarData contract](docs/typed-state-contract.md)
 - [Client callback filtering, delivery and attachment lifecycle](docs/callback-delivery.md)
 - [Deferred EQ/loudness/video controls, settings and driver routing](docs/control-methods.md)
+- [EQ preset recovery, custom coefficients and default conversion](docs/eq-policy.md)
 - [RDS byte arrays and background station results](docs/radio-payloads.md)
 - [Working-kernel driver bindings, limits and virtual event framing](docs/working-kernel.md)
 - [HCT board/display/touch declarations in compiled device trees](docs/device-tree-findings.md)

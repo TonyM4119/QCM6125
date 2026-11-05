@@ -52,7 +52,7 @@ Nonzero S includes negative values. Other D values yield false. This records the
 
 ## EQ remains a separate integration task
 
-The private setEQ selects custom settings KeyCustomEQ/KeyCustom1EQ through KeyCustom6EQ using KeyCTmode, uses preset/default arrays and has separate DSP paths including modes 15 and 31. It sends av_eq= or av_dsp=0, commands, persists KeyEQmode and emits integer-valued CarData/EQ_MODE. This milestone does not implement its coefficient tables, conversion or band ordering. No placeholder coefficients are supplied.
+The private setEQ selects custom settings KeyCustomEQ/KeyCustom1EQ through KeyCustom6EQ using KeyCTmode, uses preset/default arrays and has separate DSP paths including modes 15 and 31. It sends av_eq= or av_dsp=0, commands, persists KeyEQmode and emits integer-valued CarData/EQ_MODE. The initial control milestone did not implement this path. The [EQ follow-up](eq-policy.md) now provides its offline selection/conversion model and recovered preset data; actual Android/driver integration is still outstanding.
 
 getParameters delegates to the native query under mLock. The previously recovered ioctl transport remains separate; a pure query plan cannot validate the response meanings or the current installed driver's behaviour.
 

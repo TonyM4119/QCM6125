@@ -13,7 +13,7 @@ SERVICE = 'Lcom/android/server/microntek/CarService;'
 SELECTED = {
     SERVICE: {'getEqIdx', 'setEqIdx', 'getLud', 'setLud', 'getVideoEnable',
               'setVideoOverSpeed', 'setEQ', 'setLUD', 'getInt', 'putInt',
-              'isKGLCustomerSub', 'getParameters'},
+              'isKGLCustomerSub', 'getParameters', 'getDefEq9modeString'},
     'Lcom/android/server/microntek/CarService$1;': {'handleMessage'},
 }
 STRINGS = {'KeyEQmode', 'KeyCTmode', 'KeyCustomEQ', 'KeyCustom1EQ',
@@ -22,7 +22,8 @@ STRINGS = {'KeyEQmode', 'KeyCTmode', 'KeyCustomEQ', 'KeyCustom1EQ',
            'DrivingVideoOverSpeed', 'handbrake', 'ro.product.customer.sub',
            'HCT', 'KGLMMR', 'KGL1', 'av_eq=', 'av_dsp=0,', 'av_lud=on',
            'av_lud=off', 'av_dsp=1,1,', 'av_dsp=1,0,', '0,0',
-           'CarData', 'CarEvent', 'type', 'value', 'EQ_MODE', 'LOUND_MODE'}
+           'CarData', 'CarEvent', 'type', 'value', 'EQ_MODE', 'LOUND_MODE',
+           'ro.product.keycustomeq9'}
 
 
 def recover(path):

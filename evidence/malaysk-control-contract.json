@@ -77,6 +77,52 @@
     },
     {
       "class": "Lcom/android/server/microntek/CarService;",
+      "method": "getDefEq9modeString",
+      "descriptor": "()Ljava/lang/String;",
+      "instruction_sha256": "9b88185c4b21593c18aaea30f00bba83bc88f3eb77a3b4e8e75ef2ea9de0489f",
+      "calls": [
+        {
+          "offset": 10,
+          "reference": "Landroid/os/SystemProperties;->get(Ljava/lang/String; Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 26,
+          "reference": "Ljava/lang/String;->contains(Ljava/lang/CharSequence;)Z"
+        },
+        {
+          "offset": 38,
+          "reference": "Ljava/lang/String;->split(Ljava/lang/String;)[Ljava/lang/String;"
+        },
+        {
+          "offset": 52,
+          "reference": "Ljava/lang/StringBuffer;-><init>()V"
+        },
+        {
+          "offset": 70,
+          "reference": "Ljava/lang/Integer;->parseInt(Ljava/lang/String;)I"
+        },
+        {
+          "offset": 96,
+          "reference": "Ljava/lang/StringBuffer;->append(I)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 112,
+          "reference": "Ljava/lang/StringBuffer;->append(Ljava/lang/String;)Ljava/lang/StringBuffer;"
+        },
+        {
+          "offset": 126,
+          "reference": "Ljava/lang/StringBuffer;->toString()Ljava/lang/String;"
+        }
+      ],
+      "reviewed_constants": [
+        {
+          "offset": 0,
+          "value": "ro.product.keycustomeq9"
+        }
+      ]
+    },
+    {
+      "class": "Lcom/android/server/microntek/CarService;",
       "method": "getEqIdx",
       "descriptor": "()I",
       "instruction_sha256": "b372e178340913da0890512b2500c2d480a3a0b3907e50e127c4ee7a7ac547db",
