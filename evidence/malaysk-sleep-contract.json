@@ -1,0 +1,1546 @@
+{
+  "sources": [
+    {
+      "file": "services.jar",
+      "sha256": "b3c0f55f7e5830d7213576ee3dad3c910422820b3dbf94c5527cad97120ae6fe",
+      "dex_crc_checks": [
+        {
+          "entry": "classes.dex",
+          "zip_crc_ok": true
+        },
+        {
+          "entry": "classes2.dex",
+          "zip_crc_ok": true
+        }
+      ]
+    },
+    {
+      "file": "framework.jar",
+      "sha256": "f20c5144ef378bc0ec57cd9a787c1a18ad2135a9816cba08285d7f1ec9c95d6a",
+      "dex_crc_checks": [
+        {
+          "entry": "classes4.dex",
+          "zip_crc_ok": true
+        },
+        {
+          "entry": "classes2.dex",
+          "zip_crc_ok": true
+        },
+        {
+          "entry": "classes3.dex",
+          "zip_crc_ok": true
+        },
+        {
+          "entry": "classes.dex",
+          "zip_crc_ok": false
+        }
+      ]
+    },
+    {
+      "file": "HCTManagerService.apk",
+      "sha256": "e08636a048ca813813e777d0910712577b960a88a3de2f2b8a207227059a4c29",
+      "dex_crc_checks": [
+        {
+          "entry": "classes.dex",
+          "zip_crc_ok": true
+        }
+      ]
+    }
+  ],
+  "methods": [
+    {
+      "source_file": "services.jar",
+      "class": "Landroid/os/IVold$Stub$Proxy;",
+      "method": "exreset",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 0,
+          "reference": "Landroid/os/Parcel;->obtain()Landroid/os/Parcel;"
+        },
+        {
+          "offset": 8,
+          "reference": "Landroid/os/Parcel;->obtain()Landroid/os/Parcel;"
+        },
+        {
+          "offset": 20,
+          "reference": "Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V"
+        },
+        {
+          "offset": 34,
+          "reference": "Landroid/os/IBinder;->transact(I Landroid/os/Parcel; Landroid/os/Parcel; I)Z"
+        },
+        {
+          "offset": 42,
+          "reference": "Landroid/os/Parcel;->readException()V"
+        },
+        {
+          "offset": 48,
+          "reference": "Landroid/os/Parcel;->recycle()V"
+        },
+        {
+          "offset": 54,
+          "reference": "Landroid/os/Parcel;->recycle()V"
+        },
+        {
+          "offset": 66,
+          "reference": "Landroid/os/Parcel;->recycle()V"
+        },
+        {
+          "offset": 72,
+          "reference": "Landroid/os/Parcel;->recycle()V"
+        }
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "source_file": "services.jar",
+      "class": "Lcom/android/server/StorageManagerService;",
+      "method": "resetExDevice",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 24,
+          "reference": "Landroid/content/Context;->getSystemService(Ljava/lang/Class;)Ljava/lang/Object;"
+        },
+        {
+          "offset": 36,
+          "reference": "Landroid/os/UserManager;->getUsers()Ljava/util/List;"
+        },
+        {
+          "offset": 44,
+          "reference": "Lcom/android/server/StorageManagerService;->killMediaProvider(Ljava/util/List;)V"
+        },
+        {
+          "offset": 54,
+          "reference": "Landroid/os/IVold;->exreset()V"
+        },
+        {
+          "offset": 68,
+          "reference": "Landroid/util/Slog;->wtf(Ljava/lang/String; Ljava/lang/Throwable;)I"
+        }
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "source_file": "services.jar",
+      "class": "Lcom/android/server/StorageManagerService;",
+      "method": "unmount",
+      "descriptor": "(Landroid/os/storage/VolumeInfo;)V",
+      "calls": [
+        {
+          "offset": 18,
+          "reference": "Landroid/os/storage/VolumeInfo;->getFsUuid()Ljava/lang/String;"
+        },
+        {
+          "offset": 26,
+          "reference": "Lcom/android/server/pm/Installer;->onPrivateVolumeRemoved(Ljava/lang/String;)V"
+        },
+        {
+          "offset": 44,
+          "reference": "Landroid/util/Slog;->e(Ljava/lang/String; Ljava/lang/String; Ljava/lang/Throwable;)I"
+        },
+        {
+          "offset": 58,
+          "reference": "Landroid/os/IVold;->unmount(Ljava/lang/String;)V"
+        },
+        {
+          "offset": 68,
+          "reference": "Lcom/android/server/storage/StorageSessionController;->onVolumeUnmount(Landroid/os/storage/VolumeInfo;)V"
+        },
+        {
+          "offset": 76,
+          "reference": "Landroid/util/Slog;->wtf(Ljava/lang/String; Ljava/lang/Throwable;)I"
+        }
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "source_file": "services.jar",
+      "class": "Lcom/android/server/StorageManagerService;",
+      "method": "unmount",
+      "descriptor": "(Ljava/lang/String;)V",
+      "calls": [
+        {
+          "offset": 4,
+          "reference": "Lcom/android/server/StorageManagerService;->enforcePermission(Ljava/lang/String;)V"
+        },
+        {
+          "offset": 16,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 28,
+          "reference": "Lcom/android/server/StorageManagerService;->resetExDevice()V"
+        },
+        {
+          "offset": 36,
+          "reference": "Lcom/android/server/StorageManagerService;->findVolumeByIdOrThrow(Ljava/lang/String;)Landroid/os/storage/VolumeInfo;"
+        },
+        {
+          "offset": 44,
+          "reference": "Lcom/android/server/StorageManagerService;->unmount(Landroid/os/storage/VolumeInfo;)V"
+        }
+      ],
+      "reviewed_constants": [
+        {
+          "offset": 0,
+          "value": "android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        },
+        {
+          "offset": 10,
+          "value": "hctall"
+        }
+      ]
+    },
+    {
+      "source_file": "framework.jar",
+      "class": "Landroid/os/IVold$Stub$Proxy;",
+      "method": "exreset",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 0,
+          "reference": "Landroid/os/Parcel;->obtain()Landroid/os/Parcel;"
+        },
+        {
+          "offset": 8,
+          "reference": "Landroid/os/Parcel;->obtain()Landroid/os/Parcel;"
+        },
+        {
+          "offset": 20,
+          "reference": "Landroid/os/Parcel;->writeInterfaceToken(Ljava/lang/String;)V"
+        },
+        {
+          "offset": 34,
+          "reference": "Landroid/os/IBinder;->transact(I Landroid/os/Parcel; Landroid/os/Parcel; I)Z"
+        },
+        {
+          "offset": 42,
+          "reference": "Landroid/os/Parcel;->readException()V"
+        },
+        {
+          "offset": 48,
+          "reference": "Landroid/os/Parcel;->recycle()V"
+        },
+        {
+          "offset": 54,
+          "reference": "Landroid/os/Parcel;->recycle()V"
+        },
+        {
+          "offset": 66,
+          "reference": "Landroid/os/Parcel;->recycle()V"
+        },
+        {
+          "offset": 72,
+          "reference": "Landroid/os/Parcel;->recycle()V"
+        }
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "source_file": "HCTManagerService.apk",
+      "class": "Landroid/microntek/service/MicrontekServiceBase;",
+      "method": "deviceunMountAndSleep",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 8,
+          "reference": "Landroid/microntek/CarManager;->getStringState(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 20,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 42,
+          "reference": "Landroid/microntek/CarManager;->setParameters(Ljava/lang/String;)V"
+        },
+        {
+          "offset": 52,
+          "reference": "Landroid/os/ServiceManager;->getService(Ljava/lang/String;)Landroid/os/IBinder;"
+        },
+        {
+          "offset": 60,
+          "reference": "Landroid/os/storage/IStorageManager$Stub;->asInterface(Landroid/os/IBinder;)Landroid/os/storage/IStorageManager;"
+        },
+        {
+          "offset": 72,
+          "reference": "Landroid/os/storage/IStorageManager;->unmount(Ljava/lang/String;)V"
+        },
+        {
+          "offset": 82,
+          "reference": "Ljava/lang/Exception;->printStackTrace()V"
+        },
+        {
+          "offset": 96,
+          "reference": "Landroid/microntek/CarManager;->setParameters(Ljava/lang/String;)V"
+        },
+        {
+          "offset": 106,
+          "reference": "Landroid/microntek/CarManager;->getStringState(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 114,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 128,
+          "reference": "Landroid/microntek/service/MicrontekServiceBase;->gotoSleep()V"
+        }
+      ],
+      "reviewed_constants": [
+        {
+          "offset": 4,
+          "value": "carpower"
+        },
+        {
+          "offset": 16,
+          "value": "sleep"
+        },
+        {
+          "offset": 38,
+          "value": "rpt_media_safemounted=start"
+        },
+        {
+          "offset": 68,
+          "value": "hctall"
+        },
+        {
+          "offset": 92,
+          "value": "rpt_media_safemounted=end"
+        }
+      ]
+    },
+    {
+      "source_file": "HCTManagerService.apk",
+      "class": "Landroid/microntek/service/MicrontekServiceBase;",
+      "method": "gotoSleep",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 8,
+          "reference": "Landroid/util/Log;->i(Ljava/lang/String; Ljava/lang/String;)I"
+        },
+        {
+          "offset": 18,
+          "reference": "Landroid/microntek/service/MicrontekServiceBase;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;"
+        },
+        {
+          "offset": 30,
+          "reference": "Landroid/os/SystemClock;->uptimeMillis()J"
+        },
+        {
+          "offset": 38,
+          "reference": "Landroid/os/PowerManager;->goToSleep(J)V"
+        }
+      ],
+      "reviewed_constants": []
+    },
+    {
+      "source_file": "HCTManagerService.apk",
+      "class": "Landroid/microntek/service/MicrontekServer;",
+      "method": "DoCarPower",
+      "descriptor": "(Ljava/lang/String;)V",
+      "calls": [
+        {
+          "offset": 10,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 44,
+          "reference": "Landroid/microntek/service/MicrontekServer;->powerOn()V"
+        },
+        {
+          "offset": 70,
+          "reference": "Landroid/os/Handler;->removeMessages(I)V"
+        },
+        {
+          "offset": 80,
+          "reference": "Landroid/os/Handler;->obtainMessage()Landroid/os/Message;"
+        },
+        {
+          "offset": 92,
+          "reference": "Landroid/microntek/service/MicrontekServer;->getWifiDriverState()Z"
+        },
+        {
+          "offset": 112,
+          "reference": "Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message; J)Z"
+        },
+        {
+          "offset": 124,
+          "reference": "Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message; J)Z"
+        },
+        {
+          "offset": 142,
+          "reference": "Landroid/microntek/service/MicrontekServer;->setParameters(Ljava/lang/String;)V"
+        },
+        {
+          "offset": 160,
+          "reference": "Landroid/content/Intent;-><init>(Ljava/lang/String;)V"
+        },
+        {
+          "offset": 170,
+          "reference": "Landroid/content/Context;->sendBroadcastAsUser(Landroid/content/Intent; Landroid/os/UserHandle;)V"
+        },
+        {
+          "offset": 212,
+          "reference": "Landroid/microntek/service/MicrontekServer;->showYHLogoView(Z)V"
+        },
+        {
+          "offset": 226,
+          "reference": "Landroid/os/Handler;->removeMessages(I)V"
+        },
+        {
+          "offset": 240,
+          "reference": "Landroid/os/Handler;->sendEmptyMessageDelayed(I J)Z"
+        },
+        {
+          "offset": 254,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 266,
+          "reference": "Landroid/microntek/service/MicrontekServer;->getContentResolver()Landroid/content/ContentResolver;"
+        },
+        {
+          "offset": 278,
+          "reference": "Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver; Ljava/lang/String; I)Z"
+        },
+        {
+          "offset": 284,
+          "reference": "Landroid/microntek/service/MicrontekServer;->showBlackView(Z)V"
+        },
+        {
+          "offset": 290,
+          "reference": "Landroid/microntek/service/MicrontekServer;->isRound360Enable()Z"
+        },
+        {
+          "offset": 302,
+          "reference": "Landroid/microntek/service/MicrontekServer;->startServerRound360()V"
+        },
+        {
+          "offset": 316,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 336,
+          "reference": "Landroid/os/Handler;->removeMessages(I)V"
+        },
+        {
+          "offset": 346,
+          "reference": "Landroid/os/Handler;->sendEmptyMessageDelayed(I J)Z"
+        },
+        {
+          "offset": 360,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 382,
+          "reference": "Landroid/microntek/service/MicrontekServer;->powerOff()V"
+        },
+        {
+          "offset": 408,
+          "reference": "Landroid/os/Handler;->removeMessages(I)V"
+        },
+        {
+          "offset": 418,
+          "reference": "Landroid/os/Handler;->obtainMessage()Landroid/os/Message;"
+        },
+        {
+          "offset": 430,
+          "reference": "Landroid/microntek/service/MicrontekServer;->getWifiDriverState()Z"
+        },
+        {
+          "offset": 450,
+          "reference": "Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message; J)Z"
+        },
+        {
+          "offset": 462,
+          "reference": "Landroid/os/Handler;->sendMessageDelayed(Landroid/os/Message; J)Z"
+        },
+        {
+          "offset": 484,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 502,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 514,
+          "reference": "Landroid/microntek/service/MicrontekServer;->powerOff()V"
+        },
+        {
+          "offset": 532,
+          "reference": "Landroid/microntek/service/MicrontekServer;->saveWifiAPState()V"
+        },
+        {
+          "offset": 546,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 564,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 596,
+          "reference": "Landroid/content/Intent;-><init>(Ljava/lang/String;)V"
+        },
+        {
+          "offset": 606,
+          "reference": "Landroid/content/Context;->sendBroadcastAsUser(Landroid/content/Intent; Landroid/os/UserHandle;)V"
+        },
+        {
+          "offset": 612,
+          "reference": "Landroid/microntek/service/MicrontekServer;->deviceunMountAndSleep()V"
+        },
+        {
+          "offset": 626,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 648,
+          "reference": "Landroid/microntek/service/MicrontekServer;->ReportEvent(Ljava/lang/String; I)V"
+        }
+      ],
+      "reviewed_constants": [
+        {
+          "offset": 6,
+          "value": "power_on"
+        },
+        {
+          "offset": 138,
+          "value": "rpt_power=true"
+        },
+        {
+          "offset": 156,
+          "value": "android.intent.action.SCREEN_ON"
+        },
+        {
+          "offset": 356,
+          "value": "power_off"
+        },
+        {
+          "offset": 498,
+          "value": "acc_off"
+        },
+        {
+          "offset": 560,
+          "value": "sleep"
+        },
+        {
+          "offset": 592,
+          "value": "android.intent.action.SCREEN_OFF"
+        }
+      ]
+    },
+    {
+      "source_file": "HCTManagerService.apk",
+      "class": "Landroid/microntek/service/MicrontekServer;",
+      "method": "s_onStatusChanged",
+      "descriptor": "(Ljava/lang/String; Landroid/os/Bundle;)V",
+      "calls": [
+        {
+          "offset": 4,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 16,
+          "reference": "Landroid/microntek/service/MicrontekServer;->DoCarEvent(Landroid/os/Bundle;)V"
+        },
+        {
+          "offset": 28,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 44,
+          "reference": "Landroid/os/Bundle;->getString(Ljava/lang/String;)Ljava/lang/String;"
+        },
+        {
+          "offset": 52,
+          "reference": "Ljava/lang/System;->currentTimeMillis()J"
+        },
+        {
+          "offset": 64,
+          "reference": "Landroid/microntek/service/MicrontekServer;->DoCarPower(Ljava/lang/String;)V"
+        },
+        {
+          "offset": 76,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 88,
+          "reference": "Landroid/microntek/service/MicrontekServer;->DoCarKeyDown(Landroid/os/Bundle;)V"
+        },
+        {
+          "offset": 100,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 112,
+          "reference": "Landroid/microntek/service/MicrontekServer;->DoCarApp(Landroid/os/Bundle;)V"
+        },
+        {
+          "offset": 124,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 136,
+          "reference": "Landroid/microntek/service/MicrontekServer;->DoCarBox(Landroid/os/Bundle;)V"
+        },
+        {
+          "offset": 148,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 160,
+          "reference": "Landroid/microntek/service/MicrontekServer;->DoAppInfo(Landroid/os/Bundle;)V"
+        }
+      ],
+      "reviewed_constants": [
+        {
+          "offset": 24,
+          "value": "CarPower"
+        },
+        {
+          "offset": 40,
+          "value": "type"
+        }
+      ]
+    },
+    {
+      "source_file": "HCTManagerService.apk",
+      "class": "Landroid/microntek/service/MicrontekServer;",
+      "method": "onCreate",
+      "descriptor": "()V",
+      "calls": [
+        {
+          "offset": 0,
+          "reference": "Landroid/microntek/service/MicrontekServiceBase;->onCreate()V"
+        },
+        {
+          "offset": 6,
+          "reference": "Landroid/microntek/service/MicrontekServer;->getPackageManager()Landroid/content/pm/PackageManager;"
+        },
+        {
+          "offset": 26,
+          "reference": "Landroid/microntek/service/MicrontekServer$3;-><init>(Landroid/microntek/service/MicrontekServer;)V"
+        },
+        {
+          "offset": 36,
+          "reference": "Landroid/microntek/CarManager;->attach(Landroid/os/Handler; Ljava/lang/String;)V"
+        },
+        {
+          "offset": 42,
+          "reference": "Ljava/lang/System;->currentTimeMillis()J"
+        },
+        {
+          "offset": 54,
+          "reference": "Landroid/microntek/service/MicrontekServer;->InitData()V"
+        },
+        {
+          "offset": 60,
+          "reference": "Landroid/microntek/service/MicrontekServer;->InitSystemData()V"
+        },
+        {
+          "offset": 66,
+          "reference": "Landroid/microntek/service/MicrontekServer;->InitIntentFilter()V"
+        },
+        {
+          "offset": 76,
+          "reference": "Landroid/microntek/service/MicrontekServer;->getSystemService(Ljava/lang/String;)Ljava/lang/Object;"
+        },
+        {
+          "offset": 96,
+          "reference": "Landroid/content/Context;->getContentResolver()Landroid/content/ContentResolver;"
+        },
+        {
+          "offset": 110,
+          "reference": "Landroid/provider/Settings$Global;->getInt(Landroid/content/ContentResolver; Ljava/lang/String; I)I"
+        },
+        {
+          "offset": 124,
+          "reference": "Landroid/microntek/service/MicrontekServer;->setAirplaneModeOn(Z)V"
+        },
+        {
+          "offset": 130,
+          "reference": "Landroid/microntek/HctUtil;->getCustomerSub()Ljava/lang/String;"
+        },
+        {
+          "offset": 142,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 154,
+          "reference": "Landroid/microntek/HctUtil;->getCustomerSub()Ljava/lang/String;"
+        },
+        {
+          "offset": 166,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 178,
+          "reference": "Landroid/microntek/service/MicrontekServer;->getContentResolver()Landroid/content/ContentResolver;"
+        },
+        {
+          "offset": 190,
+          "reference": "Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver; Ljava/lang/String; I)Z"
+        },
+        {
+          "offset": 196,
+          "reference": "Landroid/microntek/HctUtil;->getCustomerSub()Ljava/lang/String;"
+        },
+        {
+          "offset": 204,
+          "reference": "Ljava/lang/String;->equals(Ljava/lang/Object;)Z"
+        },
+        {
+          "offset": 218,
+          "reference": "Landroid/microntek/service/MicrontekServer;->getContentResolver()Landroid/content/ContentResolver;"
+        },
+        {
+          "offset": 230,
+          "reference": "Landroid/provider/Settings$System;->getInt(Landroid/content/ContentResolver; Ljava/lang/String; I)I"
+        },
+        {
+          "offset": 242,
+          "reference": "Landroid/microntek/service/MicrontekServer;->getContentResolver()Landroid/content/ContentResolver;"
+        },
+        {
+          "offset": 250,
+          "reference": "Landroid/provider/Settings$System;->putInt(Landroid/content/ContentResolver; Ljava/lang/String; I)Z"
+        },
+        {
+          "offset": 264,
+          "reference": "Landroid/os/Handler;->removeMessages(I)V"
+        },
+        {
+          "offset": 278,
+          "reference": "Landroid/os/Handler;->sendEmptyMessageDelayed(I J)Z"
+        },
+        {
+          "offset": 284,
+          "reference": "Landroid/microntek/service/MicrontekServer;->fetchAutoApps()Ljava/util/List;"
+        },
+        {
+          "offset": 292,
+          "reference": "Ljava/util/List;->iterator()Ljava/util/Iterator;"
+        },
+        {
+          "offset": 300,
+          "reference": "Ljava/util/Iterator;->hasNext()Z"
+        },
+        {
+          "offset": 312,
+          "reference": "Ljava/util/Iterator;->next()Ljava/lang/Object;"
+        },
+        {
+          "offset": 324,
+          "reference": "Landroid/content/ComponentName;->getClassName()Ljava/lang/String;"
+        },
+        {
+          "offset": 332,
+          "reference": "Landroid/text/TextUtils;->isEmpty(Ljava/lang/CharSequence;)Z"
+        },
+        {
+          "offset": 348,
+          "reference": "Landroid/content/pm/PackageManager;->setComponentEnabledSetting(Landroid/content/ComponentName; I I)V"
+        },
+        {
+          "offset": 364,
+          "reference": "Landroid/microntek/service/MicrontekServer$4;-><init>(Landroid/microntek/service/MicrontekServer;)V"
+        },
+        {
+          "offset": 374,
+          "reference": "Landroid/os/Handler;->postDelayed(Ljava/lang/Runnable; J)Z"
+        }
+      ],
+      "reviewed_constants": [
+        {
+          "offset": 32,
+          "value": "CarEvent,CarPower,KeyDown,CarApp,CarBox,Appinfo"
+        }
+      ]
+    }
+  ],
+  "transaction_constants": [
+    {
+      "source_file": "services.jar",
+      "class": "Landroid/os/IVold$Stub;",
+      "field": "TRANSACTION_exreset",
+      "value": 4
+    },
+    {
+      "source_file": "framework.jar",
+      "class": "Landroid/os/IVold$Stub;",
+      "field": "TRANSACTION_exreset",
+      "value": 4
+    }
+  ],
+  "vold_transaction_tables": [
+    {
+      "source_file": "services.jar",
+      "transactions": [
+        {
+          "method": "setListener",
+          "code": 1
+        },
+        {
+          "method": "abortFuse",
+          "code": 2
+        },
+        {
+          "method": "monitor",
+          "code": 3
+        },
+        {
+          "method": "exreset",
+          "code": 4
+        },
+        {
+          "method": "reset",
+          "code": 5
+        },
+        {
+          "method": "shutdown",
+          "code": 6
+        },
+        {
+          "method": "onUserAdded",
+          "code": 7
+        },
+        {
+          "method": "onUserRemoved",
+          "code": 8
+        },
+        {
+          "method": "onUserStarted",
+          "code": 9
+        },
+        {
+          "method": "onUserStopped",
+          "code": 10
+        },
+        {
+          "method": "addAppIds",
+          "code": 11
+        },
+        {
+          "method": "addSandboxIds",
+          "code": 12
+        },
+        {
+          "method": "onSecureKeyguardStateChanged",
+          "code": 13
+        },
+        {
+          "method": "partition",
+          "code": 14
+        },
+        {
+          "method": "forgetPartition",
+          "code": 15
+        },
+        {
+          "method": "mount",
+          "code": 16
+        },
+        {
+          "method": "unmount",
+          "code": 17
+        },
+        {
+          "method": "format",
+          "code": 18
+        },
+        {
+          "method": "benchmark",
+          "code": 19
+        },
+        {
+          "method": "moveStorage",
+          "code": 20
+        },
+        {
+          "method": "remountUid",
+          "code": 21
+        },
+        {
+          "method": "remountAppStorageDirs",
+          "code": 22
+        },
+        {
+          "method": "unmountAppStorageDirs",
+          "code": 23
+        },
+        {
+          "method": "setupAppDir",
+          "code": 24
+        },
+        {
+          "method": "fixupAppDir",
+          "code": 25
+        },
+        {
+          "method": "ensureAppDirsCreated",
+          "code": 26
+        },
+        {
+          "method": "createObb",
+          "code": 27
+        },
+        {
+          "method": "destroyObb",
+          "code": 28
+        },
+        {
+          "method": "fstrim",
+          "code": 29
+        },
+        {
+          "method": "runIdleMaint",
+          "code": 30
+        },
+        {
+          "method": "abortIdleMaint",
+          "code": 31
+        },
+        {
+          "method": "getStorageLifeTime",
+          "code": 32
+        },
+        {
+          "method": "setGCUrgentPace",
+          "code": 33
+        },
+        {
+          "method": "refreshLatestWrite",
+          "code": 34
+        },
+        {
+          "method": "getWriteAmount",
+          "code": 35
+        },
+        {
+          "method": "mountAppFuse",
+          "code": 36
+        },
+        {
+          "method": "unmountAppFuse",
+          "code": 37
+        },
+        {
+          "method": "fbeEnable",
+          "code": 38
+        },
+        {
+          "method": "initUser0",
+          "code": 39
+        },
+        {
+          "method": "mountFstab",
+          "code": 40
+        },
+        {
+          "method": "encryptFstab",
+          "code": 41
+        },
+        {
+          "method": "setStorageBindingSeed",
+          "code": 42
+        },
+        {
+          "method": "createUserKey",
+          "code": 43
+        },
+        {
+          "method": "destroyUserKey",
+          "code": 44
+        },
+        {
+          "method": "addUserKeyAuth",
+          "code": 45
+        },
+        {
+          "method": "clearUserKeyAuth",
+          "code": 46
+        },
+        {
+          "method": "fixateNewestUserKeyAuth",
+          "code": 47
+        },
+        {
+          "method": "getUnlockedUsers",
+          "code": 48
+        },
+        {
+          "method": "unlockUserKey",
+          "code": 49
+        },
+        {
+          "method": "lockUserKey",
+          "code": 50
+        },
+        {
+          "method": "prepareUserStorage",
+          "code": 51
+        },
+        {
+          "method": "destroyUserStorage",
+          "code": 52
+        },
+        {
+          "method": "prepareSandboxForApp",
+          "code": 53
+        },
+        {
+          "method": "destroySandboxForApp",
+          "code": 54
+        },
+        {
+          "method": "startCheckpoint",
+          "code": 55
+        },
+        {
+          "method": "needsCheckpoint",
+          "code": 56
+        },
+        {
+          "method": "needsRollback",
+          "code": 57
+        },
+        {
+          "method": "isCheckpointing",
+          "code": 58
+        },
+        {
+          "method": "abortChanges",
+          "code": 59
+        },
+        {
+          "method": "commitChanges",
+          "code": 60
+        },
+        {
+          "method": "prepareCheckpoint",
+          "code": 61
+        },
+        {
+          "method": "restoreCheckpoint",
+          "code": 62
+        },
+        {
+          "method": "restoreCheckpointPart",
+          "code": 63
+        },
+        {
+          "method": "markBootAttempt",
+          "code": 64
+        },
+        {
+          "method": "supportsCheckpoint",
+          "code": 65
+        },
+        {
+          "method": "supportsBlockCheckpoint",
+          "code": 66
+        },
+        {
+          "method": "supportsFileCheckpoint",
+          "code": 67
+        },
+        {
+          "method": "resetCheckpoint",
+          "code": 68
+        },
+        {
+          "method": "earlyBootEnded",
+          "code": 69
+        },
+        {
+          "method": "createStubVolume",
+          "code": 70
+        },
+        {
+          "method": "destroyStubVolume",
+          "code": 71
+        },
+        {
+          "method": "openAppFuseFile",
+          "code": 72
+        },
+        {
+          "method": "incFsEnabled",
+          "code": 73
+        },
+        {
+          "method": "mountIncFs",
+          "code": 74
+        },
+        {
+          "method": "unmountIncFs",
+          "code": 75
+        },
+        {
+          "method": "setIncFsMountOptions",
+          "code": 76
+        },
+        {
+          "method": "bindMount",
+          "code": 77
+        },
+        {
+          "method": "destroyDsuMetadataKey",
+          "code": 78
+        }
+      ]
+    },
+    {
+      "source_file": "framework.jar",
+      "transactions": [
+        {
+          "method": "setListener",
+          "code": 1
+        },
+        {
+          "method": "abortFuse",
+          "code": 2
+        },
+        {
+          "method": "monitor",
+          "code": 3
+        },
+        {
+          "method": "exreset",
+          "code": 4
+        },
+        {
+          "method": "reset",
+          "code": 5
+        },
+        {
+          "method": "shutdown",
+          "code": 6
+        },
+        {
+          "method": "onUserAdded",
+          "code": 7
+        },
+        {
+          "method": "onUserRemoved",
+          "code": 8
+        },
+        {
+          "method": "onUserStarted",
+          "code": 9
+        },
+        {
+          "method": "onUserStopped",
+          "code": 10
+        },
+        {
+          "method": "addAppIds",
+          "code": 11
+        },
+        {
+          "method": "addSandboxIds",
+          "code": 12
+        },
+        {
+          "method": "onSecureKeyguardStateChanged",
+          "code": 13
+        },
+        {
+          "method": "partition",
+          "code": 14
+        },
+        {
+          "method": "forgetPartition",
+          "code": 15
+        },
+        {
+          "method": "mount",
+          "code": 16
+        },
+        {
+          "method": "unmount",
+          "code": 17
+        },
+        {
+          "method": "format",
+          "code": 18
+        },
+        {
+          "method": "benchmark",
+          "code": 19
+        },
+        {
+          "method": "moveStorage",
+          "code": 20
+        },
+        {
+          "method": "remountUid",
+          "code": 21
+        },
+        {
+          "method": "remountAppStorageDirs",
+          "code": 22
+        },
+        {
+          "method": "unmountAppStorageDirs",
+          "code": 23
+        },
+        {
+          "method": "setupAppDir",
+          "code": 24
+        },
+        {
+          "method": "fixupAppDir",
+          "code": 25
+        },
+        {
+          "method": "ensureAppDirsCreated",
+          "code": 26
+        },
+        {
+          "method": "createObb",
+          "code": 27
+        },
+        {
+          "method": "destroyObb",
+          "code": 28
+        },
+        {
+          "method": "fstrim",
+          "code": 29
+        },
+        {
+          "method": "runIdleMaint",
+          "code": 30
+        },
+        {
+          "method": "abortIdleMaint",
+          "code": 31
+        },
+        {
+          "method": "getStorageLifeTime",
+          "code": 32
+        },
+        {
+          "method": "setGCUrgentPace",
+          "code": 33
+        },
+        {
+          "method": "refreshLatestWrite",
+          "code": 34
+        },
+        {
+          "method": "getWriteAmount",
+          "code": 35
+        },
+        {
+          "method": "mountAppFuse",
+          "code": 36
+        },
+        {
+          "method": "unmountAppFuse",
+          "code": 37
+        },
+        {
+          "method": "fbeEnable",
+          "code": 38
+        },
+        {
+          "method": "initUser0",
+          "code": 39
+        },
+        {
+          "method": "mountFstab",
+          "code": 40
+        },
+        {
+          "method": "encryptFstab",
+          "code": 41
+        },
+        {
+          "method": "setStorageBindingSeed",
+          "code": 42
+        },
+        {
+          "method": "createUserKey",
+          "code": 43
+        },
+        {
+          "method": "destroyUserKey",
+          "code": 44
+        },
+        {
+          "method": "addUserKeyAuth",
+          "code": 45
+        },
+        {
+          "method": "clearUserKeyAuth",
+          "code": 46
+        },
+        {
+          "method": "fixateNewestUserKeyAuth",
+          "code": 47
+        },
+        {
+          "method": "getUnlockedUsers",
+          "code": 48
+        },
+        {
+          "method": "unlockUserKey",
+          "code": 49
+        },
+        {
+          "method": "lockUserKey",
+          "code": 50
+        },
+        {
+          "method": "prepareUserStorage",
+          "code": 51
+        },
+        {
+          "method": "destroyUserStorage",
+          "code": 52
+        },
+        {
+          "method": "prepareSandboxForApp",
+          "code": 53
+        },
+        {
+          "method": "destroySandboxForApp",
+          "code": 54
+        },
+        {
+          "method": "startCheckpoint",
+          "code": 55
+        },
+        {
+          "method": "needsCheckpoint",
+          "code": 56
+        },
+        {
+          "method": "needsRollback",
+          "code": 57
+        },
+        {
+          "method": "isCheckpointing",
+          "code": 58
+        },
+        {
+          "method": "abortChanges",
+          "code": 59
+        },
+        {
+          "method": "commitChanges",
+          "code": 60
+        },
+        {
+          "method": "prepareCheckpoint",
+          "code": 61
+        },
+        {
+          "method": "restoreCheckpoint",
+          "code": 62
+        },
+        {
+          "method": "restoreCheckpointPart",
+          "code": 63
+        },
+        {
+          "method": "markBootAttempt",
+          "code": 64
+        },
+        {
+          "method": "supportsCheckpoint",
+          "code": 65
+        },
+        {
+          "method": "supportsBlockCheckpoint",
+          "code": 66
+        },
+        {
+          "method": "supportsFileCheckpoint",
+          "code": 67
+        },
+        {
+          "method": "resetCheckpoint",
+          "code": 68
+        },
+        {
+          "method": "earlyBootEnded",
+          "code": 69
+        },
+        {
+          "method": "createStubVolume",
+          "code": 70
+        },
+        {
+          "method": "destroyStubVolume",
+          "code": 71
+        },
+        {
+          "method": "openAppFuseFile",
+          "code": 72
+        },
+        {
+          "method": "incFsEnabled",
+          "code": 73
+        },
+        {
+          "method": "mountIncFs",
+          "code": 74
+        },
+        {
+          "method": "unmountIncFs",
+          "code": 75
+        },
+        {
+          "method": "setIncFsMountOptions",
+          "code": 76
+        },
+        {
+          "method": "bindMount",
+          "code": 77
+        },
+        {
+          "method": "destroyDsuMetadataKey",
+          "code": 78
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Static references/constants only; branch semantics require separate review.",
+    "Native vold implementation and MCU acknowledgement semantics remain unverified.",
+    "No sleep, storage, power, Binder or firmware code was executed.",
+    "Only selected metadata published; originals remain unchanged."
+  ],
+  "native_vold": {
+    "sha256": "5b7e13fac3ab33272462cee42f2635696cf132fa6e8c059290ef025737d5c215",
+    "needed": [
+      "android.system.keystore2-V2-ndk.so",
+      "android.hardware.boot@1.0.so",
+      "libbase.so",
+      "libbinder.so",
+      "libcrypto.so",
+      "libcrypto_utils.so",
+      "libcutils.so",
+      "libdiskconfig.so",
+      "libext4_utils.so",
+      "libf2fs_sparseblock.so",
+      "libgsi.so",
+      "libhardware.so",
+      "libhardware_legacy.so",
+      "libincfs.so",
+      "libhidlbase.so",
+      "libkeyutils.so",
+      "liblog.so",
+      "liblogwrap.so",
+      "libselinux.so",
+      "libsysutils.so",
+      "libutils.so",
+      "android.hardware.health.storage@1.0.so",
+      "android.hardware.health.storage-V1-ndk.so",
+      "android.security.maintenance-ndk.so",
+      "libbinder_ndk.so",
+      "libkeymint_support.so",
+      "libcryptfs_hw.so",
+      "libc++.so",
+      "libc.so",
+      "libm.so",
+      "libdl.so"
+    ],
+    "contains_exreset_string": true,
+    "exreset_named_symbols": [],
+    "limit": "Strings/dependencies only; no native implementation or Binder dispatch proven."
+  },
+  "upstream_aidl_reference": {
+    "sha256": "2faaed2fc685750c410aa0adf2dea65d507f37093ce1daceaa8c2f2261a96150",
+    "declared_method_names": [
+      "setListener",
+      "abortFuse",
+      "monitor",
+      "reset",
+      "shutdown",
+      "onUserAdded",
+      "onUserRemoved",
+      "onUserStarted",
+      "onUserStopped",
+      "addAppIds",
+      "addSandboxIds",
+      "onSecureKeyguardStateChanged",
+      "partition",
+      "forgetPartition",
+      "mount",
+      "unmount",
+      "format",
+      "benchmark",
+      "moveStorage",
+      "remountUid",
+      "remountAppStorageDirs",
+      "unmountAppStorageDirs",
+      "setupAppDir",
+      "fixupAppDir",
+      "ensureAppDirsCreated",
+      "createObb",
+      "destroyObb",
+      "fstrim",
+      "runIdleMaint",
+      "abortIdleMaint",
+      "getStorageLifeTime",
+      "setGCUrgentPace",
+      "refreshLatestWrite",
+      "getWriteAmount",
+      "mountAppFuse",
+      "unmountAppFuse",
+      "fbeEnable",
+      "initUser0",
+      "mountFstab",
+      "encryptFstab",
+      "setStorageBindingSeed",
+      "createUserKey",
+      "destroyUserKey",
+      "addUserKeyAuth",
+      "clearUserKeyAuth",
+      "fixateNewestUserKeyAuth",
+      "getUnlockedUsers",
+      "unlockUserKey",
+      "lockUserKey",
+      "prepareUserStorage",
+      "destroyUserStorage",
+      "prepareSandboxForApp",
+      "destroySandboxForApp",
+      "startCheckpoint",
+      "needsCheckpoint",
+      "needsRollback",
+      "isCheckpointing",
+      "abortChanges",
+      "commitChanges",
+      "prepareCheckpoint",
+      "restoreCheckpoint",
+      "restoreCheckpointPart",
+      "markBootAttempt",
+      "supportsCheckpoint",
+      "supportsBlockCheckpoint",
+      "supportsFileCheckpoint",
+      "resetCheckpoint",
+      "earlyBootEnded",
+      "createStubVolume",
+      "destroyStubVolume",
+      "openAppFuseFile",
+      "incFsEnabled",
+      "mountIncFs",
+      "unmountIncFs",
+      "setIncFsMountOptions",
+      "bindMount",
+      "destroyDsuMetadataKey"
+    ],
+    "contains_exreset": false,
+    "limit": "Declaration names only; no upstream generated transaction codes verified."
+  }
+}

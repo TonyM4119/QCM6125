@@ -47,3 +47,5 @@ The same onCreate includes settings/lock/debugging operations, including a hidde
 Preserve the observed component/action contracts while adapting service startup and the actual privileges they require. The old shared system UID and matching platform certificate do not carry over automatically to a differently signed AOSP image. Existing signing/data-migration constraints still apply. The profile does not propose disabling permission checks or changing live settings.
 
 The next dependency boundaries are the manager's event/state initialization, its Mfi and window-policy usage, and the remaining APKs in its startup chain. No claim is made that these subsystems work on newer Android merely because the framework method signatures match.
+
+The [sleep/storage follow-up](sleep-storage-contract.md) traces CarPower consumption into HCT's special storage operation and identifies an additional IVold Binder numbering difference from generated upstream Android 13.

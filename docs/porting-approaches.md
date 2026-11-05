@@ -24,6 +24,8 @@ A framework-only upgrade can retain an older vendor partition in some Treble con
 
 The no-flashing constraint remains in force. Hardware validation would be a separate future decision, not an implied next action. None of these milestones requires another screenshot right now. A working port cannot ultimately be established from static analysis alone.
 
+The working-reference [sleep/storage review](sleep-storage-contract.md) also identifies a custom IVold method and changed Java transaction numbering. Storage daemon/framework adaptation is therefore an explicit requirement alongside the car-service compatibility layer; reusing old framework/native pieces independently would not preserve that contract.
+
 ## Gate before further hardware-specific implementation
 
 The native parameter ABI has now been statically cross-checked against the known-working Malaysk bridge; see [the cross-check](working-reference-crosscheck.md). Framework behaviour, events and actual driver compatibility still require investigation before extending the implementation. Matching Java signatures and Binder constants do not validate the failed package's kernel, device trees, peripherals or native driver ABI. Do not transplant its boot, vendor, dtbo, bootloader or board-specific configuration into a proposed build. The failure mode is unknown; do not infer that RAM/storage capacity caused it.

@@ -1,0 +1,779 @@
+{
+  "check_kind": "Static comparison with Java generated from upstream Android 13 IVold AIDL",
+  "compiler_label": "Debian aidl 14.0.0+r75-1; Java generator, minimum SDK 33; compiler-only Parcelable forwards",
+  "upstream_aidl_sha256": "2faaed2fc685750c410aa0adf2dea65d507f37093ce1daceaa8c2f2261a96150",
+  "generated_java_sha256": "2c312c0d260767c6c24beb25abc744a14b00dd88d9cf0e58648efc93b4441688",
+  "reference_sha256": "16550ed00611f974ad2bf17057e0d53abc6eeefe9b61780237fd372f9a83835c",
+  "upstream_method_count": 77,
+  "comparisons": [
+    {
+      "source_file": "services.jar",
+      "hct_method_count": 78,
+      "shared_method_count": 77,
+      "hct_only_methods": [
+        "exreset"
+      ],
+      "upstream_only_methods": [],
+      "shared_code_mismatches": [
+        {
+          "method": "abortChanges",
+          "upstream_code": 58,
+          "hct_code": 59
+        },
+        {
+          "method": "abortIdleMaint",
+          "upstream_code": 30,
+          "hct_code": 31
+        },
+        {
+          "method": "addAppIds",
+          "upstream_code": 10,
+          "hct_code": 11
+        },
+        {
+          "method": "addSandboxIds",
+          "upstream_code": 11,
+          "hct_code": 12
+        },
+        {
+          "method": "addUserKeyAuth",
+          "upstream_code": 44,
+          "hct_code": 45
+        },
+        {
+          "method": "benchmark",
+          "upstream_code": 18,
+          "hct_code": 19
+        },
+        {
+          "method": "bindMount",
+          "upstream_code": 76,
+          "hct_code": 77
+        },
+        {
+          "method": "clearUserKeyAuth",
+          "upstream_code": 45,
+          "hct_code": 46
+        },
+        {
+          "method": "commitChanges",
+          "upstream_code": 59,
+          "hct_code": 60
+        },
+        {
+          "method": "createObb",
+          "upstream_code": 26,
+          "hct_code": 27
+        },
+        {
+          "method": "createStubVolume",
+          "upstream_code": 69,
+          "hct_code": 70
+        },
+        {
+          "method": "createUserKey",
+          "upstream_code": 42,
+          "hct_code": 43
+        },
+        {
+          "method": "destroyDsuMetadataKey",
+          "upstream_code": 77,
+          "hct_code": 78
+        },
+        {
+          "method": "destroyObb",
+          "upstream_code": 27,
+          "hct_code": 28
+        },
+        {
+          "method": "destroySandboxForApp",
+          "upstream_code": 53,
+          "hct_code": 54
+        },
+        {
+          "method": "destroyStubVolume",
+          "upstream_code": 70,
+          "hct_code": 71
+        },
+        {
+          "method": "destroyUserKey",
+          "upstream_code": 43,
+          "hct_code": 44
+        },
+        {
+          "method": "destroyUserStorage",
+          "upstream_code": 51,
+          "hct_code": 52
+        },
+        {
+          "method": "earlyBootEnded",
+          "upstream_code": 68,
+          "hct_code": 69
+        },
+        {
+          "method": "encryptFstab",
+          "upstream_code": 40,
+          "hct_code": 41
+        },
+        {
+          "method": "ensureAppDirsCreated",
+          "upstream_code": 25,
+          "hct_code": 26
+        },
+        {
+          "method": "fbeEnable",
+          "upstream_code": 37,
+          "hct_code": 38
+        },
+        {
+          "method": "fixateNewestUserKeyAuth",
+          "upstream_code": 46,
+          "hct_code": 47
+        },
+        {
+          "method": "fixupAppDir",
+          "upstream_code": 24,
+          "hct_code": 25
+        },
+        {
+          "method": "forgetPartition",
+          "upstream_code": 14,
+          "hct_code": 15
+        },
+        {
+          "method": "format",
+          "upstream_code": 17,
+          "hct_code": 18
+        },
+        {
+          "method": "fstrim",
+          "upstream_code": 28,
+          "hct_code": 29
+        },
+        {
+          "method": "getStorageLifeTime",
+          "upstream_code": 31,
+          "hct_code": 32
+        },
+        {
+          "method": "getUnlockedUsers",
+          "upstream_code": 47,
+          "hct_code": 48
+        },
+        {
+          "method": "getWriteAmount",
+          "upstream_code": 34,
+          "hct_code": 35
+        },
+        {
+          "method": "incFsEnabled",
+          "upstream_code": 72,
+          "hct_code": 73
+        },
+        {
+          "method": "initUser0",
+          "upstream_code": 38,
+          "hct_code": 39
+        },
+        {
+          "method": "isCheckpointing",
+          "upstream_code": 57,
+          "hct_code": 58
+        },
+        {
+          "method": "lockUserKey",
+          "upstream_code": 49,
+          "hct_code": 50
+        },
+        {
+          "method": "markBootAttempt",
+          "upstream_code": 63,
+          "hct_code": 64
+        },
+        {
+          "method": "mount",
+          "upstream_code": 15,
+          "hct_code": 16
+        },
+        {
+          "method": "mountAppFuse",
+          "upstream_code": 35,
+          "hct_code": 36
+        },
+        {
+          "method": "mountFstab",
+          "upstream_code": 39,
+          "hct_code": 40
+        },
+        {
+          "method": "mountIncFs",
+          "upstream_code": 73,
+          "hct_code": 74
+        },
+        {
+          "method": "moveStorage",
+          "upstream_code": 19,
+          "hct_code": 20
+        },
+        {
+          "method": "needsCheckpoint",
+          "upstream_code": 55,
+          "hct_code": 56
+        },
+        {
+          "method": "needsRollback",
+          "upstream_code": 56,
+          "hct_code": 57
+        },
+        {
+          "method": "onSecureKeyguardStateChanged",
+          "upstream_code": 12,
+          "hct_code": 13
+        },
+        {
+          "method": "onUserAdded",
+          "upstream_code": 6,
+          "hct_code": 7
+        },
+        {
+          "method": "onUserRemoved",
+          "upstream_code": 7,
+          "hct_code": 8
+        },
+        {
+          "method": "onUserStarted",
+          "upstream_code": 8,
+          "hct_code": 9
+        },
+        {
+          "method": "onUserStopped",
+          "upstream_code": 9,
+          "hct_code": 10
+        },
+        {
+          "method": "openAppFuseFile",
+          "upstream_code": 71,
+          "hct_code": 72
+        },
+        {
+          "method": "partition",
+          "upstream_code": 13,
+          "hct_code": 14
+        },
+        {
+          "method": "prepareCheckpoint",
+          "upstream_code": 60,
+          "hct_code": 61
+        },
+        {
+          "method": "prepareSandboxForApp",
+          "upstream_code": 52,
+          "hct_code": 53
+        },
+        {
+          "method": "prepareUserStorage",
+          "upstream_code": 50,
+          "hct_code": 51
+        },
+        {
+          "method": "refreshLatestWrite",
+          "upstream_code": 33,
+          "hct_code": 34
+        },
+        {
+          "method": "remountAppStorageDirs",
+          "upstream_code": 21,
+          "hct_code": 22
+        },
+        {
+          "method": "remountUid",
+          "upstream_code": 20,
+          "hct_code": 21
+        },
+        {
+          "method": "reset",
+          "upstream_code": 4,
+          "hct_code": 5
+        },
+        {
+          "method": "resetCheckpoint",
+          "upstream_code": 67,
+          "hct_code": 68
+        },
+        {
+          "method": "restoreCheckpoint",
+          "upstream_code": 61,
+          "hct_code": 62
+        },
+        {
+          "method": "restoreCheckpointPart",
+          "upstream_code": 62,
+          "hct_code": 63
+        },
+        {
+          "method": "runIdleMaint",
+          "upstream_code": 29,
+          "hct_code": 30
+        },
+        {
+          "method": "setGCUrgentPace",
+          "upstream_code": 32,
+          "hct_code": 33
+        },
+        {
+          "method": "setIncFsMountOptions",
+          "upstream_code": 75,
+          "hct_code": 76
+        },
+        {
+          "method": "setStorageBindingSeed",
+          "upstream_code": 41,
+          "hct_code": 42
+        },
+        {
+          "method": "setupAppDir",
+          "upstream_code": 23,
+          "hct_code": 24
+        },
+        {
+          "method": "shutdown",
+          "upstream_code": 5,
+          "hct_code": 6
+        },
+        {
+          "method": "startCheckpoint",
+          "upstream_code": 54,
+          "hct_code": 55
+        },
+        {
+          "method": "supportsBlockCheckpoint",
+          "upstream_code": 65,
+          "hct_code": 66
+        },
+        {
+          "method": "supportsCheckpoint",
+          "upstream_code": 64,
+          "hct_code": 65
+        },
+        {
+          "method": "supportsFileCheckpoint",
+          "upstream_code": 66,
+          "hct_code": 67
+        },
+        {
+          "method": "unlockUserKey",
+          "upstream_code": 48,
+          "hct_code": 49
+        },
+        {
+          "method": "unmount",
+          "upstream_code": 16,
+          "hct_code": 17
+        },
+        {
+          "method": "unmountAppFuse",
+          "upstream_code": 36,
+          "hct_code": 37
+        },
+        {
+          "method": "unmountAppStorageDirs",
+          "upstream_code": 22,
+          "hct_code": 23
+        },
+        {
+          "method": "unmountIncFs",
+          "upstream_code": 74,
+          "hct_code": 75
+        }
+      ],
+      "names_and_codes_match": false
+    },
+    {
+      "source_file": "framework.jar",
+      "hct_method_count": 78,
+      "shared_method_count": 77,
+      "hct_only_methods": [
+        "exreset"
+      ],
+      "upstream_only_methods": [],
+      "shared_code_mismatches": [
+        {
+          "method": "abortChanges",
+          "upstream_code": 58,
+          "hct_code": 59
+        },
+        {
+          "method": "abortIdleMaint",
+          "upstream_code": 30,
+          "hct_code": 31
+        },
+        {
+          "method": "addAppIds",
+          "upstream_code": 10,
+          "hct_code": 11
+        },
+        {
+          "method": "addSandboxIds",
+          "upstream_code": 11,
+          "hct_code": 12
+        },
+        {
+          "method": "addUserKeyAuth",
+          "upstream_code": 44,
+          "hct_code": 45
+        },
+        {
+          "method": "benchmark",
+          "upstream_code": 18,
+          "hct_code": 19
+        },
+        {
+          "method": "bindMount",
+          "upstream_code": 76,
+          "hct_code": 77
+        },
+        {
+          "method": "clearUserKeyAuth",
+          "upstream_code": 45,
+          "hct_code": 46
+        },
+        {
+          "method": "commitChanges",
+          "upstream_code": 59,
+          "hct_code": 60
+        },
+        {
+          "method": "createObb",
+          "upstream_code": 26,
+          "hct_code": 27
+        },
+        {
+          "method": "createStubVolume",
+          "upstream_code": 69,
+          "hct_code": 70
+        },
+        {
+          "method": "createUserKey",
+          "upstream_code": 42,
+          "hct_code": 43
+        },
+        {
+          "method": "destroyDsuMetadataKey",
+          "upstream_code": 77,
+          "hct_code": 78
+        },
+        {
+          "method": "destroyObb",
+          "upstream_code": 27,
+          "hct_code": 28
+        },
+        {
+          "method": "destroySandboxForApp",
+          "upstream_code": 53,
+          "hct_code": 54
+        },
+        {
+          "method": "destroyStubVolume",
+          "upstream_code": 70,
+          "hct_code": 71
+        },
+        {
+          "method": "destroyUserKey",
+          "upstream_code": 43,
+          "hct_code": 44
+        },
+        {
+          "method": "destroyUserStorage",
+          "upstream_code": 51,
+          "hct_code": 52
+        },
+        {
+          "method": "earlyBootEnded",
+          "upstream_code": 68,
+          "hct_code": 69
+        },
+        {
+          "method": "encryptFstab",
+          "upstream_code": 40,
+          "hct_code": 41
+        },
+        {
+          "method": "ensureAppDirsCreated",
+          "upstream_code": 25,
+          "hct_code": 26
+        },
+        {
+          "method": "fbeEnable",
+          "upstream_code": 37,
+          "hct_code": 38
+        },
+        {
+          "method": "fixateNewestUserKeyAuth",
+          "upstream_code": 46,
+          "hct_code": 47
+        },
+        {
+          "method": "fixupAppDir",
+          "upstream_code": 24,
+          "hct_code": 25
+        },
+        {
+          "method": "forgetPartition",
+          "upstream_code": 14,
+          "hct_code": 15
+        },
+        {
+          "method": "format",
+          "upstream_code": 17,
+          "hct_code": 18
+        },
+        {
+          "method": "fstrim",
+          "upstream_code": 28,
+          "hct_code": 29
+        },
+        {
+          "method": "getStorageLifeTime",
+          "upstream_code": 31,
+          "hct_code": 32
+        },
+        {
+          "method": "getUnlockedUsers",
+          "upstream_code": 47,
+          "hct_code": 48
+        },
+        {
+          "method": "getWriteAmount",
+          "upstream_code": 34,
+          "hct_code": 35
+        },
+        {
+          "method": "incFsEnabled",
+          "upstream_code": 72,
+          "hct_code": 73
+        },
+        {
+          "method": "initUser0",
+          "upstream_code": 38,
+          "hct_code": 39
+        },
+        {
+          "method": "isCheckpointing",
+          "upstream_code": 57,
+          "hct_code": 58
+        },
+        {
+          "method": "lockUserKey",
+          "upstream_code": 49,
+          "hct_code": 50
+        },
+        {
+          "method": "markBootAttempt",
+          "upstream_code": 63,
+          "hct_code": 64
+        },
+        {
+          "method": "mount",
+          "upstream_code": 15,
+          "hct_code": 16
+        },
+        {
+          "method": "mountAppFuse",
+          "upstream_code": 35,
+          "hct_code": 36
+        },
+        {
+          "method": "mountFstab",
+          "upstream_code": 39,
+          "hct_code": 40
+        },
+        {
+          "method": "mountIncFs",
+          "upstream_code": 73,
+          "hct_code": 74
+        },
+        {
+          "method": "moveStorage",
+          "upstream_code": 19,
+          "hct_code": 20
+        },
+        {
+          "method": "needsCheckpoint",
+          "upstream_code": 55,
+          "hct_code": 56
+        },
+        {
+          "method": "needsRollback",
+          "upstream_code": 56,
+          "hct_code": 57
+        },
+        {
+          "method": "onSecureKeyguardStateChanged",
+          "upstream_code": 12,
+          "hct_code": 13
+        },
+        {
+          "method": "onUserAdded",
+          "upstream_code": 6,
+          "hct_code": 7
+        },
+        {
+          "method": "onUserRemoved",
+          "upstream_code": 7,
+          "hct_code": 8
+        },
+        {
+          "method": "onUserStarted",
+          "upstream_code": 8,
+          "hct_code": 9
+        },
+        {
+          "method": "onUserStopped",
+          "upstream_code": 9,
+          "hct_code": 10
+        },
+        {
+          "method": "openAppFuseFile",
+          "upstream_code": 71,
+          "hct_code": 72
+        },
+        {
+          "method": "partition",
+          "upstream_code": 13,
+          "hct_code": 14
+        },
+        {
+          "method": "prepareCheckpoint",
+          "upstream_code": 60,
+          "hct_code": 61
+        },
+        {
+          "method": "prepareSandboxForApp",
+          "upstream_code": 52,
+          "hct_code": 53
+        },
+        {
+          "method": "prepareUserStorage",
+          "upstream_code": 50,
+          "hct_code": 51
+        },
+        {
+          "method": "refreshLatestWrite",
+          "upstream_code": 33,
+          "hct_code": 34
+        },
+        {
+          "method": "remountAppStorageDirs",
+          "upstream_code": 21,
+          "hct_code": 22
+        },
+        {
+          "method": "remountUid",
+          "upstream_code": 20,
+          "hct_code": 21
+        },
+        {
+          "method": "reset",
+          "upstream_code": 4,
+          "hct_code": 5
+        },
+        {
+          "method": "resetCheckpoint",
+          "upstream_code": 67,
+          "hct_code": 68
+        },
+        {
+          "method": "restoreCheckpoint",
+          "upstream_code": 61,
+          "hct_code": 62
+        },
+        {
+          "method": "restoreCheckpointPart",
+          "upstream_code": 62,
+          "hct_code": 63
+        },
+        {
+          "method": "runIdleMaint",
+          "upstream_code": 29,
+          "hct_code": 30
+        },
+        {
+          "method": "setGCUrgentPace",
+          "upstream_code": 32,
+          "hct_code": 33
+        },
+        {
+          "method": "setIncFsMountOptions",
+          "upstream_code": 75,
+          "hct_code": 76
+        },
+        {
+          "method": "setStorageBindingSeed",
+          "upstream_code": 41,
+          "hct_code": 42
+        },
+        {
+          "method": "setupAppDir",
+          "upstream_code": 23,
+          "hct_code": 24
+        },
+        {
+          "method": "shutdown",
+          "upstream_code": 5,
+          "hct_code": 6
+        },
+        {
+          "method": "startCheckpoint",
+          "upstream_code": 54,
+          "hct_code": 55
+        },
+        {
+          "method": "supportsBlockCheckpoint",
+          "upstream_code": 65,
+          "hct_code": 66
+        },
+        {
+          "method": "supportsCheckpoint",
+          "upstream_code": 64,
+          "hct_code": 65
+        },
+        {
+          "method": "supportsFileCheckpoint",
+          "upstream_code": 66,
+          "hct_code": 67
+        },
+        {
+          "method": "unlockUserKey",
+          "upstream_code": 48,
+          "hct_code": 49
+        },
+        {
+          "method": "unmount",
+          "upstream_code": 16,
+          "hct_code": 17
+        },
+        {
+          "method": "unmountAppFuse",
+          "upstream_code": 36,
+          "hct_code": 37
+        },
+        {
+          "method": "unmountAppStorageDirs",
+          "upstream_code": 22,
+          "hct_code": 23
+        },
+        {
+          "method": "unmountIncFs",
+          "upstream_code": 74,
+          "hct_code": 75
+        }
+      ],
+      "names_and_codes_match": false
+    }
+  ],
+  "limits": [
+    "Names/codes only; full Parcel layouts and native vold dispatch remain unverified.",
+    "AIDL generation only; no Java compilation, Android runtime or device operation.",
+    "Android 13 source comparison does not establish any Android 17 ABI."
+  ]
+}
