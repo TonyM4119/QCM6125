@@ -1,0 +1,28 @@
+{
+  "source_revision": "94b4c163b7dfe5ce3607f7bb8456f9573f7de57d",
+  "interface_sha256": "01c230e09901621cae04f437331b5a60d47c7a09c5cc335a5d32f5d246a0b6c4",
+  "base_framework_patch_sha256": "6892793944d9e9af323d567ebc4838e0dcd1c8cd870a1f07d30134003638e3d1",
+  "recipe_sha256": "76a46b608e01964645f793b69554de075bb598d9ad576c0b18f676e2d12f96a0",
+  "patch_sha256": "014c055d5a1b46b930d80139811cff2631eec5d9c7717677fd976e281eddee77",
+  "preserved_standard_method_count": 55,
+  "ack_transaction_code": 101,
+  "generated_java_sha256": {
+    "baseline": "53ceeb76bdc99007070bf80d458b6e213746908edfdb3abe5a504596d9564063",
+    "ack": "04423a18a1984e7074b11cc5d13330d4223713c24ab84e3a97ddecb777e77ebe"
+  },
+  "compiler_forwards_sha256": "b8aab2271c0a1ee697d4d624ea62d7364dc3893f7da2839cb2e2d45340f97a2e",
+  "output_sha256": {
+    "services/core/java/com/android/server/StorageManagerService.java": "785da3409e6805eaae4ba58ec1a282fbe7d569be6a5f671761abbe6f344e7cfd",
+    "services/core/java/com/android/server/storage/StorageSessionController.java": "1ca161bc12eb51b5c609788b6a0684bf859628b632e9d8d0a0942ad337204f08",
+    "services/core/java/com/android/server/storage/StorageUserConnection.java": "50fd222ff6c59b937dd5ae99f4152781fec7b9ef9cb844506dbfad5342e004f2",
+    "core/java/android/os/storage/IStorageManager.aidl": "73b576ec3556564c21c4db36ff82dbd70e35e59fffdc786912f2c7bc4145acc8"
+  },
+  "limits": [
+    "AIDL generation with compiler-only type forwards; no full Android compilation.",
+    "Boolean success is not a lease across later mount or power changes.",
+    "Legacy unmount callers still ignore the boolean result.",
+    "Replacement manager integration and sleep gating remain unimplemented.",
+    "No native IMountService client wrapper for the new Java-only method.",
+    "No Binder, FUSE, storage, sleep or device operation executed."
+  ]
+}

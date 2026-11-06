@@ -80,19 +80,23 @@ public class FrameworkStorageHost {
     @@END_SESSION@@
   }
   static class Vold {
-    boolean fail;
+    boolean fail, failReset;
     String[] requestedIds;
     void unmount(String id) throws Exception {
       calls.add("unmount:"+id); if (fail) throw new Exception("synthetic vold failure");
     }
     void exreset() { calls.add("exreset"); }
-    void exresetPublic(String[] ids) { requestedIds = ids; calls.add("exreset"); }
+    void exresetPublic(String[] ids) throws Exception {
+      requestedIds = ids; calls.add("exreset");
+      if (failReset) throw new Exception("synthetic native reset failure");
+    }
   }
   static class PermissionBase {
     boolean allowed = true;
     void unmount_enforcePermission() {
       calls.add("permission"); if (!allowed) throw new SecurityException();
     }
+    void prepareHctExternalDisksForSleep_enforcePermission() { unmount_enforcePermission(); }
   }
   static class Service extends PermissionBase {
     static final String TAG = "fake";
@@ -104,6 +108,7 @@ public class FrameworkStorageHost {
     }
     void unmount(ImmutableVolumeInfo vol) { calls.add("ordinary:"+vol.getId()); }
     @@UNMOUNT@@
+    @@ACK_ENTRY@@
     @@RESET@@
   }
   static Service service(int type, int state) {
@@ -166,13 +171,45 @@ public class FrameworkStorageHost {
       s=service(0,2); s.mStorageSessionController.mConnections.get(10).sessions.remove("external");
       s.unmount("hctall"); expect("permission","clear","unmount:external","error","restore");
     }
+    @@ACK_TESTS@@
     System.out.println(scenarios + " extracted Java method scenarios passed; fake framework objects only.");
   }
 }
 '''
 
+ACK_TESTS = r'''
+    s=service(0,2); check(s.prepareHctExternalDisksForSleep(),"success not acknowledged ");
+    expect("permission","clear","unmount:external","end:external","exreset","restore");
+    for (int gate=0;gate<2;gate++) {
+      s=service(0,2); if (gate==0) s.mBootCompleted=false; else s.mDaemonConnected=false;
+      check(!s.prepareHctExternalDisksForSleep(),"readiness failure acknowledged "); expect("permission");
+    }
+    s=service(1,2); check(!s.prepareHctExternalDisksForSleep(),"private media acknowledged ");
+    expect("permission","clear","error","restore");
+    s=service(0,2); s.mStorageSessionController.mConnections.get(10).fail=true;
+    check(!s.prepareHctExternalDisksForSleep(),"session failure acknowledged ");
+    expect("permission","clear","unmount:external","end:external","error","restore");
+    s=service(0,2); s.mVold.fail=true;
+    check(!s.prepareHctExternalDisksForSleep(),"unmount failure acknowledged ");
+    expect("permission","clear","unmount:external","error","restore");
+    s=service(0,2); s.allowed=false;
+    try { s.prepareHctExternalDisksForSleep(); throw new AssertionError("ack permission bypass"); }
+    catch (SecurityException expected) {} expect("permission");
+    s=service(0,2); s.mStorageSessionController.mConnections.clear();
+    check(!s.prepareHctExternalDisksForSleep(),"missing connection acknowledged ");
+    expect("permission","clear","unmount:external","error","restore");
+    s=service(0,2); s.mStorageSessionController.mConnections.get(10).sessions.remove("external");
+    check(!s.prepareHctExternalDisksForSleep(),"missing session acknowledged ");
+    expect("permission","clear","unmount:external","error","restore");
+    s=service(0,2); s.mVold.failReset=true;
+    check(!s.prepareHctExternalDisksForSleep(),"native failure acknowledged ");
+    expect("permission","clear","unmount:external","end:external","exreset","error","restore");
+'''
 
-def check(source_root, work_dir, java, scoped=False):
+
+def check(source_root, work_dir, java, scoped=False, ack=False):
+    if ack and not scoped:
+        raise ValueError('Acknowledgement harness requires scoped sources')
     source_root, work_dir = source_root.resolve(), work_dir.resolve()
     if source_root == work_dir or source_root in work_dir.parents or work_dir in source_root.parents:
         raise ValueError('Harness output must not overlap the source tree')
@@ -180,12 +217,13 @@ def check(source_root, work_dir, java, scoped=False):
     controller = (source_root / CONTROLLER).read_text()
     methods = {
         'UNMOUNT': extract_method(service, 'public void unmount(String volId)'),
-        'RESET': extract_method(service, 'private void resetHctExternalDisks()'),
+        'RESET': extract_method(service, ('private boolean' if ack else 'private void') + ' resetHctExternalDisks()'),
         'END_SESSION': extract_method(controller, 'public void endHctExternalSession(ImmutableVolumeInfo vol)'),
     }
     methods['STRICT_END_SESSION'] = (extract_method((source_root / CONNECTION).read_text(),
         'public void removeSessionAndWaitForHctReset(String sessionId)') if scoped else '')
-    harness = HARNESS.replace('@@SCOPED@@', 'true' if scoped else 'false')
+    methods['ACK_ENTRY'] = extract_method(service, 'public boolean prepareHctExternalDisksForSleep()') if ack else ''
+    harness = HARNESS.replace('@@SCOPED@@', 'true' if scoped else 'false').replace('@@ACK_TESTS@@', ACK_TESTS if ack else '')
     for name, method in methods.items():
         harness = harness.replace('@@' + name + '@@', method)
     work_dir.mkdir(parents=True, exist_ok=True)
@@ -216,8 +254,9 @@ if __name__ == '__main__':
     parser.add_argument('--java', default='/usr/bin/java', type=Path)
     parser.add_argument('--report', required=True, type=Path)
     parser.add_argument('--scoped', action='store_true')
+    parser.add_argument('--ack', action='store_true')
     args = parser.parse_args()
-    report = check(args.source_root, args.work_dir, args.java, args.scoped)
+    report = check(args.source_root, args.work_dir, args.java, args.scoped, args.ack)
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, indent=2) + '\n')
     print(report['test_output'])

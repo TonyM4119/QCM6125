@@ -8,6 +8,7 @@ from experiment_vold_extension import EXPECTED_FILES, REVISION
 from prepare_vold_native_patch import EXPECTED, extract_method
 from prepare_framework_storage_patch import EXPECTED as FRAMEWORK_INPUTS, REVISION as FRAMEWORK_REVISION
 from prepare_scoped_vold_patch import METHOD as SCOPED_METHOD, VOLUME_BASE_SHA256
+from prepare_storage_ack_patch import INTERFACE_SHA256
 
 
 def digest(path):
@@ -101,6 +102,22 @@ def check(root):
     for name, value in scoped_host['source_file_sha256'].items():
         if scoped_framework['output_sha256'][name] != value:
             raise ValueError('Scoped Java host check used different staged files')
+    ack = json.loads((evidence / 'framework17-storage-ack.json').read_text())
+    ack_host = json.loads((evidence / 'framework17-storage-ack-host.json').read_text())
+    if (ack['source_revision'] != FRAMEWORK_REVISION or ack['interface_sha256'] != INTERFACE_SHA256
+            or ack['base_framework_patch_sha256'] != scoped_framework['patch_sha256']):
+        raise ValueError('Storage acknowledgement source/base patch changed')
+    if (ack['ack_transaction_code'] != 101 or ack['preserved_standard_method_count'] != 55):
+        raise ValueError('Storage acknowledgement transaction allocation changed')
+    if ack['patch_sha256'] != digest(experiment / 'storage-ack.patch'):
+        raise ValueError('Storage acknowledgement patch changed')
+    if ack['recipe_sha256'] != digest(root / 'scripts/prepare_storage_ack_patch.py'):
+        raise ValueError('Storage acknowledgement recipe changed')
+    if ack_host['host_recipe_sha256'] != host['host_recipe_sha256']:
+        raise ValueError('Storage acknowledgement host recipe changed')
+    for name, value in ack_host['source_file_sha256'].items():
+        if ack['output_sha256'][name] != value:
+            raise ValueError('Storage acknowledgement host check used different files')
     return ('Tracked AIDL/native/framework patches, host-check inputs and storage binding reports agree. '
             'Consistency check only; no platform build or device validation.')
 

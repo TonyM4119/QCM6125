@@ -1,0 +1,52 @@
+--- a/services/core/java/com/android/server/StorageManagerService.java
++++ b/services/core/java/com/android/server/StorageManagerService.java
+@@ -2505,6 +2505,13 @@
+ 
+     @android.annotation.EnforcePermission(android.Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS)
+     @Override
++    public boolean prepareHctExternalDisksForSleep() {
++        super.prepareHctExternalDisksForSleep_enforcePermission();
++        return resetHctExternalDisks();
++    }
++
++    @android.annotation.EnforcePermission(android.Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS)
++    @Override
+     public void unmount(String volId) {
+ 
+         super.unmount_enforcePermission();
+@@ -2522,8 +2529,8 @@
+      * Experimental public SD/USB preparation. Not a replacement for a full reset.
+      * Snapshot validation does not serialize hotplug, user or mount transitions.
+      */
+-    private void resetHctExternalDisks() {
+-        if (!mBootCompleted || !mDaemonConnected) return;
++    private boolean resetHctExternalDisks() {
++        if (!mBootCompleted || !mDaemonConnected) return false;
+ 
+         final long token = Binder.clearCallingIdentity();
+         try {
+@@ -2558,10 +2565,12 @@
+                 mStorageSessionController.endHctExternalSession(vol);
+             }
+             mVold.exresetPublic(diskIds.toArray(new String[0]));
++            return true;
+         } catch (Exception e) {
+             // Matches the reviewed manager-facing handled storage failure path.
+-            // A return here is not an acknowledgement that disks are safe.
++            // Failure is exposed only through the new boolean endpoint.
+             Slog.wtf(TAG, e);
++            return false;
+         } finally {
+             Binder.restoreCallingIdentity(token);
+         }
+--- a/core/java/android/os/storage/IStorageManager.aidl
++++ b/core/java/android/os/storage/IStorageManager.aidl
+@@ -170,4 +170,8 @@
+      * is returned.
+      */
+     int getInternalStorageRemainingLifetime() = 99;
++
++    // Experimental acknowledgement for a replacement HCT sleep coordinator.
++    @EnforcePermission("MOUNT_UNMOUNT_FILESYSTEMS")
++    boolean prepareHctExternalDisksForSleep() = 100;
+ }

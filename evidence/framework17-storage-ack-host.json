@@ -1,0 +1,24 @@
+{
+  "check_kind": "Extracted staged Java methods compiled with fake framework scaffolding",
+  "source_file_sha256": {
+    "services/core/java/com/android/server/StorageManagerService.java": "785da3409e6805eaae4ba58ec1a282fbe7d569be6a5f671761abbe6f344e7cfd",
+    "services/core/java/com/android/server/storage/StorageSessionController.java": "1ca161bc12eb51b5c609788b6a0684bf859628b632e9d8d0a0942ad337204f08",
+    "services/core/java/com/android/server/storage/StorageUserConnection.java": "50fd222ff6c59b937dd5ae99f4152781fec7b9ef9cb844506dbfad5342e004f2"
+  },
+  "host_recipe_sha256": "a7a0a9bc91f437bad0e89e115239f27f5af172c240e809e7b812b7e3cbdcbad8",
+  "method_sha256": {
+    "UNMOUNT": "d4537b826db324635d75d9457009efec2b33549fb01627b8610f3047334f3fdf",
+    "RESET": "439485e1e91e09d3807e111d6659bee832ab9e6fd52c092c71379b18b7006111",
+    "END_SESSION": "76df6525f1070ed3742b2b00f6c748e2b56d4a4842ea01bbd79408432e887e55",
+    "STRICT_END_SESSION": "e821bc1be3465dc17039153945ea2f70f567eb5ebf001301414235b65fed7ca1",
+    "ACK_ENTRY": "7fd7eb7e7bc1a132d00607b136ea20179ac3babb44c57ba0a9c6d4ac0a24d275"
+  },
+  "harness_sha256": "8265eb9e8f6a04fd1233033fe8e79851b089290aa7963482f2bf5de01994c406",
+  "test_output": "30 extracted Java method scenarios passed; fake framework objects only.",
+  "limits": [
+    "Not full Android translation-unit compilation or runtime validation.",
+    "Mock API shapes and state transitions do not prove target API compatibility.",
+    "No real Binder identity, permissions, FUSE, vold, sessions or device effects.",
+    "No hotplug/user/mount/concurrency validation."
+  ]
+}

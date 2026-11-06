@@ -69,3 +69,5 @@ Disk IDs are names, not generation tokens. Removal/reinsertion under the same ID
 The unchanged old exreset method remains available to privileged callers in this experiment. Only the scoped framework route uses method 86. This does not remove every broad-reset entry point from Android.
 
 Framework handled failures still return normally, and the recovered manager may proceed to sleep after a handled storage error. Successful native validation does not solve that acknowledgement contract. Manager readiness/error handling and a coherent full platform build remain required before device use. No Binder, FUSE, storage, suspend or flashing operation was executed by these host checks.
+
+The subsequent [acknowledgement proposal](storage-sleep-acknowledgement.md) adds a separate boolean storage endpoint and a host-tested coordinator policy that refuses sleep on false. It does not retrofit the existing manager or establish runtime readiness.

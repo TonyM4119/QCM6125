@@ -5,14 +5,15 @@
     "services/core/java/com/android/server/storage/StorageSessionController.java": "1ca161bc12eb51b5c609788b6a0684bf859628b632e9d8d0a0942ad337204f08",
     "services/core/java/com/android/server/storage/StorageUserConnection.java": "50fd222ff6c59b937dd5ae99f4152781fec7b9ef9cb844506dbfad5342e004f2"
   },
-  "host_recipe_sha256": "88c3900ab819b92b603934b5abc58a044719d1f1bf4f529eb25f6ad6f4a60269",
+  "host_recipe_sha256": "a7a0a9bc91f437bad0e89e115239f27f5af172c240e809e7b812b7e3cbdcbad8",
   "method_sha256": {
     "UNMOUNT": "d4537b826db324635d75d9457009efec2b33549fb01627b8610f3047334f3fdf",
     "RESET": "f6872093df7326a0d80fbcf1103019d307806cadd68a08a508e91465c093b282",
     "END_SESSION": "76df6525f1070ed3742b2b00f6c748e2b56d4a4842ea01bbd79408432e887e55",
-    "STRICT_END_SESSION": "e821bc1be3465dc17039153945ea2f70f567eb5ebf001301414235b65fed7ca1"
+    "STRICT_END_SESSION": "e821bc1be3465dc17039153945ea2f70f567eb5ebf001301414235b65fed7ca1",
+    "ACK_ENTRY": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
-  "harness_sha256": "17a53d7e6f8e43e1504ace2f8da2bddc18773dcdf6ef818f00954c8f2062c03a",
+  "harness_sha256": "3c31f0b381a1c26f66ce3df15e63aacde97792a422bc87c78b7e05042649a879",
   "test_output": "20 extracted Java method scenarios passed; fake framework objects only.",
   "limits": [
     "Not full Android translation-unit compilation or runtime validation.",
