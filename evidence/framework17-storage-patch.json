@@ -2,8 +2,9 @@
   "check_kind": "Pinned framework staging and review patch only; Java not compiled",
   "source_revision": "94b4c163b7dfe5ce3607f7bb8456f9573f7de57d",
   "source_tag": "android-17.0.0_r1",
+  "scope_mode": "legacy-all-external",
   "source_url": "https://android.googlesource.com/platform/frameworks/base/+/94b4c163b7dfe5ce3607f7bb8456f9573f7de57d",
-  "recipe_sha256": "1aa9b4784f66ab53704cb34dacc2452c830e544da8579c77a34d3ee4e256a768",
+  "recipe_sha256": "88fbac387d084210c6de716644a912dcad3f383b4b807501eee5b7184adb1dfc",
   "input_sha256": {
     "services/core/java/com/android/server/StorageManagerService.java": "4b274514605d62962712a6ee729cbc5676c7b49897353e59ab910aec857aacb1",
     "services/core/java/com/android/server/storage/StorageSessionController.java": "05d0f2db32ca635e2a096ec11515e0bf201fb1869d6ead07e060aa893ed6c836",

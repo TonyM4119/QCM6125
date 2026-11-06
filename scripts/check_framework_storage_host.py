@@ -5,7 +5,7 @@ import json
 from pathlib import Path
 import subprocess
 
-from prepare_framework_storage_patch import SERVICE, CONTROLLER
+from prepare_framework_storage_patch import SERVICE, CONTROLLER, CONNECTION
 from prepare_vold_native_patch import extract_method
 
 HARNESS = r'''
@@ -31,6 +31,7 @@ public class FrameworkStorageHost {
     static final int STATE_UNMOUNTED = 0, STATE_MOUNTED = 2, STATE_MOUNTED_READ_ONLY = 3;
   }
   static class DiskInfo {
+    String id = "disk:fake";
     int flags; DiskInfo(int f) { flags = f; }
     boolean isSd() { return (flags & 4) != 0; }
     boolean isUsb() { return (flags & 8) != 0; }
@@ -55,6 +56,16 @@ public class FrameworkStorageHost {
   static class StorageUserConnection {
     Set<String> sessions = new HashSet<>(Arrays.asList("external", "internal"));
     boolean fail;
+    static class Session { String id; Session(String i) { id=i; } }
+    class ActiveConnection {
+      void endSession(Session session) throws ExternalStorageServiceException {
+        calls.add("end:"+session.id);
+        if (fail) throw new ExternalStorageServiceException("synthetic failure");
+      }
+    }
+    ActiveConnection mActiveConnection = new ActiveConnection();
+    Session removeSession(String id) { return sessions.remove(id) ? new Session(id) : null; }
+    @@STRICT_END_SESSION@@
     void removeSessionAndWait(String id) throws ExternalStorageServiceException {
       calls.add("end:"+id);
       if (fail) throw new ExternalStorageServiceException("synthetic failure");
@@ -70,10 +81,12 @@ public class FrameworkStorageHost {
   }
   static class Vold {
     boolean fail;
+    String[] requestedIds;
     void unmount(String id) throws Exception {
       calls.add("unmount:"+id); if (fail) throw new Exception("synthetic vold failure");
     }
     void exreset() { calls.add("exreset"); }
+    void exresetPublic(String[] ids) { requestedIds = ids; calls.add("exreset"); }
   }
   static class PermissionBase {
     boolean allowed = true;
@@ -102,6 +115,7 @@ public class FrameworkStorageHost {
   public static void main(String[] args) {
     Service s = service(0,2);
     s.unmount("hctall"); expect("permission","clear","unmount:external","end:external","exreset","restore");
+    if (@@SCOPED@@) check(Arrays.equals(s.mVold.requestedIds, new String[]{"disk:fake"}), "disk IDs lost ");
     check(s.mStorageSessionController.mConnections.get(10).sessions.equals(Set.of("internal")),
           "unrelated session removed ");
     s=service(0,2); s.allowed=false;
@@ -130,13 +144,35 @@ public class FrameworkStorageHost {
     }
     s=service(0,2); s.mVolumes.get(0).vol.disk=null; s.unmount("hctall");
     expect("permission","clear","exreset","restore");
+    if (@@SCOPED@@) {
+      check(s.mVold.requestedIds.length==0, "null disk leaked into selection ");
+      s=service(0,2);
+      s.mVolumes.add(new WatchedVolumeInfo(new ImmutableVolumeInfo("external2",s.mVolumes.get(0).vol.disk,0,2)));
+      s.mStorageSessionController.mConnections.get(10).sessions.add("external2");
+      s.unmount("hctall");
+      expect("permission","clear","unmount:external","end:external","unmount:external2","end:external2","exreset","restore");
+      check(s.mVold.requestedIds.length==1, "disk IDs were duplicated ");
+      s=service(0,0); s.unmount("hctall");
+      expect("permission","clear","exreset","restore");
+      check(s.mVold.requestedIds.length==1, "unmounted public disk omitted ");
+      s=service(0,2);
+      for (int i=0; i<64; i++) {
+        DiskInfo d = new DiskInfo(8); d.id="disk:"+i;
+        s.mVolumes.add(new WatchedVolumeInfo(new ImmutableVolumeInfo("v"+i,d,0,2)));
+      }
+      s.unmount("hctall"); expect("permission","clear","error","restore");
+      s=service(0,2); s.mStorageSessionController.mConnections.clear();
+      s.unmount("hctall"); expect("permission","clear","unmount:external","error","restore");
+      s=service(0,2); s.mStorageSessionController.mConnections.get(10).sessions.remove("external");
+      s.unmount("hctall"); expect("permission","clear","unmount:external","error","restore");
+    }
     System.out.println(scenarios + " extracted Java method scenarios passed; fake framework objects only.");
   }
 }
 '''
 
 
-def check(source_root, work_dir, java):
+def check(source_root, work_dir, java, scoped=False):
     source_root, work_dir = source_root.resolve(), work_dir.resolve()
     if source_root == work_dir or source_root in work_dir.parents or work_dir in source_root.parents:
         raise ValueError('Harness output must not overlap the source tree')
@@ -147,7 +183,9 @@ def check(source_root, work_dir, java):
         'RESET': extract_method(service, 'private void resetHctExternalDisks()'),
         'END_SESSION': extract_method(controller, 'public void endHctExternalSession(ImmutableVolumeInfo vol)'),
     }
-    harness = HARNESS
+    methods['STRICT_END_SESSION'] = (extract_method((source_root / CONNECTION).read_text(),
+        'public void removeSessionAndWaitForHctReset(String sessionId)') if scoped else '')
+    harness = HARNESS.replace('@@SCOPED@@', 'true' if scoped else 'false')
     for name, method in methods.items():
         harness = harness.replace('@@' + name + '@@', method)
     work_dir.mkdir(parents=True, exist_ok=True)
@@ -160,7 +198,7 @@ def check(source_root, work_dir, java):
                          check=True, capture_output=True, text=True)
     return {'check_kind': 'Extracted staged Java methods compiled with fake framework scaffolding',
             'source_file_sha256': {name: hashlib.sha256((source_root / name).read_bytes()).hexdigest()
-                                   for name in (SERVICE, CONTROLLER)},
+                                   for name in (SERVICE, CONTROLLER, CONNECTION)},
             'host_recipe_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
             'method_sha256': {k: hashlib.sha256(v.encode()).hexdigest() for k, v in methods.items()},
             'harness_sha256': hashlib.sha256(harness.encode()).hexdigest(),
@@ -177,8 +215,9 @@ if __name__ == '__main__':
     parser.add_argument('--work-dir', required=True, type=Path)
     parser.add_argument('--java', default='/usr/bin/java', type=Path)
     parser.add_argument('--report', required=True, type=Path)
+    parser.add_argument('--scoped', action='store_true')
     args = parser.parse_args()
-    report = check(args.source_root, args.work_dir, args.java)
+    report = check(args.source_root, args.work_dir, args.java, args.scoped)
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, indent=2) + '\n')
     print(report['test_output'])

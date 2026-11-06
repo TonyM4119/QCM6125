@@ -1,0 +1,24 @@
+{
+  "source_revision": "6d20a0078c2bcaa2499dc5d032f337bfe1182d9e",
+  "input_sha256": {
+    "VolumeManager.cpp": "35526fed10321312f8180d0d380a2cadef38c0dd9720a438253058dcd387d8e8",
+    "VolumeManager.h": "e682e153f0b6c47196729683082cd646a7e54678ba0835eef9944e834f2ad72d",
+    "VoldNativeService.cpp": "6481fce1ef520fdda7a9b17f514d9a427292336f5372c6f283dac9ca5e36587f",
+    "VoldNativeService.h": "2bbee5a6cd1994ebb788c95eb664081b50bfd431a3692f78293f445ef436cf59",
+    "model/Disk.h": "adfd37b4f31cfb5896e60bad635e0c42637d47fcfa80f7f08606c0e614e887c1",
+    "model/VolumeBase.h": "186837e1dafb9d78c878f0a27b9129a6ccc4256849fa2db1a7047e2d36b61cab"
+  },
+  "recipe_sha256": "3f7d3380ae3d8cf704d6fe581f6bc192cca552a8ad31e0363fc15b744202dddb",
+  "base_native_patch_sha256": "90a2f1026f20856f5a26e9e685c69571f3d33c939767481a4c62bbc25b586b7b",
+  "patch_sha256": "65707e252ede550d71c8df1b1d768b856c3390f115f79f7c1ede1bbcaa21d9a4",
+  "method_sha256": "09c9e0ab19921ac8f14e941da1b2595f44f47d2fc51b8f4334d769d9167a30e5",
+  "harness_sha256": "003285d7023fac4075ff4fb5b1a0ddd8baffb73dd238b6f4c10ead64a3981c54",
+  "host_output": "24 scoped-reset extracted-method scenarios passed; fake disks only.",
+  "limits": [
+    "Extracted method with fake disks/volumes only; not a compiled Android daemon.",
+    "Binder authorization and actual lock macros not exercised.",
+    "Disk IDs are not generation tokens; reused IDs remain an identity race.",
+    "Failure after mutation can leave partial progress; no rollback.",
+    "No physical media, FUSE, sleep, flashing or hardware operations."
+  ]
+}

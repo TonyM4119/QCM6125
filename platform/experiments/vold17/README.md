@@ -41,4 +41,6 @@ Remaining work includes Android compilation and review of permission/locking/err
 
 ## Framework follow-up
 
+The newer [scoped reset follow-up](../../../docs/scoped-storage-reset.md) adds transaction 86 with explicit native disk IDs and strict missing-session handling. Its scoped AIDL/framework patches replace their earlier alternatives; scoped-native.patch applies after native-exreset.patch. Read that document for the exact application order and remaining generation/session/manager limitations.
+
 `framework-storage.patch` is a separate review-only proposal against frameworks/base revision `94b4c163b7dfe5ce3607f7bb8456f9573f7de57d`, obtained from the official Android 17 r1 tag. It introduces permission-checked hctall routing and narrow public-volume session handling. It does not reproduce legacy MediaProvider termination. Fifteen extracted-method Java scenarios pass with fake framework objects; full Android classes were not compiled. Native disk selection and session races still prevent a public-only safety guarantee. Do not treat the three patches as a validated platform integration. See [the framework review](../../../docs/framework17-storage-port.md) for reproduction and known gaps.

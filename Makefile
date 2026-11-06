@@ -74,6 +74,7 @@ test: all
 	python3 scripts/experiment_vold_extension_test.py
 	python3 scripts/prepare_vold_native_patch_test.py
 	python3 scripts/prepare_framework_storage_patch_test.py
+	python3 scripts/prepare_scoped_vold_patch_test.py
 	python3 scripts/check_port_artifacts.py
 
 AIDL ?= aidl

@@ -22,12 +22,16 @@ FORWARDS = ('parcelable android.os.PersistableBundle cpp_header "binder/Persista
             'cpp_header "android/os/incremental/IncrementalFileSystemControlParcel.h";\n')
 
 
-def append_method(source):
-    if re.search(r'\bexreset\s*\(', source) or not source.rstrip().endswith('}'):
+def append_method(source, scoped=False):
+    if re.search(r'\b(?:exreset|exresetPublic)\s*\(', source) or not source.rstrip().endswith('}'):
         raise ValueError('Expected unextended interface ending in a closing brace')
     at = source.rfind('}')
-    return source[:at] + ('\n    // Experimental HCT external-disk reset; native implementation required.\n'
-                         '    void exreset();\n') + source[at:]
+    addition = ('\n    // Experimental HCT external-disk reset; native implementation required.\n'
+                '    void exreset();\n')
+    if scoped:
+        addition += ('\n    // Scoped public-media reset; requires native validation.\n'
+                     '    void exresetPublic(in @utf8InCpp String[] diskIds);\n')
+    return source[:at] + addition + source[at:]
 
 
 def cpp_constants(source):
@@ -45,23 +49,29 @@ def cpp_constants(source):
     return result
 
 
-def verify_mappings(baseline_java, extension_java, baseline_cpp, extension_cpp):
+def verify_mappings(baseline_java, extension_java, baseline_cpp, extension_cpp, scoped=False):
     if not baseline_java or 'exreset' in baseline_java or baseline_java != baseline_cpp:
         raise ValueError('Invalid or inconsistent baseline')
     if extension_java != extension_cpp:
         raise ValueError('Java/C++ extension codes differ')
-    if extension_java.keys() - baseline_java.keys() != {'exreset'}:
+    expected = {'exreset', 'exresetPublic'} if scoped else {'exreset'}
+    if extension_java.keys() - baseline_java.keys() != expected:
         raise ValueError('Unexpected extension method set')
     if any(extension_java.get(name) != code for name, code in baseline_java.items()):
         raise ValueError('Existing upstream transaction was removed or renumbered')
     if extension_java['exreset'] != max(baseline_java.values()) + 1:
         raise ValueError('Extension is not appended after existing codes')
-    return {'upstream_method_count': len(baseline_java), 'extended_method_count': len(extension_java),
+    result = {'upstream_method_count': len(baseline_java), 'extended_method_count': len(extension_java),
             'preserved_upstream_transaction_count': len(baseline_java),
             'extension_code': extension_java['exreset'], 'java_cpp_codes_match': True}
+    if scoped:
+        if extension_java['exresetPublic'] != extension_java['exreset'] + 1:
+            raise ValueError('Scoped extension is not appended after exreset')
+        result['scoped_extension_code'] = extension_java['exresetPublic']
+    return result
 
 
-def experiment(source_root, work_dir, aidl, compiler_label):
+def experiment(source_root, work_dir, aidl, compiler_label, scoped=False):
     source_root, work_dir = source_root.resolve(), work_dir.resolve()
     if work_dir == source_root or source_root in work_dir.parents:
         raise ValueError('Experiment outputs must stay outside the input source tree')
@@ -72,7 +82,7 @@ def experiment(source_root, work_dir, aidl, compiler_label):
             raise ValueError('Pinned source differs: ' + name)
         files[name] = raw
     original = files['IVold.aidl'].decode()
-    patched = append_method(original)
+    patched = append_method(original, scoped)
     work_dir.mkdir(parents=True, exist_ok=True)
     forwards = work_dir / 'compiler-types.aidl'
     forwards.write_text(FORWARDS)
@@ -98,7 +108,7 @@ def experiment(source_root, work_dir, aidl, compiler_label):
             mappings[(variant, language)] = (generated_constants if language == 'java' else cpp_constants)(raw.decode())
             generated_hashes[variant + '_' + language] = hashlib.sha256(raw).hexdigest()
     checks = verify_mappings(mappings['baseline', 'java'], mappings['extended', 'java'],
-                             mappings['baseline', 'cpp'], mappings['extended', 'cpp'])
+                             mappings['baseline', 'cpp'], mappings['extended', 'cpp'], scoped)
     if checks['upstream_method_count'] != 84:
         raise ValueError('Unexpected Android 17 source method count')
     patch = ''.join(difflib.unified_diff(original.splitlines(keepends=True), patched.splitlines(keepends=True),
@@ -128,8 +138,9 @@ if __name__ == '__main__':
     parser.add_argument('--compiler-label', required=True)
     parser.add_argument('--report', required=True, type=Path)
     parser.add_argument('--patch', required=True, type=Path)
+    parser.add_argument('--scoped', action='store_true')
     args = parser.parse_args()
-    report, patch = experiment(args.source_root, args.work_dir, args.aidl, args.compiler_label)
+    report, patch = experiment(args.source_root, args.work_dir, args.aidl, args.compiler_label, args.scoped)
     args.report.parent.mkdir(parents=True, exist_ok=True)
     args.patch.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, indent=2) + '\n')

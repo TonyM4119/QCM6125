@@ -1,0 +1,29 @@
+{
+  "check_kind": "Pinned framework staging and review patch only; Java not compiled",
+  "source_revision": "94b4c163b7dfe5ce3607f7bb8456f9573f7de57d",
+  "source_tag": "android-17.0.0_r1",
+  "scope_mode": "explicit-disk-ids",
+  "source_url": "https://android.googlesource.com/platform/frameworks/base/+/94b4c163b7dfe5ce3607f7bb8456f9573f7de57d",
+  "recipe_sha256": "88fbac387d084210c6de716644a912dcad3f383b4b807501eee5b7184adb1dfc",
+  "input_sha256": {
+    "services/core/java/com/android/server/StorageManagerService.java": "4b274514605d62962712a6ee729cbc5676c7b49897353e59ab910aec857aacb1",
+    "services/core/java/com/android/server/storage/StorageSessionController.java": "05d0f2db32ca635e2a096ec11515e0bf201fb1869d6ead07e060aa893ed6c836",
+    "services/core/java/com/android/server/storage/StorageUserConnection.java": "56ad1318a997930a608c75b4e20fccc72117060577c79853f43d1ec10ffe7d21"
+  },
+  "output_sha256": {
+    "services/core/java/com/android/server/StorageManagerService.java": "22d091cdff66c65b7f9184bca3f37bbead7e1778c62e8741aae830d1b78a94d9",
+    "services/core/java/com/android/server/storage/StorageSessionController.java": "1ca161bc12eb51b5c609788b6a0684bf859628b632e9d8d0a0942ad337204f08",
+    "services/core/java/com/android/server/storage/StorageUserConnection.java": "50fd222ff6c59b937dd5ae99f4152781fec7b9ef9cb844506dbfad5342e004f2"
+  },
+  "patch_sha256": "6892793944d9e9af323d567ebc4838e0dcd1c8cd870a1f07d30134003638e3d1",
+  "limits": [
+    "Not compiled against Android; no Binder, FUSE, daemon or device execution.",
+    "Requires scoped AIDL/native patches and rebuilt clients/daemon.",
+    "Public-only snapshot validation differs from legacy media-provider termination.",
+    "Snapshot does not prevent hotplug, mount, daemon or user races before native reset.",
+    "Scoped native validation does not detect generation reuse of the same disk ID.",
+    "Missing sessions and vold/session teardown races need Android runtime validation.",
+    "Handled failure returns normally; manager continuation is not proof of safe storage.",
+    "Not ready for platform integration or device tests."
+  ]
+}

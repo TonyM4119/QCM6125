@@ -30,6 +30,7 @@ The key result: car functionality depends on HCT modifications inside the Java f
 - [Android 17 storage-interface experiment preserving standard transaction IDs](platform/experiments/vold17/README.md)
 - [Experimental Android 17 native reset implementation and extracted-method host checks](docs/vold17-native-port.md)
 - [Official Android 17 framework storage proposal and Java host checks](docs/framework17-storage-port.md)
+- [Scoped native disk validation and strict session reset experiment](docs/scoped-storage-reset.md)
 - [RDS byte arrays and background station results](docs/radio-payloads.md)
 - [Working-kernel driver bindings, limits and virtual event framing](docs/working-kernel.md)
 - [HCT board/display/touch declarations in compiled device trees](docs/device-tree-findings.md)

@@ -1,5 +1,7 @@
 # Android 17 framework storage adaptation
 
+Follow-up: [the scoped reset experiment](scoped-storage-reset.md) adds explicit native disk selection and strict missing-session handling. The original patch below is retained as the first proposal; the scoped framework patch is its separate replacement variant. Neither is ready for device use.
+
 The published environment now permits official source reads. The Android 17 r1 frameworks/base tag resolves to `94b4c163b7dfe5ce3607f7bb8456f9573f7de57d`. [Source fingerprints](../evidence/android17-official-source.json) record the small inspected files; this is not a full checkout. The official vold tag resolves to the same `6d20a0078c2bcaa2499dc5d032f337bfe1182d9e` used by the existing experiment. All nine fetched vold files match the pinned hashes, and regeneration produced byte-identical native and AIDL patches.
 
 ## Why the old helper cannot be copied directly

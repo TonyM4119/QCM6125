@@ -7,6 +7,7 @@ from check_vold_bindings import check as check_bindings
 from experiment_vold_extension import EXPECTED_FILES, REVISION
 from prepare_vold_native_patch import EXPECTED, extract_method
 from prepare_framework_storage_patch import EXPECTED as FRAMEWORK_INPUTS, REVISION as FRAMEWORK_REVISION
+from prepare_scoped_vold_patch import METHOD as SCOPED_METHOD, VOLUME_BASE_SHA256
 
 
 def digest(path):
@@ -65,6 +66,41 @@ def check(root):
             raise ValueError('Java host check used a different staged framework file')
     if host['host_recipe_sha256'] != digest(root / 'scripts/check_framework_storage_host.py'):
         raise ValueError('Java host recipe changed since recorded run')
+    scoped_native = json.loads((evidence / 'vold17-scoped-native.json').read_text())
+    scoped_aidl = json.loads((evidence / 'vold17-scoped-aidl.json').read_text())
+    scoped_framework = json.loads((evidence / 'framework17-scoped-patch.json').read_text())
+    scoped_host = json.loads((evidence / 'framework17-scoped-host.json').read_text())
+    for report, name in [(scoped_native,'scoped-native.patch'), (scoped_aidl,'scoped-aidl.patch'),
+                         (scoped_framework,'scoped-framework.patch')]:
+        if report['patch_sha256'] != digest(experiment / name):
+            raise ValueError('Scoped patch changed: ' + name)
+    if scoped_native['input_sha256'] != {**EXPECTED, 'model/VolumeBase.h': VOLUME_BASE_SHA256}:
+        raise ValueError('Scoped native inputs changed')
+    if scoped_native['base_native_patch_sha256'] != native['patch_sha256']:
+        raise ValueError('Scoped native patch has a different base')
+    scoped_method = extract_method(SCOPED_METHOD,
+        'int VolumeManager::exresetPublic(const std::vector<std::string>& diskIds)')
+    if scoped_native['method_sha256'] != hashlib.sha256(scoped_method.encode()).hexdigest():
+        raise ValueError('Scoped tested method differs from recipe')
+    if scoped_native['recipe_sha256'] != digest(root / 'scripts/prepare_scoped_vold_patch.py'):
+        raise ValueError('Scoped native recipe changed')
+    if scoped_native['harness_sha256'] != digest(root / 'native/scoped_reset_host_test.cpp'):
+        raise ValueError('Scoped native harness changed')
+    if scoped_aidl['source_files'] != EXPECTED_FILES or scoped_aidl['source_revision'] != REVISION:
+        raise ValueError('Scoped AIDL source pins changed')
+    if (scoped_aidl['scoped_extension_code'] != 86 or scoped_aidl['extension_code'] != 85
+            or scoped_aidl['preserved_upstream_transaction_count'] != 84):
+        raise ValueError('Scoped transaction IDs changed')
+    if (scoped_framework['input_sha256'] != FRAMEWORK_INPUTS
+            or scoped_framework['source_revision'] != FRAMEWORK_REVISION
+            or scoped_framework['scope_mode'] != 'explicit-disk-ids'
+            or scoped_framework['recipe_sha256'] != framework['recipe_sha256']):
+        raise ValueError('Scoped framework source/recipe changed')
+    if scoped_host['host_recipe_sha256'] != host['host_recipe_sha256']:
+        raise ValueError('Scoped Java host recipe changed')
+    for name, value in scoped_host['source_file_sha256'].items():
+        if scoped_framework['output_sha256'][name] != value:
+            raise ValueError('Scoped Java host check used different staged files')
     return ('Tracked AIDL/native/framework patches, host-check inputs and storage binding reports agree. '
             'Consistency check only; no platform build or device validation.')
 

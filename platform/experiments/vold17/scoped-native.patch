@@ -1,0 +1,87 @@
+--- a/VolumeManager.cpp
++++ b/VolumeManager.cpp
+@@ -32,6 +32,7 @@
+ #include <sys/wait.h>
+ #include <unistd.h>
+ #include <array>
++#include <unordered_set>
+ 
+ #include <linux/kdev_t.h>
+ 
+@@ -1001,6 +1002,40 @@
+     return 0;
+ }
+ 
++int VolumeManager::exresetPublic(const std::vector<std::string>& diskIds) {
++    using android::vold::Disk;
++    using android::vold::VolumeBase;
++    if (diskIds.size() > 64) return -EINVAL;
++    std::unordered_set<std::string> wanted;
++    for (const auto& id : diskIds) {
++        if (id.empty() || !wanted.insert(id).second) return -EINVAL;
++    }
++    std::vector<std::shared_ptr<Disk>> selected;
++    // Caller holds the VolumeManager lock across validation and mutation.
++    // Validate the entire request before the first destructive operation.
++    for (const auto& disk : mDisks) {
++        if (wanted.count(disk->getId()) == 0) continue;
++        const int flags = disk->getFlags();
++        if ((flags & (Disk::Flags::kSd | Disk::Flags::kUsb)) == 0 ||
++                (flags & Disk::Flags::kEmmc) != 0 || disk->isStub()) return -EINVAL;
++        const auto volumes = disk->getVolumes();
++        if (volumes.empty()) return -ENODEV;
++        for (const auto& volume : volumes) {
++            if (volume->getType() != VolumeBase::Type::kPublic) return -EINVAL;
++            if (volume->getState() != VolumeBase::State::kUnmounted) return -EBUSY;
++        }
++        selected.push_back(disk);
++    }
++    if (selected.size() != wanted.size()) return -ENODEV;
++    for (const auto& disk : selected) {
++        int status = disk->destroy();
++        if (status != 0) return status;
++        status = disk->create();
++        if (status != 0) return status;
++    }
++    return 0;
++}
++
+ int VolumeManager::exreset() {
+     constexpr int kExternalMask = android::vold::Disk::Flags::kSd |
+                                   android::vold::Disk::Flags::kUsb;
+--- a/VolumeManager.h
++++ b/VolumeManager.h
+@@ -126,6 +126,7 @@
+     int reset();
+     /* Reset external SD/USB disks for HCT sleep preparation. */
+     int exreset();
++    int exresetPublic(const std::vector<std::string>& diskIds);
+     /* Prepare for device shutdown, safely unmounting all devices */
+     int shutdown();
+     /* Unmount all volumes, usually for encryption */
+--- a/VoldNativeService.cpp
++++ b/VoldNativeService.cpp
+@@ -165,6 +165,13 @@
+     ACQUIRE_LOCK;
+ 
+     return translate(VolumeManager::Instance()->reset());
++}
++
++binder::Status VoldNativeService::exresetPublic(const std::vector<std::string>& diskIds) {
++    ENFORCE_SYSTEM_OR_ROOT;
++    ACQUIRE_LOCK;
++
++    return translate(VolumeManager::Instance()->exresetPublic(diskIds));
+ }
+ 
+ binder::Status VoldNativeService::exreset() {
+--- a/VoldNativeService.h
++++ b/VoldNativeService.h
+@@ -36,6 +36,7 @@
+     binder::Status monitor();
+     binder::Status reset();
+     binder::Status exreset() override;
++    binder::Status exresetPublic(const std::vector<std::string>& diskIds) override;
+     binder::Status shutdown();
+     binder::Status abortFuse();
+ 

@@ -86,8 +86,20 @@ END_SESSION = '''    /**
 
 '''
 
+STRICT_END_SESSION = '''    /** End a captured session for the scoped reset, rejecting missing state. */
+    public void removeSessionAndWaitForHctReset(String sessionId)
+            throws ExternalStorageServiceException {
+        final Session session = removeSession(sessionId);
+        if (session == null) {
+            throw new ExternalStorageServiceException("Reset session disappeared: " + sessionId);
+        }
+        mActiveConnection.endSession(session);
+    }
 
-def prepare(source_root, output_root):
+'''
+
+
+def prepare(source_root, output_root, scoped=False):
     source_root, output_root = source_root.resolve(), output_root.resolve()
     if (output_root == source_root or source_root in output_root.parents
             or output_root in source_root.parents):
@@ -109,9 +121,38 @@ def prepare(source_root, output_root):
         '        }\n\n'
         '        final WatchedVolumeInfo vol = findVolumeByIdOrThrow(volId);')
     anchor = '    private void unmount(ImmutableVolumeInfo vol) {'
-    updated[SERVICE] = replace_once(updated[SERVICE], anchor, RESET + anchor)
+    reset = RESET
+    if scoped:
+        reset = replace_once(reset, '            final List<ImmutableVolumeInfo> external = new ArrayList<>();',
+            '            final List<ImmutableVolumeInfo> external = new ArrayList<>();\n'
+            '            final List<String> diskIds = new ArrayList<>();')
+        anchor_state = '                    if (vol.getState() == VolumeInfo.STATE_UNMOUNTED) continue;'
+        reset = replace_once(reset, anchor_state,
+            '                    if (!diskIds.contains(disk.id)) diskIds.add(disk.id);\n' + anchor_state)
+        anchor_loop = '            for (ImmutableVolumeInfo vol : external) {'
+        reset = replace_once(reset, anchor_loop,
+            '            if (diskIds.size() > 64) {\n'
+            '                throw new IllegalStateException("Too many external disks");\n'
+            '            }\n' + anchor_loop)
+        reset = replace_once(reset, '            mVold.exreset();',
+            '            mVold.exresetPublic(diskIds.toArray(new String[0]));')
+    updated[SERVICE] = replace_once(updated[SERVICE], anchor, reset + anchor)
     anchor = '    private void initExternalStorageServiceComponent() throws ExternalStorageServiceException {'
-    updated[CONTROLLER] = replace_once(original[CONTROLLER], anchor, END_SESSION + anchor)
+    end_session = END_SESSION
+    if scoped:
+        end_session = replace_once(end_session,
+            '        if (connection != null) {\n'
+            '            // Do not call onVolumeRemove first: it removes the session before\n'
+            '            // removeSessionAndWait can obtain the session to end.\n'
+            '            connection.removeSessionAndWait(vol.getId());\n'
+            '        }',
+            '        if (connection == null) {\n'
+            '            throw new ExternalStorageServiceException("Reset connection disappeared");\n'
+            '        }\n'
+            '        connection.removeSessionAndWaitForHctReset(vol.getId());')
+        comment = '    /** Restarts all available sessions for a user without blocking.'
+        updated[CONNECTION] = replace_once(original[CONNECTION], comment, STRICT_END_SESSION + comment)
+    updated[CONTROLLER] = replace_once(original[CONTROLLER], anchor, end_session + anchor)
     patch = ''.join(''.join(difflib.unified_diff(
         original[name].splitlines(keepends=True), updated[name].splitlines(keepends=True),
         fromfile='a/' + name, tofile='b/' + name)) for name in sorted(updated))
@@ -123,6 +164,7 @@ def prepare(source_root, output_root):
     return {
         'check_kind': 'Pinned framework staging and review patch only; Java not compiled',
         'source_revision': REVISION, 'source_tag': 'android-17.0.0_r1',
+        'scope_mode': 'explicit-disk-ids' if scoped else 'legacy-all-external',
         'source_url': 'https://android.googlesource.com/platform/frameworks/base/+/' + REVISION,
         'recipe_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'input_sha256': EXPECTED,
@@ -130,10 +172,12 @@ def prepare(source_root, output_root):
         'patch_sha256': hashlib.sha256(patch.encode()).hexdigest(),
         'limits': [
             'Not compiled against Android; no Binder, FUSE, daemon or device execution.',
-            'Requires both existing vold17 patches and rebuilt clients/daemon.',
+            ('Requires scoped AIDL/native patches and rebuilt clients/daemon.' if scoped else
+             'Requires both existing vold17 patches and rebuilt clients/daemon.'),
             'Public-only snapshot validation differs from legacy media-provider termination.',
             'Snapshot does not prevent hotplug, mount, daemon or user races before native reset.',
-            'Native exreset still selects all SD/USB disks; snapshot is not a native safety gate.',
+            ('Scoped native validation does not detect generation reuse of the same disk ID.' if scoped else
+             'Native exreset still selects all SD/USB disks; snapshot is not a native safety gate.'),
             'Missing sessions and vold/session teardown races need Android runtime validation.',
             'Handled failure returns normally; manager continuation is not proof of safe storage.',
             'Not ready for platform integration or device tests.'],
@@ -146,8 +190,9 @@ if __name__ == '__main__':
     parser.add_argument('--output-root', type=Path, required=True)
     parser.add_argument('--report', type=Path, required=True)
     parser.add_argument('--patch', type=Path, required=True)
+    parser.add_argument('--scoped', action='store_true')
     args = parser.parse_args()
-    report, patch = prepare(args.source_root, args.output_root)
+    report, patch = prepare(args.source_root, args.output_root, args.scoped)
     for path in (args.report, args.patch):
         path.parent.mkdir(parents=True, exist_ok=True)
     args.report.write_text(json.dumps(report, indent=2) + '\n')
