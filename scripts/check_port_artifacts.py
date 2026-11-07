@@ -118,6 +118,16 @@ def check(root):
     for name, value in ack_host['source_file_sha256'].items():
         if ack['output_sha256'][name] != value:
             raise ValueError('Storage acknowledgement host check used different files')
+    manager = json.loads((evidence / 'sleep-manager-host.json').read_text())
+    manager_paths = {str(path.relative_to(root)) for path in (root / 'platform/manager').rglob('*.java')}
+    manager_paths.add('Android.bp')
+    if manager_paths != set(manager['source_sha256']):
+        raise ValueError('Manager source set changed since host validation')
+    for name, value in manager['source_sha256'].items():
+        if digest(root / name) != value:
+            raise ValueError('Manager source changed: ' + name)
+    if manager['recipe_sha256'] != digest(root / 'scripts/check_sleep_manager.py'):
+        raise ValueError('Manager host recipe changed')
     return ('Tracked AIDL/native/framework patches, host-check inputs and storage binding reports agree. '
             'Consistency check only; no platform build or device validation.')
 

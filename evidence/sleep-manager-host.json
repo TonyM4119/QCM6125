@@ -1,0 +1,35 @@
+{
+  "check_kind": "Actual proposed manager sources compiled/executed with host-only Android stubs",
+  "compiler_mode": "JDK compiler module with source/target 17; host APIs, not --release 17",
+  "compiler_diagnostics": "warning: [options] system modules path not set in conjunction with -source 17\n1 warning",
+  "source_sha256": {
+    "platform/manager/src/com/android/server/hct/AndroidHctSleepBridge.java": "57d2d569f97269b5aac22956776caa43df64cad628583a56a5aa3048118dfe5d",
+    "platform/manager/src/com/android/server/hct/HctSleepCoordinator.java": "079300909daa2f0b15cd65bbe2c1a49b10085773debab21054093a42cd0d8550",
+    "platform/manager/test-support/android/microntek/ICarManageCallback.java": "6ebae593d41b921e3cf21bab635c52068062fc95d33323d85d84a251ec9928e0",
+    "platform/manager/test-support/android/microntek/ICarService.java": "4436eb44e272d6595e3c1398c8d6880401a3cae6fd10592a00f20728d59ffcc5",
+    "platform/manager/test-support/android/os/Bundle.java": "feda9adf4b50f6239c5fb11db094ece3d3bb45c83f2171b3cd5e104a2a756787",
+    "platform/manager/test-support/android/os/Handler.java": "0a79e55198bc02b7ae086cadf4cf4fb903eb7998f5b6a7e7e0614b13270c73d0",
+    "platform/manager/test-support/android/os/IBinder.java": "ecd381784f9a8fa4fa0a247ed9f99cef8851482038ff3b90a3245d93cc496d48",
+    "platform/manager/test-support/android/os/Looper.java": "3b895b2e0cab92d1cbf93c175e5fd38e652c996f79b981033c2db914e2c7bcaa",
+    "platform/manager/test-support/android/os/PowerManager.java": "baa5d1f30c8130d39e4364865fb501eae7d613a498bf3ef4272884bf0c9292f3",
+    "platform/manager/test-support/android/os/RemoteException.java": "edb7101f66de7e3eafd0bfe3ed8aa7dfc9d4ccc80e48f84b415c0e87981f6a40",
+    "platform/manager/test-support/android/os/SystemClock.java": "69fc3e87ccf1d031504462be879a89c77f681e84e68c2101d4f145f8004efa4d",
+    "platform/manager/test-support/android/os/storage/IStorageManager.java": "9eedbbceac0fb212a244983bc70c9745eb4a328c29dc8775ae6aa4852c92a0ca",
+    "platform/manager/test-support/android/util/Slog.java": "4df752a3b3f18690c18b013327b202f268badc231aed56c965f1d12317c44d26",
+    "platform/manager/tests/com/android/server/hct/AndroidHctSleepBridgeTest.java": "22741f18cebd670e67ab82e6b6b09147c6d4741dd4a4fe2619d053068a944602",
+    "platform/manager/tests/com/android/server/hct/HctSleepCoordinatorTest.java": "f920eb5cc4f61a5c793a23a19c2877d17b87552a949fe02f2fe05ddd2b2a3823",
+    "Android.bp": "4368d7bfa5bce0de5b82aaf8112dab0515605cbb389091198e2f05440b53dd91"
+  },
+  "recipe_sha256": "77571c84e0c21f91b6c66832c070623859285b0cdd96f8f447c8b47c980477ab",
+  "test_outputs": [
+    "18 coordinator scenarios passed; fake storage/power ports only.",
+    "19 Android bridge scenarios passed against test-only API shapes; no Binder/device calls."
+  ],
+  "limits": [
+    "Android API shapes are test stubs, not a compiled Android platform or real Binder.",
+    "Android.bp has not been evaluated by Soong.",
+    "No startup registration, manager replacement, privilege grants or device operations.",
+    "Final power check is not atomic with the later PowerManager call.",
+    "Blocked remote calls cannot be cancelled; late replies are invalidated."
+  ]
+}

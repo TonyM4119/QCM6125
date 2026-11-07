@@ -32,6 +32,7 @@ The key result: car functionality depends on HCT modifications inside the Java f
 - [Official Android 17 framework storage proposal and Java host checks](docs/framework17-storage-port.md)
 - [Scoped native disk validation and strict session reset experiment](docs/scoped-storage-reset.md)
 - [Explicit storage acknowledgement and sleep-gating policy](docs/storage-sleep-acknowledgement.md)
+- [Experimental Java manager sleep bridge and lifecycle tests](platform/manager/README.md)
 - [RDS byte arrays and background station results](docs/radio-payloads.md)
 - [Working-kernel driver bindings, limits and virtual event framing](docs/working-kernel.md)
 - [HCT board/display/touch declarations in compiled device trees](docs/device-tree-findings.md)

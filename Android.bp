@@ -1,0 +1,14 @@
+// Optional experimental library; nothing starts or installs it automatically.
+// Requires the matching framework storage-ack patch before an Android build.
+java_library {
+    name: "hct-sleep-bridge-experimental",
+    srcs: [
+        "platform/manager/src/**/*.java",
+        "interfaces/android/microntek/*.aidl",
+    ],
+    aidl: {
+        local_include_dirs: ["interfaces"],
+    },
+    installable: false,
+    java_version: "17",
+}

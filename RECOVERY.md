@@ -1,6 +1,6 @@
 # Resume this project
 
-Updated November 5, 2026. This file preserves context independently of the chat.
+Updated November 7, 2026. This file preserves context independently of the chat.
 
 ## Goal and baseline
 
@@ -15,6 +15,8 @@ Commit `1e27641` contains port-artifact consistency checks and the official fram
 These are isolated source experiments and host tests. No Android image has been built or hardware-tested. No flashing, wiping, bootloader operation, MCU update or device storage operation has been performed.
 
 ## Resume work here
+
+November 7 checkpoint: platform/manager contains the actual Java coordinator and Android Binder/PowerManager adapter as an optional, uninstalled source library. Eighteen coordinator and nineteen Android-adapter host scenarios pass, including real-thread blocked preparation, wake/new-sleep cancellation and Binder lifecycle cleanup. Run make test-manager to compile/run them. Read platform/manager/README.md before integration: no live car Binder service/startup wiring is supplied, the original manager must not remain a competing sleep owner, and the final PowerManager call still races wake/close after its last check. Native generation identity and full Android build/compatibility remain open. GitHub main was last verified at e1ca3f3 before this checkpoint; inspect current refs before pushing.
 
 Current follow-up: docs/storage-sleep-acknowledgement.md adds an explicit permission-checked boolean storage endpoint (code 101, all 55 existing IDs preserved) after the scoped framework patch. Thirty extracted Java scenarios pass, and the new portable acknowledged-sleep policy blocks sleep on false and cancels on wake. The existing manager is not adapted; actual Android compilation/integration, generation identity and MCU/power coordination remain open. The scoped checkpoint b642a22 has been pushed to GitHub main; verify the latest refs before future pushes.
 

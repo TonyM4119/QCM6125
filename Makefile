@@ -85,3 +85,7 @@ test-binder:
 
 test-device-tree:
 	python3 scripts/device_tree_profile_test.py
+
+.PHONY: test-manager
+test-manager:
+	python3 scripts/check_sleep_manager.py --report work/sleep-manager-host.json

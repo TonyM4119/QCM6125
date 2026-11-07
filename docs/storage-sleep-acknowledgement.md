@@ -4,6 +4,8 @@ The recovered manager can continue to goToSleep after handled storage errors. A 
 
 This is an experimental framework/interface patch plus host policy tests. No replacement manager is implemented or installed, and no actual Android power operation is performed.
 
+Follow-up: [the Java sleep bridge](../platform/manager/README.md) now supplies a source-level Android adapter consuming this endpoint. It is an uninstalled optional library, not a complete manager replacement. Its actual sources pass host tests with Android API stubs; full Android compilation/startup and ownership of the old manager's sleep branch remain open.
+
 ## Framework endpoint
 
 `IStorageManager.prepareHctExternalDisksForSleep()` is appended with explicit offset 100, yielding Binder transaction 101. Code generation against the original pinned interface confirms all 55 existing method IDs remain unchanged. The interface file is pinned at SHA-256 `01c230e09901621cae04f437331b5a60d47c7a09c5cc335a5d32f5d246a0b6c4` from frameworks/base revision `94b4c163b7dfe5ce3607f7bb8456f9573f7de57d`.
