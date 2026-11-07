@@ -1,0 +1,24 @@
+{
+  "check_kind": "Pinned source inspection only; no PowerManager execution",
+  "source_revision": "94b4c163b7dfe5ce3607f7bb8456f9573f7de57d",
+  "input_sha256": {
+    "core/java/android/os/PowerManager.java": "000b80fbd49aa0a18afa08e9d054b0fa09666c8aba5524a9e52228ddf7b3bc18",
+    "services/core/java/com/android/server/power/PowerManagerService.java": "eebc30ca368013710fd7bd87d69e23c6bef8e91c1a1262bf4d4dec9238b28b76",
+    "services/core/java/com/android/server/power/PowerGroup.java": "4d8f76d7070ec4fd6ef4bf7d6c4ddf2e575b77e16192fe9c73eca9af797d7b4c"
+  },
+  "recipe_sha256": "252bfbc66ec9fef6aa48f03ab815a6d66acb7a66ffaef5c05628f52acb2923c9",
+  "observations": {
+    "api_uses_uptime_input_event_timestamp": true,
+    "single_argument_wrapper_uses_application_reason_and_zero_flags": true,
+    "service_rejects_future_event_time": true,
+    "normal_sleep_and_doze_reject_strictly_older_than_last_wake": true,
+    "delegate_can_handle_request_before_normal_group_path": true
+  },
+  "limits": [
+    "Strict less-than guards do not reject equal timestamps by time alone.",
+    "Callback receipt time is not the original hardware event timestamp.",
+    "CarPower wake callbacks need not correspond to an Android last-wake update.",
+    "Final check and later sleep call remain non-atomic.",
+    "No full platform build, real power service or hardware test."
+  ]
+}

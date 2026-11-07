@@ -11,7 +11,7 @@ This directory contains the first Java manager component for the Android 17 port
 - Registers the reconstructed ICarManageCallback with the injected ICarService, listens only for CarPower, and reads its type field. Malformed or missing data invalidates pending work.
 - Reads getStringState("carpower") before and after storage preparation.
 - Calls the patched IStorageManager.prepareHctExternalDisksForSleep boolean method.
-- Requests PowerManager.goToSleep using SystemClock.uptimeMillis, never wall-clock time.
+- Requests PowerManager.goToSleep using the uptime captured when the sleep state was first observed, never wall-clock or preparation-completion time. Duplicate sleep callbacks do not refresh it; a new sleep after wake gets a new time.
 - Links both service binders to death handling. Disconnect/close invalidates late acknowledgements immediately, even if a remote call is still blocked.
 - Cleans up callbacks and death links on the worker. Registration/start/close are idempotent; partial setup failures are cleaned up best-effort.
 
@@ -37,7 +37,7 @@ Run `make test-manager` or:
 python3 scripts/check_sleep_manager.py --report work/sleep-manager-host.json
 ```
 
-The script compiles the actual Java sources with test-only Android API shapes, then runs 18 coordinator and 19 bridge scenarios. One coordinator test uses a real executor thread and latches to exercise wake/new-sleep while preparation is blocked; it verifies preparation does not overlap and the old acknowledgement is not reused. Bridge tests exercise startup/callback state handling, Binder death, partial registration cleanup, false/error acknowledgements, invalid data, worker rejection and uptime selection.
+The script compiles the actual Java sources with test-only Android API shapes, then runs 21 coordinator and 20 bridge scenarios. One coordinator test uses a real executor thread and latches to exercise wake/new-sleep while preparation is blocked; it verifies preparation does not overlap and the old acknowledgement is not reused. Bridge tests exercise startup/callback state handling, Binder death, partial registration cleanup, false/error acknowledgements, invalid data, worker rejection and uptime selection. See docs/power-event-order.md for the pinned source review behind event-time preservation.
 
 The test-support directory is not a runtime framework implementation and must not be included in an Android image. These checks do not establish Binder transport behavior, permissions, PowerManager behavior or actual Android API compatibility. The host JDK compiler uses source/target 17 with host platform classes because this runtime lacks the release-17 API archive. This is not a --release 17 baseline check or a Soong/Android build.
 

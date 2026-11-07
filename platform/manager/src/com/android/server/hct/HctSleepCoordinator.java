@@ -2,13 +2,14 @@ package com.android.server.hct;
 
 import java.util.Objects;
 import java.util.concurrent.Executor;
+import java.util.function.LongSupplier;
 
 /** Single-flight preparation policy for a future manager; no hardware APIs here. */
 public final class HctSleepCoordinator implements AutoCloseable {
     public interface Ports {
         String readCarPower() throws Exception;
         boolean prepareStorage() throws Exception;
-        void requestSleep() throws Exception;
+        void requestSleep(long eventUptime) throws Exception;
     }
 
     public enum Outcome { IDLE, CANCELLED, STORAGE_FAILED, REQUESTED, ERROR, CLOSED }
@@ -16,17 +17,20 @@ public final class HctSleepCoordinator implements AutoCloseable {
     private final Object mLock = new Object();
     private final Ports mPorts;
     private final Executor mWorker;
+    private final LongSupplier mClock;
     private String mPower;
     private long mGeneration;
     private long mActiveGeneration;
+    private long mEventUptime;
     private boolean mRunning;
     private boolean mClosed;
     private Outcome mLastOutcome = Outcome.IDLE;
     private Exception mLastFailure;
 
-    public HctSleepCoordinator(Ports ports, Executor worker) {
+    public HctSleepCoordinator(Ports ports, Executor worker, LongSupplier uptimeClock) {
         mPorts = Objects.requireNonNull(ports);
         mWorker = Objects.requireNonNull(worker);
+        mClock = Objects.requireNonNull(uptimeClock);
     }
 
     /** Called immediately on receipt of a power event, including wake/unknown states. */
@@ -34,6 +38,9 @@ public final class HctSleepCoordinator implements AutoCloseable {
         long launch = -1;
         synchronized (mLock) {
             if (mClosed || Objects.equals(mPower, power)) return;
+            long observed = mClock.getAsLong();
+            if (observed < 0) throw new IllegalArgumentException("Negative event uptime");
+            mEventUptime = observed;
             mPower = power;
             mGeneration++;
             if (!mRunning && "sleep".equals(power)) {
@@ -52,8 +59,10 @@ public final class HctSleepCoordinator implements AutoCloseable {
     }
 
     private void submit(long generation) {
+        final long eventUptime;
+        synchronized (mLock) { eventUptime = mEventUptime; }
         try {
-            mWorker.execute(() -> run(generation));
+            mWorker.execute(() -> run(generation, eventUptime));
         } catch (RuntimeException failure) {
             synchronized (mLock) {
                 if (mActiveGeneration == generation) {
@@ -65,7 +74,7 @@ public final class HctSleepCoordinator implements AutoCloseable {
         }
     }
 
-    private void run(long generation) {
+    private void run(long generation, long eventUptime) {
         Outcome result = Outcome.CANCELLED;
         Exception failure = null;
         try {
@@ -77,7 +86,7 @@ public final class HctSleepCoordinator implements AutoCloseable {
                     if (prepared) {
                         // No remote call runs under mLock. This final check is not
                         // atomic with PowerManager's later Binder transaction.
-                        mPorts.requestSleep();
+                        mPorts.requestSleep(eventUptime);
                         result = Outcome.REQUESTED;
                     } else {
                         result = Outcome.STORAGE_FAILED;

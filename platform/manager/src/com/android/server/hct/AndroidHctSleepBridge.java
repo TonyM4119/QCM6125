@@ -69,14 +69,14 @@ public final class AndroidHctSleepBridge implements AutoCloseable {
             @Override public boolean prepareStorage() throws RemoteException {
                 return mStorage.prepareHctExternalDisksForSleep();
             }
-            @Override public void requestSleep() {
-                power.goToSleep(SystemClock.uptimeMillis());
+            @Override public void requestSleep(long eventUptime) {
+                power.goToSleep(eventUptime);
             }
         }, command -> {
             if (!mWorker.post(command)) {
                 throw new RejectedExecutionException("HCT sleep worker stopped");
             }
-        });
+        }, SystemClock::uptimeMillis);
     }
 
     public void start() {

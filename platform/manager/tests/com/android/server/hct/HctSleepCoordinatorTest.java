@@ -27,7 +27,8 @@ public final class HctSleepCoordinatorTest {
     static final class Fixture implements HctSleepCoordinator.Ports {
         final Queue queue = new Queue();
         final List<String> calls = new ArrayList<>();
-        final HctSleepCoordinator coordinator = new HctSleepCoordinator(this, queue);
+        long now = 100, requestedTime = -1;
+        final HctSleepCoordinator coordinator = new HctSleepCoordinator(this, queue, () -> now);
         String power = "sleep";
         boolean prepared = true;
         Runnable duringRead, duringPreparation;
@@ -46,7 +47,8 @@ public final class HctSleepCoordinatorTest {
             }
             return prepared;
         }
-        @Override public void requestSleep() throws Exception {
+        @Override public void requestSleep(long eventUptime) throws Exception {
+            requestedTime = eventUptime;
             calls.add("sleep"); if (failSleep) throw new Exception("sleep failed");
         }
         void run() { coordinator.onCarPowerState("sleep"); queue.drain(); }
@@ -101,10 +103,26 @@ public final class HctSleepCoordinatorTest {
         f = new Fixture(); f.coordinator.onCarPowerState("power_on"); f.queue.drain();
         f.expect(HctSleepCoordinator.Outcome.IDLE);
         Fixture rejected = new Fixture();
-        HctSleepCoordinator bad = new HctSleepCoordinator(rejected, r -> { throw new RejectedExecutionException(); });
+        HctSleepCoordinator bad = new HctSleepCoordinator(rejected,
+                r -> { throw new RejectedExecutionException(); }, () -> 100);
         bad.onCarPowerState("sleep");
         check(bad.getLastOutcome() == HctSleepCoordinator.Outcome.ERROR && rejected.calls.isEmpty(), "rejection performed work");
         scenarios++;
+        Fixture delayed = new Fixture(); delayed.duringPreparation = () -> delayed.now = 500;
+        delayed.run(); delayed.expect(HctSleepCoordinator.Outcome.REQUESTED,"read","prepare","read","sleep");
+        check(delayed.requestedTime == 100, "storage delay replaced event time with completion time");
+        Fixture duplicateTime = new Fixture(); duplicateTime.duringPreparation = () -> {
+            duplicateTime.now = 700; duplicateTime.coordinator.onCarPowerState("sleep");
+        };
+        duplicateTime.run(); duplicateTime.expect(HctSleepCoordinator.Outcome.REQUESTED,"read","prepare","read","sleep");
+        check(duplicateTime.requestedTime == 100, "duplicate event refreshed stale sleep time");
+        Fixture newTime = new Fixture(); newTime.duringPreparation = () -> {
+            newTime.now = 200; newTime.coordinator.onCarPowerState("power_on");
+            newTime.now = 300; newTime.coordinator.onCarPowerState("sleep");
+        };
+        newTime.run(); newTime.expect(HctSleepCoordinator.Outcome.REQUESTED,
+                "read","prepare","read","prepare","read","sleep");
+        check(newTime.requestedTime == 300, "new sleep reused the old event timestamp");
         // Genuine concurrent arrival while the first call is blocked. No sleeps or hardware.
         ExecutorService worker = Executors.newSingleThreadExecutor();
         CountDownLatch entered = new CountDownLatch(1), release = new CountDownLatch(1), slept = new CountDownLatch(1);
@@ -120,8 +138,8 @@ public final class HctSleepCoordinatorTest {
                         return true;
                     } finally { active.decrementAndGet(); }
                 }
-                @Override public void requestSleep() { slept.countDown(); }
-            }, worker);
+                @Override public void requestSleep(long eventUptime) { slept.countDown(); }
+            }, worker, () -> 100);
             concurrent.onCarPowerState("sleep"); check(entered.await(5, TimeUnit.SECONDS), "worker did not enter");
             concurrent.onCarPowerState("power_on"); concurrent.onCarPowerState("sleep"); release.countDown();
             check(slept.await(5, TimeUnit.SECONDS), "fresh request did not finish");

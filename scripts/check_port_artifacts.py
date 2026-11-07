@@ -9,6 +9,7 @@ from prepare_vold_native_patch import EXPECTED, extract_method
 from prepare_framework_storage_patch import EXPECTED as FRAMEWORK_INPUTS, REVISION as FRAMEWORK_REVISION
 from prepare_scoped_vold_patch import METHOD as SCOPED_METHOD, VOLUME_BASE_SHA256
 from prepare_storage_ack_patch import INTERFACE_SHA256
+from inspect_power_event_order import EXPECTED as POWER_INPUTS
 
 
 def digest(path):
@@ -128,6 +129,11 @@ def check(root):
             raise ValueError('Manager source changed: ' + name)
     if manager['recipe_sha256'] != digest(root / 'scripts/check_sleep_manager.py'):
         raise ValueError('Manager host recipe changed')
+    power = json.loads((evidence / 'power-event-order.json').read_text())
+    if power['source_revision'] != FRAMEWORK_REVISION or power['input_sha256'] != POWER_INPUTS:
+        raise ValueError('Power event-order source pins changed')
+    if power['recipe_sha256'] != digest(root / 'scripts/inspect_power_event_order.py'):
+        raise ValueError('Power event-order inspection recipe changed')
     return ('Tracked AIDL/native/framework patches, host-check inputs and storage binding reports agree. '
             'Consistency check only; no platform build or device validation.')
 

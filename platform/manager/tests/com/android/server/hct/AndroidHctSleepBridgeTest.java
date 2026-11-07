@@ -126,6 +126,10 @@ public final class AndroidHctSleepBridgeTest {
         f.expect(0,0,HctSleepCoordinator.Outcome.CLOSED);
         f=new Fixture();f.start();f.worker.accepting=false;f.car.emit("sleep");
         f.expect(0,0,HctSleepCoordinator.Outcome.ERROR);
+        Fixture delayed=new Fixture();delayed.car.state="sleep";
+        long observed=SystemClock.uptimeMillis();delayed.storage.during=()->SystemClock.now+=5000;
+        delayed.start();delayed.expect(1,1,HctSleepCoordinator.Outcome.REQUESTED);
+        check(delayed.power.lastUptime==observed,"bridge stamped sleep after storage instead of at event receipt");
         System.out.println(scenarios+" Android bridge scenarios passed against test-only API shapes; no Binder/device calls.");
     }
 }
